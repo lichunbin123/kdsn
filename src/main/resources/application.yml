@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://127.0.0.1:3306/usping
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database:
+server:
+  tomcat:
+    accesslog:
+      enabled: true
+      pattern: common
+      directory: logs
+security:
+  basic:
+    enabled: false
+# hot swapping
