@@ -1,5 +1,6 @@
 package com.usping.kdsn.auth.controller;
 
+import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -10,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
 
 /**
  * Created by stan on 17-7-2.
@@ -42,13 +46,25 @@ public class AuthController {
     @RequestMapping("/login")
     @ResponseBody
     public String login(@RequestBody User loginUser) {
+
+        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+
 //        User loginUser = new User();
-        loginUser.setUsername("sb");
+//        loginUser.setUsername("sb");
         String jwtToken;
 
-        jwtToken = Jwts.builder().setSubject(loginUser.getUsername()).setIssuedAt(new Date())
-                .signWith(SignatureAlgorithm.HS256,"woshinidebaba").compact();
+        byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary("woshinidebaba");
+        Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
+
+        jwtToken = Jwts.builder()
+                .setSubject(loginUser.getUsername())
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setIssuer("cc")
+                .signWith(signatureAlgorithm,signingKey)
+                .compact();
+
         System.out.println(jwtToken);
+        System.out.println("Token initiated");
         return jwtToken;
     }
 

@@ -14,7 +14,8 @@ const instance = axios.create({
   baseURL: `http://localhost:8081`,
   headers: {
     'Access-Control-Allow-Origin': 'http://localhost:8080',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'token': 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaDU1NTUiLCJpYXQiOjE1MTAwNzE2MDMsImlzcyI6ImNjIn0.mbUSwm5RQLHurG75igxVvm1AnE_-A6c9bP-3_WoTLqw'
   }
 })
 

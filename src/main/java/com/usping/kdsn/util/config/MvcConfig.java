@@ -1,6 +1,5 @@
 package com.usping.kdsn.util.config;
 
-import com.usping.kdsn.util.interceptor.AuthCheckInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
