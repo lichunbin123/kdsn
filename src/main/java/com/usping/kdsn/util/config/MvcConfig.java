@@ -52,7 +52,8 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry corsRegistry) {
-
+        System.out.println("跨域准备 ");
+        corsRegistry.addMapping("/").allowedOrigins("*");
     }
 
     @Override

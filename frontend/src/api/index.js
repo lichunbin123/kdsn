@@ -1,26 +1,24 @@
 import axios from 'axios'
 
 axios.defaults.timeout = 5000
-axios.defaults.headers.post['Content-Type'] = 'application/json'
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
-axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*'
-axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
 
 // const instance = axios.create({
-//   headers: {'Access-Control-Allow-Origin': '*'}
+//   headers: {'Acce  ss-Control-Allow-Origin': '*'}
 // })
 
-const instance = axios.create({
-  baseURL: `http://localhost:8081`,
+let instance = axios.create({
+  baseURL: `http://localhost:8080`,
+  timeout: 10000,
   headers: {
-    'Access-Control-Allow-Origin': 'http://localhost:8080',
-    'Content-Type': 'application/json',
-    'token': 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyaDU1NTUiLCJpYXQiOjE1MTAwNzE2MDMsImlzcyI6ImNjIn0.mbUSwm5RQLHurG75igxVvm1AnE_-A6c9bP-3_WoTLqw'
+    'access-control-allow-origin': 'http://localhost:8080',
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
   }
 })
 
-instance.defaults.headers.post['Content-Type'] = 'application/json'
-instance.defaults.headers.get['Content-Type'] = 'application/json'
+// const config = {Authorization: localStorage.getItem('token')}
+
+axios.defaults.baseURL = 'http://localhost:8080'
 
 // axios拦截响应
 instance.interceptors.response.use(response => {
@@ -41,10 +39,14 @@ export default {
   // 获取用户
   getUser () {
     // return instance.get('/')
-    return instance.get('http://localhost:8080/api/auth/user')
+    console.log('发送请求')
+    return instance.get('/api/auth/user', {headers: {Authorization: localStorage.getItem('token')}})
   },
   // 删除用户
   delUser (data) {
     return instance.post('/api/delUser', data)
+  },
+  login (data) {
+    return instance.post('/auth/login', data)
   }
 }

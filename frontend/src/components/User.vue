@@ -25,7 +25,7 @@
           console.log('token')
           this.$router.push('/login')
           this.$store.dispatch('UserLogout')
-          console.log(localStorage.token)
+          console.log(localStorage.getItem('token'))
         } else {
           this.user = data
         }

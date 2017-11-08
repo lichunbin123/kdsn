@@ -10,17 +10,20 @@
     </el-form-item>
     <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox>
     <el-form-item style="width:100%;">
-      <el-button type="primary" style="width:100%;">登录</el-button>
+      <el-button type="primary" style="width:100%;" @click="login()">登录</el-button>
     </el-form-item>
   </el-form>
 </template>
 
 <script>
+  import api from '../api'
+
+//  api.login({'username': 'rh5555'})
+
   export default {
     name: 'login',
     data () {
       return {
-//        logining: false,
         account: {
           username: '',
           pwd: ''
@@ -34,6 +37,24 @@
           ]
         },
         checked: true
+      }
+    },
+    methods: {
+      login: function () {
+        console.log('test')
+        api.login({'username': 'rh5555'}).then(({
+                              data
+                            }) => {
+          if (data.code === 401) {
+            console.log('token')
+            this.$router.push('/login')
+            this.$store.dispatch('UserLogout')
+            console.log(localStorage.token)
+          } else {
+            console.log(data)
+            localStorage.setItem('token', data)
+          }
+        })
       }
     }
   }

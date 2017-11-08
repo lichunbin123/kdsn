@@ -8,6 +8,7 @@ import com.usping.kdsn.auth.model.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -43,6 +44,7 @@ public class AuthController {
         return jwtToken;
     }
 
+    @CrossOrigin
     @RequestMapping("/login")
     @ResponseBody
     public String login(@RequestBody User loginUser) {
