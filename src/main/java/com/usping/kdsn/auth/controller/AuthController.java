@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 import com.usping.kdsn.auth.model.User;
+import com.usping.kdsn.util.config.CONFIG;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Controller;
@@ -38,7 +39,7 @@ public class AuthController {
     @RequestMapping("/testFilter")
     @ResponseBody
     public String testFilter(){
-        String jwtToken = Jwts.builder().setIssuedAt(new Date()).signWith(SignatureAlgorithm.HS256,"woshinidebaba").compact();
+        String jwtToken = Jwts.builder().setIssuedAt(new Date()).signWith(SignatureAlgorithm.HS256,CONFIG.getTokenPass()).compact();
 
         System.out.println(jwtToken);
         return jwtToken;
@@ -51,11 +52,12 @@ public class AuthController {
 
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
-//        User loginUser = new User();
-//        loginUser.setUsername("sb");
+        // check
+
+
         String jwtToken;
 
-        byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary("woshinidebaba");
+        byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(CONFIG.getTokenPass());
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
 
         jwtToken = Jwts.builder()
@@ -69,6 +71,4 @@ public class AuthController {
         System.out.println("Token initiated");
         return jwtToken;
     }
-
-
 }

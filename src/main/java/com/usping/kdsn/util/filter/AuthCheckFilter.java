@@ -1,5 +1,6 @@
 package com.usping.kdsn.util.filter;
 
+import com.usping.kdsn.util.config.CONFIG;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
@@ -27,13 +28,10 @@ public class AuthCheckFilter implements Filter {
             return;
         }
 
-        System.out.println(req.getHeader("token"));
-        System.out.println("token parse:");
-
         System.out.println(req.getHeader("Authorization"));
 
         Claims claims = Jwts.parser()
-                .setSigningKey(DatatypeConverter.parseBase64Binary("woshinidebaba"))
+                .setSigningKey(DatatypeConverter.parseBase64Binary(CONFIG.getTokenPass()))
                 .parseClaimsJws(req.getHeader("Authorization")).getBody();
 
         System.out.println(claims.getIssuer());
