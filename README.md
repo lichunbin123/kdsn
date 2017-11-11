@@ -7,7 +7,7 @@ in Root dir, install jar dependencies by maven
 
 ``` $ mvn install ```
 
-Endonces, cd to the frontend dir and install js dependencies by npm.
+Entonces, cd to the frontend dir and install js dependencies by npm.
 
 npm can be replace with cnpm and install cnpm with ``` $ npm install cnpm -g ```
 
