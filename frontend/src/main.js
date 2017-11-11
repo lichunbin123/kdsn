@@ -6,7 +6,10 @@ import router from './router'
 import axios from './api'
 
 import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
+import 'element-ui/lib/theme-chalk/index.css'
+
+import UspingFooter from './components/layout/footer.vue'
+import UspingHeader from './components/layout/header'
 
 Vue.use(ElementUI)
 
@@ -19,5 +22,8 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: { App,
+    UspingFooter,
+    UspingHeader
+  }
 })

@@ -16,4 +16,6 @@ server:
 security:
   basic:
     enabled: false
+logging:
+  level: warn
 # hot swapping

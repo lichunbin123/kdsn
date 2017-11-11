@@ -29,6 +29,10 @@ public class UserService {
         return userMapper.findById(id);
     }
 
+    public User findByUsername(String username) {
+        return userMapper.findByUsername(username);
+    }
+
 //  public boolean saveUser(User user){
 //    return userMapper.saveUser(user);
 //  }

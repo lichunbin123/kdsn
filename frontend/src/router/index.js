@@ -4,6 +4,7 @@ import Login from '@/components/Login'
 import HelloWorld from '@/components/HelloWorld'
 import Home from '@/components/Home'
 import User from '@/components/User'
+import IndexPage from '@/page/index/index'
 
 // import header from '@/components/layout/header'
 // import footer from '@/components/layout/footer'
@@ -32,6 +33,11 @@ let router = new Router({
       path: '/users',
       name: '用户列表',
       component: User
+    },
+    {
+      path: '/index',
+      name: '首页',
+      component: IndexPage
     }
   ]
 })

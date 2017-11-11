@@ -9,9 +9,12 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 @WebFilter(filterName = "authCheck", urlPatterns = "/api/*")
 public class AuthCheckFilter implements Filter {
+
+    private Logger logger = Logger.getLogger(AuthCheckFilter.class.getName());
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -28,7 +31,7 @@ public class AuthCheckFilter implements Filter {
             return;
         }
 
-        System.out.println(req.getHeader("Authorization"));
+        logger.info("获取token："+req.getHeader("Authorization"));
 
         Claims claims = Jwts.parser()
                 .setSigningKey(DatatypeConverter.parseBase64Binary(CONFIG.getTokenPass()))
@@ -42,6 +45,5 @@ public class AuthCheckFilter implements Filter {
 
     @Override
     public void destroy() {
-
     }
 }
