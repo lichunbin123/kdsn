@@ -1,7 +1,8 @@
 <template>
+  <div class="login-app">
   <el-form ref="dynamicValidateForm" :model="dynamicValidateForm" :rules="rules" label-position="left" label-width="0px"
            class="demo-ruleForm login-container">
-    <h3 class="title">系统登录</h3>
+    <h3 class="title" style="text-align: center">系统登录</h3>
     <el-form-item prop="username">
       <el-input type="text" v-model="dynamicValidateForm.username" :rules="rules.username" auto-complete="off" placeholder="账号"></el-input>
     </el-form-item>
@@ -13,12 +14,11 @@
       <el-button type="primary" style="width:100%;" @click="login('dynamicValidateForm')">登录</el-button>
     </el-form-item>
   </el-form>
+  </div>
 </template>
 
 <script>
   import api from '../api'
-
-  //  api.login({'username': 'rh5555'})
 
   export default {
     name: 'login',
@@ -40,6 +40,17 @@
       }
     },
     methods: {
+      alertFault: function () {
+        this.$alert('登录失败', '请检查您的输入!', {
+          confirmButtonText: '确定',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${action}`
+            })
+          }
+        })
+      },
       login: function (formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -49,10 +60,15 @@
                                  }) => {
               if (data.code === 401) {
                 console.log('401')
-                console.log(localStorage.token)
+                console.log(this.$cookie.get('token'))
               } else {
-                console.log(data)
-                localStorage.setItem('token', data)
+                this.$cookie.set('token', data.token, { expires: '10min' })
+                this.$cookie.set('authorizedUser', JSON.stringify(data.authorizedUser), { expires: '10min' })
+//                let redirect = decodeURIComponent('/index')
+//                this.$router.push({
+//                  path: redirect
+//                })
+                this.$router.go(-1)
               }
             }
             ).catch(function error (e) {
@@ -60,19 +76,6 @@
             })
           }
         })
-//        api.login({'username': 'rh5555'}).then(({
-//                              data
-//                            }) => {
-//          if (data.code === 401) {
-//            console.log('token')
-//            this.$router.push('/login')
-//            this.$store.dispatch('UserLogout')
-//            console.log(localStorage.token)
-//          } else {
-//            console.log(data)
-//            localStorage.setItem('token', data)
-//          }
-//        })
       }
     }
   }
@@ -89,7 +92,7 @@
     margin-left: 38%;
   }
 
-  #app {
+  #login-app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

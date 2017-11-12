@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Vue from '../main.js'
 
 axios.defaults.timeout = 5000
 
@@ -48,5 +49,10 @@ export default {
   },
   login (data) {
     return instance.post('/auth/login', data)
+  },
+  logout () {
+    console.log('尝试登出')
+    Vue.vue.$cookie.delete('token')
+    Vue.vue.$cookie.delete('authorizedUser')
   }
 }

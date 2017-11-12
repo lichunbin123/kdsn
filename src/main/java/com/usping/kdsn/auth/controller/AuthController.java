@@ -1,10 +1,5 @@
 package com.usping.kdsn.auth.controller;
 
-import java.security.Key;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Objects;
-
 import com.usping.kdsn.auth.model.User;
 import com.usping.kdsn.auth.service.UserService;
 import com.usping.kdsn.util.config.CONFIG;
@@ -21,6 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
+import java.security.Key;
+import java.util.Date;
+import java.util.HashMap;
 
 /**
  * Created by stan on 17-7-2.
@@ -39,17 +37,17 @@ public class AuthController {
     @CrossOrigin
     @RequestMapping("/login")
     @ResponseBody
-    public ResponseEntity<String> login(@RequestBody User loginUser) {
+    public ResponseEntity<HashMap<String,Object>> login(@RequestBody User loginUser) {
 
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
         if (null == loginUser.getUsername() || null == loginUser.getPassword()) {
-            return new ResponseEntity<String>(HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         } else {
             try {
                 User user = userService.findByUsername(loginUser.getUsername());
                 if (!loginUser.getPassword().equals(user.getPassword())) {
-                    return new ResponseEntity<String>(HttpStatus.UNAUTHORIZED);
+                    return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
                 } else {
                     String jwtToken;
 
@@ -62,13 +60,16 @@ public class AuthController {
                             .signWith(signatureAlgorithm, signingKey)
                             .compact();
 
-                    System.out.println(jwtToken);
-                    System.out.println("Token initiated");
-                    return new ResponseEntity<String>(jwtToken, HttpStatus.OK);
+                    HashMap<String,Object> resultMap = new HashMap<>();
+
+                    resultMap.put("token",jwtToken);
+                    resultMap.put("authorizedUser",user);
+
+                    return new ResponseEntity<>(resultMap, HttpStatus.OK);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                return new ResponseEntity<String>("",HttpStatus.UNAUTHORIZED);
+                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
             }
         }
     }

@@ -28,3 +28,12 @@ The java backend will start with the log streaming.
 ``` $ cd frontend```
 
 ``` $ npm run dev``` or ``` cnpm run dev ```
+
+# Progress
+
+-   user module 
+-   knowledge module
+-   shopping module
+-   service module
+-   myusping
+-   usping manage 

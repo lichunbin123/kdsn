@@ -25,7 +25,6 @@
     </el-row>
     </el-main>
   </div>
-
 </template>
 
 <script>
@@ -47,6 +46,10 @@
 </script>
 
 <style>
+  body {
+    background: #ffffff
+  }
+
   .el-row {
     margin-bottom: 20px;
   &:last-child {

@@ -12,7 +12,7 @@ import IndexPage from '@/page/index/index'
 Vue.use(Router)
 
 let router = new Router({
-  // mode: 'history',
+  mode: 'history',
   routes: [
     {
       path: '/hello',
@@ -25,7 +25,7 @@ let router = new Router({
       component: Home
     },
     {
-      path: '/',
+      path: '/login',
       name: '登录',
       component: Login
     },
