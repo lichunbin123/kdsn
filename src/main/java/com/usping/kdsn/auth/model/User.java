@@ -3,12 +3,16 @@ package com.usping.kdsn.auth.model;
 import com.usping.kdsn.util.model.BaseEntity;
 import javax.persistence.Column;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.annotation.Id;
 
 /**
  * designed for auth module
  * Created by stan on 17-7-2.
  */
 public class User extends BaseEntity {
+
+  @Id
+  private Integer id;
 
   private String username;
 
@@ -37,6 +41,14 @@ public class User extends BaseEntity {
   private String project_experience;
 
   private String password;
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
   public String getUsername() {
     return username;

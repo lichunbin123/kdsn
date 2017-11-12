@@ -40,17 +40,6 @@
       }
     },
     methods: {
-      alertFault: function () {
-        this.$alert('登录失败', '请检查您的输入!', {
-          confirmButtonText: '确定',
-          callback: action => {
-            this.$message({
-              type: 'info',
-              message: `action: ${action}`
-            })
-          }
-        })
-      },
       login: function (formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -73,6 +62,15 @@
             }
             ).catch(function error (e) {
               console.log(e + '' + e.message)
+              this.$alert('登录失败', '请检查您的输入!', {
+                confirmButtonText: '确定',
+                callback: action => {
+                  this.$message({
+                    type: 'info',
+                    message: `action: ${action}`
+                  })
+                }
+              })
             })
           }
         })

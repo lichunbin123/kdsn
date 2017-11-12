@@ -7,22 +7,14 @@ import org.springframework.data.annotation.Transient;
  * Created by stan on 17-7-2.
  */
 public class BaseEntity {
-  @Id
-  private Integer id;
-
   @Transient
   private Integer page = 1;
 
   @Transient
   private Integer rows = 10;
 
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
+  @Transient
+  private String sortBy = "";
 
   public Integer getPage() {
     return page;
@@ -38,5 +30,13 @@ public class BaseEntity {
 
   public void setRows(Integer rows) {
     this.rows = rows;
+  }
+
+  public String getSortBy() {
+    return sortBy;
+  }
+
+  public void setSortBy(String sortBy) {
+    this.sortBy = sortBy;
   }
 }

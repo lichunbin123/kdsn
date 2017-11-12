@@ -18,14 +18,14 @@
     data () {
 //      var data = api.getUser()
       let data = '[]'
-      api.getUser().then(({
+      api.getUser(this.$cookie.get('token')).then(({
                             data
                           }) => {
         if (data.code === 401) {
           console.log('token')
           this.$router.push('/login')
           this.$store.dispatch('UserLogout')
-          console.log(localStorage.getItem('token'))
+          console.log(this.$cookie.get('token'))
         } else {
           this.user = data
         }

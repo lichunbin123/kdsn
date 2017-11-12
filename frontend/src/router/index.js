@@ -5,6 +5,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Home from '@/components/Home'
 import User from '@/components/User'
 import IndexPage from '@/page/index/index'
+import news from '@/page/news/myNews'
 
 // import header from '@/components/layout/header'
 // import footer from '@/components/layout/footer'
@@ -38,6 +39,15 @@ let router = new Router({
       path: '/index',
       name: '首页',
       component: IndexPage
+    }, {
+      path: '/',
+      name: '首页',
+      component: IndexPage
+    },
+    {
+      path: '/news',
+      name: '新闻',
+      component: news
     }
   ]
 })

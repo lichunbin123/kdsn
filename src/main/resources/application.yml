@@ -5,8 +5,9 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
-  jpa:
-    database:
+  data:
+    mongodb:
+      database: usping
 server:
   tomcat:
     accesslog:
@@ -17,5 +18,6 @@ security:
   basic:
     enabled: false
 logging:
-  level: warn
+  level: debug
+debug: true
 # hot swapping

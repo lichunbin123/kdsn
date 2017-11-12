@@ -17,8 +17,6 @@ let instance = axios.create({
   }
 })
 
-// const config = {Authorization: localStorage.getItem('token')}
-
 axios.defaults.baseURL = 'http://localhost:8080'
 
 // axios拦截响应
@@ -38,10 +36,15 @@ export default {
     return instance.post('/api/login', data)
   },
   // 获取用户
-  getUser () {
-    // return instance.get('/')
-    console.log('发送请求')
-    return instance.get('/api/auth/user', {headers: {Authorization: localStorage.getItem('token')}})
+  getUser (token) {
+    console.log('request token is: ' + token)
+    return instance.get('/api/auth/user',
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
   },
   // 删除用户
   delUser (data) {
@@ -53,6 +56,18 @@ export default {
   logout () {
     console.log('尝试登出')
     Vue.vue.$cookie.delete('token')
+    console.log('删除token')
     Vue.vue.$cookie.delete('authorizedUser')
+  },
+  // 新闻获取
+  getNews (token) {
+    console.log('request token is: ' + token)
+    return instance.get('/api/news/news',
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
   }
 }

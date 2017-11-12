@@ -2,12 +2,12 @@ package com.usping.kdsn.auth.controller;
 
 import com.usping.kdsn.auth.model.User;
 import com.usping.kdsn.auth.service.UserService;
-import java.util.List;
-import org.apache.ibatis.annotations.SelectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by stan on 17-7-2.
@@ -26,16 +26,14 @@ public class AuthRestController {
   // retrieve user list
   @CrossOrigin
   @GetMapping(value = "/user")
-  public ResponseEntity<List>
-  findAll() {
-    ResponseEntity<List> responseEntity = new ResponseEntity<List>(userService.findAll(), HttpStatus.ACCEPTED);
+  public ResponseEntity<List> findAll() {
+    ResponseEntity<List> responseEntity = new ResponseEntity<>(userService.findAll(), HttpStatus.ACCEPTED);
     return responseEntity;
   }
 
   // retrieve user by id
   @RequestMapping(value = "/user/{id}",method = RequestMethod.GET)
-  public User
-  findUser(@PathVariable("id")Integer id){
+  public User findUser(@PathVariable("id")Integer id){
     return userService.findById(id);
   }
 
