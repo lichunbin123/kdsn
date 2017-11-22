@@ -71,6 +71,15 @@ The java backend will start with the log streaming.
 
 ``` $ npm run dev``` or ``` cnpm run dev ```
 
+# Dockerize
+
+The dev environment of elasticsearch well integrated final.
+Use 
+``` docker-compose up ```
+to start .
+
+Which requires linux os or win10 professional/win server 2012
+
 # Progress
 
 -   user module 
