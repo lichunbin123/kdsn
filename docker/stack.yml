@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+
+    elasticsearch:
+        image: elasticsearch
+        ports:
+            - 9200:9200
+            - 9300:9300
+
+    mongo:
+        image: stan/mongo
+        ports:
+            - 9999:27017
+    
+    mongo-es-connector:
+        image: stan/es-mongo-connector
+        environment:
+            - MONGO_URL=172.17.0.1:9999
+            - ES_URL=172.17.0.1:9200

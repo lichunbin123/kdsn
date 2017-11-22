@@ -3,8 +3,6 @@ package com.usping.kdsn.news.model;
 import com.usping.kdsn.util.model.BaseEntity;
 import org.springframework.data.annotation.Id;
 
-import java.sql.Date;
-
 public class News extends BaseEntity{
     @Id
     private String id;

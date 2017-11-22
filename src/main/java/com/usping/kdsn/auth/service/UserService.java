@@ -1,12 +1,11 @@
 package com.usping.kdsn.auth.service;
 
-import com.usping.kdsn.auth.mapper.UserMapper;
-import com.usping.kdsn.auth.model.User;
-
-import java.util.List;
-
+import com.usping.kdsn.bean.User;
+import com.usping.kdsn.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * Created by stan on 17-7-2.
@@ -21,16 +20,16 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public List findAll() {
-        return userMapper.findAll();
-    }
+        public List findAll() {
+            return userMapper.selectAll();
+        }
 
     public User findById(Integer id) {
-        return userMapper.findById(id);
+        return userMapper.selectByPrimaryKey(id);
     }
 
     public User findByUsername(String username) {
-        return userMapper.findByUsername(username);
+            return userMapper.selectByUserName(username);
     }
 
 //  public boolean saveUser(User user){
@@ -42,7 +41,7 @@ public class UserService {
     //}
 
     public boolean deleteUser(Integer id) {
-        return userMapper.deleteUser(id);
+        return userMapper.deleteByPrimaryKey(id) == 1;
     }
 
 }

@@ -1,7 +1,6 @@
 package com.usping.kdsn.util.config;
 
 import org.apache.catalina.filters.CorsFilter;
-import org.springframework.stereotype.Component;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 

@@ -11,9 +11,12 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
+
+    private final static Logger logger = Logger.getLogger(WebMvcConfigurer.class.getName());
 
     @Override
     public void configurePathMatch(PathMatchConfigurer pathMatchConfigurer) {
@@ -52,7 +55,7 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry corsRegistry) {
-        System.out.println("跨域准备 ");
+        logger.info("跨域准备 ");
         corsRegistry.addMapping("/").allowedOrigins("*");
     }
 

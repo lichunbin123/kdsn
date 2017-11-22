@@ -1,7 +1,7 @@
 package com.usping.kdsn.auth.controller;
 
-import com.usping.kdsn.auth.model.User;
 import com.usping.kdsn.auth.service.UserService;
+import com.usping.kdsn.bean.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,11 +27,11 @@ public class AuthRestController {
   @CrossOrigin
   @GetMapping(value = "/user")
   public ResponseEntity<List> findAll() {
-    ResponseEntity<List> responseEntity = new ResponseEntity<>(userService.findAll(), HttpStatus.ACCEPTED);
+    ResponseEntity<List> responseEntity = new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
     return responseEntity;
   }
 
-  // retrieve user by id
+  @CrossOrigin
   @RequestMapping(value = "/user/{id}",method = RequestMethod.GET)
   public User findUser(@PathVariable("id")Integer id){
     return userService.findById(id);

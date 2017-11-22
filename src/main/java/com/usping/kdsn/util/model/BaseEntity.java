@@ -1,12 +1,14 @@
 package com.usping.kdsn.util.model;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+
 
 /**
  * Created by stan on 17-7-2.
  */
-public class BaseEntity {
+public class BaseEntity implements Pageable{
   @Transient
   private Integer page = 1;
 
@@ -38,5 +40,46 @@ public class BaseEntity {
 
   public void setSortBy(String sortBy) {
     this.sortBy = sortBy;
+  }
+
+
+  @Override
+  public int getPageNumber() {
+    return 0;
+  }
+
+  @Override
+  public int getPageSize() {
+    return 0;
+  }
+
+  @Override
+  public int getOffset() {
+    return 0;
+  }
+
+  @Override
+  public Sort getSort() {
+    return null;
+  }
+
+  @Override
+  public Pageable next() {
+    return null;
+  }
+
+  @Override
+  public Pageable previousOrFirst() {
+    return null;
+  }
+
+  @Override
+  public Pageable first() {
+    return null;
+  }
+
+  @Override
+  public boolean hasPrevious() {
+    return false;
   }
 }

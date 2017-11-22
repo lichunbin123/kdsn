@@ -8,6 +8,7 @@ spring:
   data:
     mongodb:
       database: usping
+      port: 9999
 server:
   tomcat:
     accesslog:
@@ -19,5 +20,8 @@ security:
     enabled: false
 logging:
   level: debug
-debug: true
-# hot swapping
+#debug: true
+
+mybatis:
+  config-location: classpath:config/mybatis-config.xml
+  mapper-locations: classpath:mapper/*.xml

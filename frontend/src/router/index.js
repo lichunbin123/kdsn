@@ -6,6 +6,7 @@ import Home from '@/components/Home'
 import User from '@/components/User'
 import IndexPage from '@/page/index/index'
 import news from '@/page/news/myNews'
+import task from '@/page/task/myTask'
 
 // import header from '@/components/layout/header'
 // import footer from '@/components/layout/footer'
@@ -48,6 +49,11 @@ let router = new Router({
       path: '/news',
       name: '新闻',
       component: news
+    },
+    {
+      path: '/task',
+      name: '',
+      component: task
     }
   ]
 })

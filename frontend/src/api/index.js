@@ -69,5 +69,15 @@ export default {
           'Access-Control-Allow-Origin': '*'
         }
       })
+  },
+  getTask (token) {
+    console.log('request token is: ' + token)
+    return instance.get('/api/task/task',
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
   }
 }
