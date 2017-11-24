@@ -5,7 +5,7 @@
       background-color="#fff"
       style='border: 0px;font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;'
       active-text-color="#ffd04b">
-      <el-menu-item index="1"><img src="/static/logo.png" style="height: 60px"><span style="color: black;font-size: 22px">  汇聚智能</span></el-menu-item>
+      <el-menu-item index="1" @click="goHome"><img src="/static/logo.png" style="height: 60px"><span style="color: black;font-size: 22px">  汇聚智能</span></el-menu-item>
       <el-menu-item index="1"><el-input
         placeholder="请输入搜索内容"
         prefix-icon="el-icon-search">
@@ -42,6 +42,9 @@
           message: '您已成功登出',
           position: 'top-right'
         })
+      },
+      goHome: function () {
+        this.$router.push('/')
       }
     }
   }

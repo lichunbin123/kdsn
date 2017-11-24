@@ -26,7 +26,7 @@
         </el-col>
         <el-col :span="8" style="text-align: center"><img src="/static/index/service.png" @click="goTask"
                                                           style="height: 160px"/></el-col>
-        <el-col :span="8"><img src="/static/index/shop.png" style="height: 160px;float: left"/></el-col>
+        <el-col :span="8"><img src="/static/index/shop.png" @click="goProduct" style="height: 160px;float: left"/></el-col>
       </el-row>
     </el-main>
   </div>
@@ -54,6 +54,9 @@
       },
       goTask () {
         this.$router.push('/task')
+      },
+      goProduct () {
+        this.$router.push('/product')
       }
     }
   }

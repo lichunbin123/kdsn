@@ -5,8 +5,10 @@ import com.usping.kdsn.bean.User;
 import com.usping.kdsn.util.config.CONFIG;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,16 +23,16 @@ import java.util.HashMap;
 /**
  * Created by stan on 17-7-2.
  */
-//@Controller
-//@RequestMapping("/auth/")
+@Controller
+@RequestMapping("/auth/")
 public class AuthController {
 
-    private final UserService userService = null;
+    private final UserService userService;
 
-//    @Autowired
-//    public AuthController(UserService userService) {
-//        this.userService = userService;
-//    }
+    @Autowired
+    public AuthController(UserService userService) {
+        this.userService = userService;
+    }
 
     @CrossOrigin
     @RequestMapping("/login")

@@ -8,7 +8,6 @@ spring:
   data:
     mongodb:
       database: usping
-      port: 9999
 server:
   tomcat:
     accesslog:

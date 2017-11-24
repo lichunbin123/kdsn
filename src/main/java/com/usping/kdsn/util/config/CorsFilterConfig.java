@@ -10,10 +10,11 @@ import java.util.Arrays;
 public class CorsFilterConfig extends CorsFilter {
 
     public CorsFilterConfig() {
-
+//        configurationSource();
     }
 
     private static UrlBasedCorsConfigurationSource configurationSource() {
+        System.out.println("测试");
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         config.addAllowedOrigin("*");

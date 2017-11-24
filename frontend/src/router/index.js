@@ -7,6 +7,7 @@ import User from '@/components/User'
 import IndexPage from '@/page/index/index'
 import news from '@/page/news/myNews'
 import task from '@/page/task/myTask'
+import product from '@/page/product/myProduct'
 
 // import header from '@/components/layout/header'
 // import footer from '@/components/layout/footer'
@@ -52,8 +53,13 @@ let router = new Router({
     },
     {
       path: '/task',
-      name: '',
+      name: '任务',
       component: task
+    },
+    {
+      path: '/product',
+      name: '产品',
+      component: product
     }
   ]
 })

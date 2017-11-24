@@ -8,10 +8,10 @@
     <properties resource="application.yml"/>
 
     <context id="Mysql" targetRuntime="MyBatis3">
-        <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
-                        connectionURL="${spring.datasource.url}"
-                        userId="${spring.datasource.username}"
-                        password="${spring.datasource.password}">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/usping"
+                        userId="root"
+                        password="123456">
         </jdbcConnection>
 
         <javaModelGenerator targetPackage="com.usping.kdsn.bean" targetProject="src/main/java">
@@ -24,8 +24,9 @@
 
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.usping.kdsn.mapper" targetProject="src/main/java"/>
 
-        <table tableName="user"/>
-        <table tableName="product"/>
-        <table tableName="task"/>
+        <!--<table tableName="user"/>-->
+        <!--<table tableName="product"/>-->
+        <!--<table tableName="task"/>-->
+        <table tableName="comment"/>
     </context>
 </generatorConfiguration>

@@ -513,7 +513,7 @@
         select * from user
     </select>
     
-    <select id="selectByUserName" parameterType="String">
+    <select id="selectByUserName" parameterType="String" resultType="com.usping.kdsn.bean.User">
         select * from USER
         where username = #{username}
     </select>

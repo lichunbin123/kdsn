@@ -33,7 +33,8 @@ export default {
   },
   // 用户登录
   UserLogin (data) {
-    return instance.post('/api/login', data)
+    return instance.post('/api/login', data
+    )
   },
   // 获取用户
   getUser (token) {
@@ -61,7 +62,6 @@ export default {
   },
   // 新闻获取
   getNews (token) {
-    console.log('request token is: ' + token)
     return instance.get('/api/news/news',
       {
         headers: {
@@ -71,8 +71,16 @@ export default {
       })
   },
   getTask (token) {
-    console.log('request token is: ' + token)
     return instance.get('/api/task/task',
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+  },
+  getProduct (token) {
+    return instance.get('/api/product/product',
       {
         headers: {
           Authorization: token,
