@@ -2,8 +2,11 @@ package com.usping.kdsn.news.model;
 
 import com.usping.kdsn.util.model.BaseEntity;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 
-public class News extends BaseEntity{
+import java.util.List;
+
+public class News extends BaseEntity {
     @Id
     private String id;
     private String title;

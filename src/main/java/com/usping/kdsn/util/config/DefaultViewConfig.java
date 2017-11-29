@@ -1,12 +1,11 @@
 package com.usping.kdsn.util.config;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
-import java.util.logging.Logger;
 
 /**
  * Created by stan on 17-7-2.
@@ -14,8 +13,7 @@ import java.util.logging.Logger;
 @Configuration
 public class DefaultViewConfig extends WebMvcConfigurerAdapter {
 
-    private final Logger logger = Logger.getLogger(DefaultViewConfig.class.getName());
-
+    private final static org.slf4j.Logger logger = LoggerFactory.getLogger(DefaultViewConfig.class);
 
     @Override
     public void
@@ -35,6 +33,6 @@ public class DefaultViewConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         logger.info("匹配/*跨域");
-        registry.addMapping("/*").allowedOrigins("*");
+        registry.addMapping("/").allowedOrigins("*");
     }
 }

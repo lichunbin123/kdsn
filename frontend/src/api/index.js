@@ -3,6 +3,11 @@ import Vue from '../main.js'
 
 axios.defaults.timeout = 5000
 
+var elasticsearch = require('elasticsearch')
+var client = new elasticsearch.Client({
+  host: 'localhost:9200',
+  log: 'trace'
+})
 // const instance = axios.create({
 //   headers: {'Acce  ss-Control-Allow-Origin': '*'}
 // })
@@ -52,7 +57,12 @@ export default {
     return instance.post('/api/delUser', data)
   },
   login (data) {
-    return instance.post('/auth/login', data)
+    return instance.post('/auth/login', data,
+      {
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
   },
   logout () {
     console.log('尝试登出')
@@ -87,5 +97,54 @@ export default {
           'Access-Control-Allow-Origin': '*'
         }
       })
+  },
+  postComment (token, data) {
+    return instance.post('/api/comment/comment',
+      data,
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+  },
+  getCommentWithUserIdAndNewsId (token, userId, newsId) {
+    return instance.get('/api/comment/findByUserIdAndNewsId?userId=' + userId + '&newsId=' + newsId,
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+  },
+  getCommentWithNewsId (token, newsId) {
+    return instance.get('/api/comment/findByNewsId?newsId=' + newsId,
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+  },
+  esCommonSearch (content) {
+    return client.search({
+      q: content
+    })
+  },
+  esBoolSearch () {
+    return client.search({
+      body: {
+        query: {
+          bool: {
+            must: {
+              term: {
+                text: 'b'
+              }
+            }
+          }
+        }
+      }
+    })
   }
+
 }

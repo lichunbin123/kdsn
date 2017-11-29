@@ -1,0 +1,5 @@
+
+services:
+  mongo:
+    build: .
+    image: stan/mongo:1

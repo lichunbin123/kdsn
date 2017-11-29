@@ -17,10 +17,14 @@ server:
 security:
   basic:
     enabled: false
-logging:
-  level: debug
-#debug: true
 
 mybatis:
   config-location: classpath:config/mybatis-config.xml
   mapper-locations: classpath:mapper/*.xml
+logging:
+  level:
+    org.springframework: WARN
+    com.spring.ibatis.UserMapper: DEBUG
+    com.usping.kdsn.mapper.CommentMapper: DEBUG
+#  file: logs/spring-boot-logging.log
+debug: true

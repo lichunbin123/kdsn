@@ -9,12 +9,13 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @WebFilter(filterName = "authCheck", urlPatterns = "/api/*")
 public class AuthCheckFilter implements Filter {
 
-    private Logger logger = Logger.getLogger(AuthCheckFilter.class.getName());
+    private Logger logger = LoggerFactory.getLogger(AuthCheckFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -39,8 +40,6 @@ public class AuthCheckFilter implements Filter {
                 .setSigningKey(DatatypeConverter.parseBase64Binary(CONFIG.getTokenPass()))
                 .parseClaimsJws(req.getHeader("Authorization")).getBody();
 
-        System.out.println(claims.getIssuer());
-        System.out.println(claims.getSubject());
 
         filterChain.doFilter(servletRequest, servletResponse);
     }

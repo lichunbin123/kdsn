@@ -8,6 +8,7 @@ import IndexPage from '@/page/index/index'
 import news from '@/page/news/myNews'
 import task from '@/page/task/myTask'
 import product from '@/page/product/myProduct'
+import esping from '@/page/test/ping'
 
 // import header from '@/components/layout/header'
 // import footer from '@/components/layout/footer'
@@ -60,6 +61,11 @@ let router = new Router({
       path: '/product',
       name: '产品',
       component: product
+    },
+    {
+      path: '/ping',
+      name: 'es-ping',
+      component: esping
     }
   ]
 })

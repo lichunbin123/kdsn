@@ -15,6 +15,7 @@
     "axios": "^0.17.0",
     "bootstrap4": "0.0.1-security",
     "component": "^1.1.0",
+    "elasticsearch": "^14.0.0",
     "element-ui": "^2.0.3",
     "install": "^0.10.1",
     "qs": "^6.5.1",

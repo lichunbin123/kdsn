@@ -1,20 +1,24 @@
 package com.usping.kdsn.util.config;
 
 import org.apache.catalina.filters.CorsFilter;
+import org.springframework.stereotype.Component;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 //@Component
 public class CorsFilterConfig extends CorsFilter {
 
+    private static final Logger logger = Logger.getLogger(CorsFilterConfig.class.getName());
+    
     public CorsFilterConfig() {
-//        configurationSource();
+        configurationSource();
     }
 
     private static UrlBasedCorsConfigurationSource configurationSource() {
-        System.out.println("测试");
+        logger.info("启动corsfilter");
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         config.addAllowedOrigin("*");
