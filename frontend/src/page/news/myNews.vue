@@ -84,6 +84,19 @@
               </el-col>
             </el-row>
           </ul>
+          <ul>
+            <el-row>
+              <el-col :span="23">
+                  <el-pagination
+                    @size-change="handleSizeChange"
+                    @current-change="handleCurrentChange"
+                    :page-size="pageSize"
+                    layout="sizes, prev, pager, next"
+                    :total="1000">
+                  </el-pagination>
+              </el-col>
+            </el-row>
+          </ul>
         </div>
       </el-aside>
 
@@ -112,20 +125,37 @@
   import UspingHeader from '../../components/layout/header.vue'
   import ElInput from '../../../node_modules/element-ui/packages/input/src/input.vue'
   import ElButton from '../../../node_modules/element-ui/packages/button/src/button.vue'
+  import parser from '../../config/parse'
+  import ElCol from 'element-ui/packages/col/src/col'
 
   export default {
     components: {
+      ElCol,
       ElButton,
       ElInput,
       UspingHeader
     },
     data () {
       return {
-        news: '',
-        loading: []
+        news: [],
+        loading: [],
+        currentPage: 0,
+        pageSize: 10
       }
     },
     created: function () {
+      api.getNewsForUser(this.$cookie.get('token')).then(({
+                                                     data
+                                                   }) => {
+        if (data.code === 401) {
+          console.log('token')
+          this.$router.push('/login')
+          this.$store.dispatch('UserLogout')
+          console.log(this.$cookie.get('token'))
+        } else {
+          this.news = data
+        }
+      })
 //      api.getNews(this.$cookie.get('token')).then(({
 //                                                     data
 //                                                   }) => {
@@ -138,10 +168,29 @@
 //          this.news = data
 //        }
 //      })
-//      this.search()
-      this.search()
     },
     methods: {
+      clearData: function () {
+        this.news = []
+      },
+      getNews: function () {
+        api.getNewsForUser(this.$cookie.get('token'), this.pageSize, this.currentPage).then(({
+                                                              data
+                                                            }) => {
+          if (data.code === 401) {
+            console.log('token')
+            this.$router.push('/login')
+            this.$store.dispatch('UserLogout')
+            console.log(this.$cookie.get('token'))
+          } else {
+            this.news = data
+          }
+        })
+      },
+      flushPage: function () {
+        this.clearData()
+        this.getNews()
+      },
       submitComment: function (item) {
         this.$set(item, 'submitCheck', false)
         this.$set(item, 'submitSucceed', false)
@@ -188,16 +237,30 @@
       },
       search: function () {
         var a = this
-        api.esBoolSearch().then(function (resp) {
+        api.esSearchNews().then(function (resp) {
           var hits = resp.hits.hits
-          a.news = hits
-          console.log(hits)
           console.log('请求成功')
+          let t = parser.parseEs(hits)
+          t.forEach(function (value) {
+            a.news.push(value)
+          })
+          console.log(a.news)
+          console.log('解析成功')
+          console.log(hits)
         }, function (err) {
           if (err !== undefined) {
             console.log('请求错误')
           }
         })
+        console.log(this.news)
+      },
+      handleCurrentChange: function (currentPage) {
+        this.currentPage = currentPage
+        this.flushPage()
+      },
+      handleSizeChange: function (size) {
+        this.pageSize = size
+        this.flushPage()
       }
     }
 

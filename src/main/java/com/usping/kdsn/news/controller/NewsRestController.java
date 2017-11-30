@@ -1,5 +1,6 @@
 package com.usping.kdsn.news.controller;
 
+import com.usping.kdsn.bean.User;
 import com.usping.kdsn.news.model.News;
 import com.usping.kdsn.news.service.NewsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,12 @@ public class NewsRestController {
     @GetMapping("/news")
     public ResponseEntity<List> findAll(){
         return new ResponseEntity<>(newsService.findAll(new PageRequest(10,10)), HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @GetMapping("/findForUser")
+    public ResponseEntity<List> findNews(User user){
+        return new ResponseEntity<>(newsService.findAll(new PageRequest(user.getPageNumber(),user.getPageSize())), HttpStatus.OK);
     }
 
     @CrossOrigin

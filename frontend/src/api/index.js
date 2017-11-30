@@ -80,6 +80,15 @@ export default {
         }
       })
   },
+  getNewsForUser (token, pageSize, pageNumber) {
+    return instance.get('/api/news/findForUser?pageSize=' + (pageSize || 10) + '&pageNumber=' + (pageNumber || 0),
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+  },
   getTask (token) {
     return instance.get('/api/task/task',
       {
@@ -131,8 +140,10 @@ export default {
       q: content
     })
   },
-  esBoolSearch () {
+  esSearchNews (from, size) {
     return client.search({
+      from: from || 0,
+      size: size || 10,
       body: {
         query: {
           bool: {

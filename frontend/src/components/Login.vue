@@ -1,19 +1,40 @@
 <template>
   <div class="login-app">
-  <el-form ref="dynamicValidateForm" :model="dynamicValidateForm" :rules="rules" label-position="left" label-width="0px"
-           class="demo-ruleForm login-container">
-    <h3 class="title" style="text-align: center">系统登录</h3>
-    <el-form-item prop="username">
-      <el-input type="text" v-model="dynamicValidateForm.username" :rules="rules.username" auto-complete="off" placeholder="账号"></el-input>
-    </el-form-item>
-    <el-form-item prop="password">
-      <el-input type="password" v-model="dynamicValidateForm.password" :rules="rules.password" auto-complete="off" placeholder="密码"></el-input>
-    </el-form-item>
-    <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox>
-    <el-form-item style="width:100%;">
-      <el-button type="primary" style="width:100%;" @click="login('dynamicValidateForm')">登录</el-button>
-    </el-form-item>
-  </el-form>
+    <div style="z-index: 999">
+      <el-form ref="dynamicValidateForm" :model="dynamicValidateForm" :rules="rules" label-position="left" label-width="0px"
+               class="demo-ruleForm login-container">
+        <h3 class="title" style="text-align: center">系统登录</h3>
+        <el-form-item prop="username">
+          <el-input type="text" v-model="dynamicValidateForm.username" :rules="rules.username" auto-complete="off" placeholder="账号"></el-input>
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input type="password" v-model="dynamicValidateForm.password" :rules="rules.password" auto-complete="off" placeholder="密码"></el-input>
+        </el-form-item>
+        <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox>
+        <el-form-item style="width:100%;">
+          <el-button type="primary" style="width:100%;" @click="login('dynamicValidateForm')">登录</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+    <vue-particles
+      style="z-index: -19"
+      color="#dedede"
+      :particleOpacity="0.7"
+      :particlesNumber="80"
+      shapeType="circle"
+      :particleSize="4"
+      linesColor="#dedede"
+      :linesWidth="1"
+      :lineLinked="true"
+      :lineOpacity="0.4"
+      :linesDistance="150"
+      :moveSpeed="3"
+      :hoverEffect="true"
+      hoverMode="grab"
+      :clickEffect="true"
+      clickMode="push"
+    >
+    </vue-particles>
   </div>
 </template>
 
@@ -95,7 +116,16 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    /*color: #2c3e50;*/
     margin-top: 60px;
+  }
+
+  #particles-js {
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 </style>

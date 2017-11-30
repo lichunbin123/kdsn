@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import axios from './api'
 import VueCookie from 'vue-cookie'
+import VueParticles from 'vue-particles'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -14,6 +15,7 @@ import UspingHeader from './components/layout/header'
 
 Vue.use(ElementUI)
 Vue.use(VueCookie)
+Vue.use(VueParticles)
 
 Vue.$http = axios
 

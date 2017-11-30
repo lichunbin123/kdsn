@@ -19,7 +19,7 @@
     created: function () {
 //      console.log(api.esCommonSearch('j'))
       var a = this
-      api.esBoolSearch().then(function (resp) {
+      api.esSearchNews().then(function (resp) {
         var hits = resp.hits.hits
         a.data = hits
       }, function (err) {

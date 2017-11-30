@@ -8,78 +8,52 @@ import org.springframework.data.domain.Sort;
 /**
  * Created by stan on 17-7-2.
  */
-public class BaseEntity implements Pageable{
-  @Transient
-  private Integer page = 1;
+public class BaseEntity {
+    @Transient
+    private Integer pageNumber = 0;
 
-  @Transient
-  private Integer rows = 10;
+    @Transient
+    private Integer pageSize = 10;
 
-  @Transient
-  private String sortBy = "";
+    @Transient
+    private String sortBy = "";
 
-  public Integer getPage() {
-    return page;
-  }
+    @Transient
+    private boolean isAsc = true;
 
-  public void setPage(Integer page) {
-    this.page = page;
-  }
+    public Integer getPageNumber() {
+        return pageNumber;
+    }
 
-  public Integer getRows() {
-    return rows;
-  }
+    public void setPageNumber(Integer pageNumber) {
+        this.pageNumber = pageNumber;
+    }
 
-  public void setRows(Integer rows) {
-    this.rows = rows;
-  }
+    public Integer getPageSize() {
+        return pageSize;
+    }
 
-  public String getSortBy() {
-    return sortBy;
-  }
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
 
-  public void setSortBy(String sortBy) {
-    this.sortBy = sortBy;
-  }
+    public String getSortBy() {
+        return sortBy;
+    }
 
+    public void setSortBy(String sortBy) {
+        this.sortBy = sortBy;
+    }
 
-  @Override
-  public int getPageNumber() {
-    return 0;
-  }
+    public Integer getOffset() {
+        return (this.pageNumber - 1) * this.getPageSize();
+    }
 
-  @Override
-  public int getPageSize() {
-    return 0;
-  }
+    public boolean isAsc() {
+        return isAsc;
+    }
 
-  @Override
-  public int getOffset() {
-    return 0;
-  }
-
-  @Override
-  public Sort getSort() {
-    return null;
-  }
-
-  @Override
-  public Pageable next() {
-    return null;
-  }
-
-  @Override
-  public Pageable previousOrFirst() {
-    return null;
-  }
-
-  @Override
-  public Pageable first() {
-    return null;
-  }
-
-  @Override
-  public boolean hasPrevious() {
-    return false;
-  }
+    public void setAsc(boolean asc) {
+        isAsc = asc;
+    }
 }
