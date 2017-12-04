@@ -1,5 +1,7 @@
 package com.usping.kdsn.util.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -11,12 +13,10 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.*;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
-
-    private final static Logger logger = Logger.getLogger(WebMvcConfigurer.class.getName());
+    private final static Logger logger = LoggerFactory.getLogger(MvcConfig.class);
 
     @Override
     public void configurePathMatch(PathMatchConfigurer pathMatchConfigurer) {

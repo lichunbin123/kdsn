@@ -536,4 +536,17 @@
         SELECT *
         FROM product
     </select>
+    <select id="selectProductForUser" resultType="com.usping.kdsn.bean.Product" parameterType="java.util.Map">
+        SELECT
+            <include refid="Base_Column_List"/>,
+            <include refid="Blob_Column_List"/>
+        FROM product
+        limit #{start},#{size}
+    </select>
+
+    <select id="countProductForUser" resultType="java.lang.Integer">
+        SELECT
+            count(*)
+        FROM product
+    </select>
 </mapper>

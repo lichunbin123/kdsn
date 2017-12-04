@@ -10,5 +10,7 @@ import java.util.List;
 public interface NewsRepository extends MongoRepository<News, String> {
     Page<News> findAll(Pageable pageable);
     List<News> findAll();
+    int countByUrlNotNull();
     News findNewsById(String id);
+    List findDistinctBySource();
 }

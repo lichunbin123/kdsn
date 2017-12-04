@@ -26,5 +26,6 @@ logging:
     org.springframework: WARN
     com.spring.ibatis.UserMapper: DEBUG
     com.usping.kdsn.mapper.CommentMapper: DEBUG
+    com.usping.kdsn.mapper.TaskMapper: DEBUG
 #  file: logs/spring-boot-logging.log
 debug: true

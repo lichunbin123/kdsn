@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-header>
-      <usping-header></usping-header>
+      <usping-header :isIndex="1"></usping-header>
     </el-header>
     <el-main>
       <el-row type="flex" class="row-bg" style="padding-top: 10%" justify="space-around">
@@ -70,8 +70,7 @@
   .el-row {
     margin-bottom: 20px;
 
-  &
-  :last-child {
+  &  :last-child {
     margin-bottom: 0;
   }
 

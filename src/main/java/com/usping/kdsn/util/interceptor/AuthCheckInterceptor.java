@@ -1,5 +1,7 @@
 package com.usping.kdsn.util.interceptor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -12,10 +14,11 @@ public class AuthCheckInterceptor extends HandlerInterceptorAdapter {
         super();
     }
 
+    private final static Logger logger = LoggerFactory.getLogger(AuthCheckInterceptor.class);
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("预处理拦截成功！");
-        System.out.println(request.toString());
+        logger.info("预处理拦截成功！");
         request.setAttribute("Accept","application/json");
         request.setAttribute("Content","application/json");
         Map<String,String[]> map = request.getParameterMap();

@@ -27,6 +27,6 @@
         <!--<table tableName="user"/>-->
         <!--<table tableName="product"/>-->
         <!--<table tableName="task"/>-->
-        <table tableName="comment"/>
+        <table tableName="note"/>
     </context>
 </generatorConfiguration>

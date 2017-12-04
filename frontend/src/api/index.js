@@ -98,8 +98,26 @@ export default {
         }
       })
   },
+  getTaskForUser (token, pageSize, pageNumber) {
+    return instance.get('/api/task/getTaskForUser?pageSize=' + pageSize + '&pageNumber=' + pageNumber,
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+  },
   getProduct (token) {
     return instance.get('/api/product/product',
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+  },
+  getProductForUser (token, pageSize, pageNumber) {
+    return instance.get('/api/product/getProductForUser?pageSize=' + pageSize + '&pageNumber=' + pageNumber,
       {
         headers: {
           Authorization: token,
@@ -135,12 +153,31 @@ export default {
         }
       })
   },
+  getNoteWithNewsIdAndUserId (token, newsId, userId) {
+    return instance.get('/api/note/findByNewsIdAndUserId?newsId=' + newsId + '&userId=' + userId,
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+  },
+  postNote (token, data) {
+    return instance.post('/api/note/note',
+      data,
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+  },
   esCommonSearch (content) {
     return client.search({
       q: content
     })
   },
-  esSearchNews (from, size) {
+  esSearchNews (from, size, searchText) {
     return client.search({
       from: from || 0,
       size: size || 10,
@@ -149,13 +186,22 @@ export default {
           bool: {
             must: {
               term: {
-                text: 'b'
+                text: searchText
               }
             }
           }
         }
       }
     })
+  },
+  testDistinct (token) {
+    return instance.get('/api/news/testDistinct',
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
   }
 
 }

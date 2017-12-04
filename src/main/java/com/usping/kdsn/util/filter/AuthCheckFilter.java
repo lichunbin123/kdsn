@@ -28,7 +28,6 @@ public class AuthCheckFilter implements Filter {
 //        return;
         HttpServletRequest req = (HttpServletRequest) servletRequest;
 
-        System.out.println(req.getMethod());
         if (req.getMethod().equals("OPTIONS")) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;

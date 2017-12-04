@@ -2,6 +2,7 @@ package com.usping.kdsn.product.service;
 
 import com.usping.kdsn.bean.Product;
 import com.usping.kdsn.mapper.ProductMapper;
+import com.usping.kdsn.util.model.ResultMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,5 +21,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> findAll() {
         return productMapper.selectAll();
+    }
+
+    @Override
+    public ResultMap findProductForUser(int start, int size) {
+        return new ResultMap().setData(productMapper.selectProductForUser(start, size)).setTotal(productMapper.countProductForUser());
     }
 }

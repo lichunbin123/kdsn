@@ -10,7 +10,7 @@ import org.springframework.data.domain.Sort;
  */
 public class BaseEntity {
     @Transient
-    private Integer pageNumber = 0;
+    private Integer pageNumber = 1;
 
     @Transient
     private Integer pageSize = 10;
@@ -20,6 +20,9 @@ public class BaseEntity {
 
     @Transient
     private boolean isAsc = true;
+
+    @Transient
+    private Integer offset = 0;
 
     public Integer getPageNumber() {
         return pageNumber;
@@ -49,11 +52,18 @@ public class BaseEntity {
         return (this.pageNumber - 1) * this.getPageSize();
     }
 
+    public void setOffset(Integer offset) {
+        this.offset = offset;
+    }
+
     public boolean isAsc() {
         return isAsc;
     }
 
     public void setAsc(boolean asc) {
         isAsc = asc;
+    }
+
+    public BaseEntity() {
     }
 }

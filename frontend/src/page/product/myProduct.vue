@@ -5,7 +5,7 @@
     <el-container style="border: 1px solid #eee">
       <el-aside width="80%" style="background-color: rgb(238, 241, 246)">
         <div>
-          <ul v-for="(item,index) in products">
+          <ul v-for="(item,index) in list">
             <el-row>
               <el-col :span="23">
                 <el-card class="box-card">
@@ -23,6 +23,19 @@
                     <!--{{ item }}-->
                   </div>
                 </el-card>
+              </el-col>
+            </el-row>
+          </ul>
+          <ul>
+            <el-row>
+              <el-col :span="23">
+                <el-pagination
+                  @size-change="handleSizeChange"
+                  @current-change="handleCurrentChange"
+                  :page-size="pageSize"
+                  layout="total,sizes, prev, pager, next"
+                  :total="total">
+                </el-pagination>
               </el-col>
             </el-row>
           </ul>
@@ -56,19 +69,42 @@
     components: {UspingHeader},
     data () {
       return {
-        products: ''
+        list: [],
+        total: 0,
+        currentPage: 1,
+        pageSize: 10
       }
     },
     created: function () {
-      api.getProduct(this.$cookie.get('token')).then(({
-                                                     data
-                                                   }) => {
-        if (data.code === 401) {
-          console.log(this.$cookie.get('token'))
-        } else {
-          this.products = data
-        }
-      })
+      this.loadData()
+    },
+    methods: {
+      clearData: function () {
+        this.list = []
+      },
+      loadData: function () {
+        api.getProductForUser(this.$cookie.get('token'), this.pageSize, this.currentPage).then(({
+                                                          data
+                                                        }) => {
+          var tmpThis = this
+          data['data'].forEach(function (v) {
+            tmpThis.list.push(v)
+          })
+          this.total = data['total']
+        })
+      },
+      flushData: function () {
+        this.clearData()
+        this.loadData()
+      },
+      handleSizeChange: function (pageSize) {
+        this.pageSize = pageSize
+        this.flushData()
+      },
+      handleCurrentChange: function (currentPage) {
+        this.currentPage = currentPage
+        this.flushData()
+      }
     }
 
   }
