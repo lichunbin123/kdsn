@@ -89,7 +89,7 @@
               </el-col>
             </el-row>
           </ul>
-          <ul>
+          <ul v-if="total">
             <el-row>
               <el-col :span="23">
                 <el-pagination

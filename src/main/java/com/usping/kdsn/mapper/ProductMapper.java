@@ -120,4 +120,8 @@ public interface ProductMapper {
     int updateByPrimaryKey(Product record);
 
     List<Product> selectAll();
+
+    List<Product> selectProductForUser(@Param("start")int start, @Param("size")int size);
+
+    int countProductForUser();
 }

@@ -49,7 +49,7 @@
       return {
         user: JSON.parse(this.$cookie.get('authorizedUser')),
         localInput: this.searchInput,
-        dialogVisible: true
+        dialogVisible: false
       }
     },
     watch: {

@@ -2,19 +2,20 @@ package com.usping.kdsn.news.controller;
 
 import com.usping.kdsn.bean.Comment;
 import com.usping.kdsn.news.service.CommentServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api/comment")
 public class CommentRestController {
-    private static final Logger logger = Logger.getLogger(CommentRestController.class.getName());
-
+    private final static Logger logger = LoggerFactory.getLogger(CommentRestController.class);
+    
     private final CommentServiceImpl commentService;
 
     @Autowired

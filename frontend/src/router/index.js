@@ -44,7 +44,7 @@ let router = new Router({
       component: IndexPage
     }, {
       path: '/',
-      name: '家',
+      name: '默认页',
       component: IndexPage
     },
     {

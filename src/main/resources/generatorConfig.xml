@@ -27,6 +27,6 @@
         <!--<table tableName="user"/>-->
         <!--<table tableName="product"/>-->
         <!--<table tableName="task"/>-->
-        <table tableName="note"/>
+        <table tableName="menu"/>
     </context>
 </generatorConfiguration>

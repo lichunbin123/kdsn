@@ -3,6 +3,7 @@ package com.usping.kdsn.mapper;
 import com.usping.kdsn.bean.Task;
 import com.usping.kdsn.bean.TaskExample;
 import com.usping.kdsn.bean.TaskWithBLOBs;
+import com.usping.kdsn.bean.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -119,4 +120,18 @@ public interface TaskMapper {
      * @mbg.generated Mon Nov 20 16:46:11 CET 2017
      */
     int updateByPrimaryKey(Task record);
+
+    /**
+     * 查询带分页参数
+     * @param start
+     * @param size
+     * @return
+     */
+    List<Task> selectForUser(@Param("start")int start, @Param("size")int size);
+
+    /**
+     * 查询total参数
+     * @return
+     */
+    int countForUser();
 }

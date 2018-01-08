@@ -16,7 +16,6 @@ public class CommentServiceImpl implements CommentService {
         this.commentMapper = commentMapper;
     }
 
-
     @Override
     public boolean save(Comment comment) {
         return commentMapper.insert(comment) == 1;
