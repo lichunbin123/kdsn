@@ -38,14 +38,19 @@ module.exports = {
         }
       },
       {
-        test: /\.vue$/,
+      test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        query: {compact: false},
+        // include: [resolve('src'), resolve('test')]
+        include: [resolve('src'), resolve('test'),resolve('node_modules/vue-particles'),resolve('node_modules/element-ui/src/mixins'),
+          resolve('node_modules/element-ui/src/utils/merge.js'),
+          resolve('node_modules/element-ui/packages')
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

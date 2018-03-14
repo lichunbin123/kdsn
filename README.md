@@ -8,7 +8,7 @@ UI framework: Element-UI
 
 Back end framework: Springboot y mybatis
 
-Database: Maradb y mongodb
+Database: Maradb
 
 # how front end server communicate with back end 
 

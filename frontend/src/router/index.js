@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/components/Login'
+import Login from '@/page/user/Login'
 import HelloWorld from '@/components/HelloWorld'
 import Home from '@/components/Home'
 import User from '@/components/User'
@@ -9,6 +9,7 @@ import news from '@/page/news/myNews'
 import task from '@/page/task/myTask'
 import product from '@/page/product/myProduct'
 import esping from '@/page/test/ping'
+import Register from '@/page/user/Register'
 
 // import header from '@/components/layout/header'
 // import footer from '@/components/layout/footer'
@@ -66,6 +67,11 @@ let router = new Router({
       path: '/ping',
       name: 'es-ping',
       component: esping
+    },
+    {
+      path: '/register',
+      name: 'sign-up',
+      component: Register
     }
   ]
 })

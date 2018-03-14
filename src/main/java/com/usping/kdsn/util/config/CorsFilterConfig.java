@@ -8,7 +8,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
-//@Component
+/**
+ * 用于协助跨域的filter
+ */
 public class CorsFilterConfig extends CorsFilter {
 
     private static final Logger logger = Logger.getLogger(CorsFilterConfig.class.getName());

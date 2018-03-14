@@ -1,6 +1,7 @@
 package com.usping.kdsn.auth.service;
 
 import com.usping.kdsn.bean.User;
+import com.usping.kdsn.bean.UserWithBLOBs;
 import com.usping.kdsn.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -44,4 +45,7 @@ public class UserService {
         return userMapper.deleteByPrimaryKey(id) == 1;
     }
 
+    public int saveInstance(UserWithBLOBs instance) {
+        return userMapper.insertSelective(instance);
+    }
 }

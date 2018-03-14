@@ -1,6 +1,7 @@
 <template>
   <div>
-    <usping-header :searchInput="input" @on-result-change="onSearchInputChange" @on-search-click="onSearchClick"></usping-header>
+    <usping-header :searchInput="input" @on-result-change="onSearchInputChange"
+                   @on-search-click="onSearchClick"/>
     <el-container style="border: 1px solid #eee">
       <el-aside width="80%" style="background-color: rgb(238, 241, 246)">
         <div>
@@ -10,26 +11,25 @@
               <el-col :span="23">
                 <el-card class="box-card">
                   <div slot="header" class="clearfix">
-                    <span><a :href='item.url'>{{item.title}}</a></span>
-                    <div style="float: right">{{item.source}}</div>
+                    <span><a :href='item.source_url'>{{item.news_title}}</a></span>
+                    <div style="float: right">{{item.source_site}}</div>
+                    <el-button @click="openChatboard(item)">联系作者</el-button>
                     <div class="block" style="float: right">
                       <el-rate/>
                     </div>
                   </div>
                   <div>
-                    {{ item.summary }}
+                    {{ item.news_content }}
                   </div>
                   <hr>
                   <span>
                     <i class="el-icon-edit" style="font-size:16px"
                        @click="openCommentDashBoard(item)">评论</i>
-                    <i class="el-icon-edit" style="font-size:16px"
-                       @click="openNoteDashBoard(item)">笔记</i>
                   </span>
-                  <div v-if="item.isNoteHide" id="note-dashboard">
-                    <vue-editor v-model="item.noteContent"></vue-editor>
-                    <el-button @click="submitNote(item)">提交</el-button>
-                  </div>
+                  <span>
+                    <i class="el-icon-edit" style="font-size:16px"
+                       @click="openNoteBoard(item.id)">笔记</i>
+                  </span>
                   <div v-if="item.isCommentHide">
                     <!--输入面板-->
                     <div class="comment-input">
@@ -80,7 +80,7 @@
                       <ul v-for="comment in item.commentList">
                         <div>
                           {{ comment.userName }}:{{ comment.commentContent }}
-                          <span style="float: right">{{ comment.commentDate }}</span>
+                          <span style="float: right">{{ comment.commentDate | timeFilter }}</span>
                         </div>
                       </ul>
                     </div>
@@ -105,11 +105,23 @@
         </div>
       </el-aside>
 
-      <el-container>
-        <el-button>测试</el-button>
+      <el-container style="width: 20%;" id="right-panel">
+        <el-row>
+          <el-col>
+            向您推荐
+          </el-col>
+          <el-col :span="24">
+            <recommend-product :msg="recommend_product_data"/>
+            <recommend-service :msg="recommend_service_data"/>
+          </el-col>
+
+        </el-row>
       </el-container>
 
     </el-container>
+    <chat-board :sender="JSON.parse(this.$cookie.get('authorizedUser'))" :receiver="currentChatter" :dialog-visible="chatboardVisible"
+                @on-visible-change="onchatboardVisibleChange"/>
+    <note-board :current-news-id="currentNewsId" @on-note-visible-change="onNoteBoardVisibleChange" :dialog-visible="noteboardVisible"/>
   </div>
 </template>
 
@@ -122,6 +134,11 @@
     /*position: fixed;*/
     height: auto;
   }
+
+  #right-panel > .el-row {
+    width: 80%;
+    margin: 10px auto;
+  }
 </style>
 
 <script>
@@ -132,9 +149,22 @@
   import parser from '../../config/parse'
   import ElCol from 'element-ui/packages/col/src/col'
   import { VueEditor } from 'vue2-editor'
+  import ElRow from 'element-ui/packages/row/src/row'
+  import RecommendProduct from '../../components/recommend_dash/product.vue'
+  import RecommendService from '../../components/recommend_dash/task.vue'
+  import TaskSearcher from '../../api/search/task_search'
+  import ProductSearcher from '../../api/search/product_search'
+  import NewsSearcher from '../../api/search/news_search'
+  import ChatBoard from '../../components/message/ChatBoard'
+  import NoteBoard from '../../components/comment/NoteBoard'
 
   export default {
     components: {
+      NoteBoard,
+      ChatBoard,
+      RecommendService,
+      RecommendProduct,
+      ElRow,
       ElCol,
       ElButton,
       ElInput,
@@ -153,51 +183,65 @@
           [' ', 'underline'],
           [{'list': 'ordered'}, {'list': 'bullet'}],
           ['image', 'code-block']
-        ]
+        ],
+        recommend_service_data: [],
+        recommend_product_data: [],
+        chatboardVisible: false,
+        noteboardVisible: false,
+        currentChatter: '',
+        currentNewsId: ''
       }
     },
     created: function () {
-      api.getNewsForUser(this.$cookie.get('token')).then(({
-                                                            data
-                                                          }) => {
-        if (data.code === 401) {
-          console.log('token')
-          this.$router.push('/login')
-          this.$store.dispatch('UserLogout')
-          console.log(this.$cookie.get('token'))
-        } else {
-          this.news = data['data']
-          this.total = data['total']
-        }
-      })
+      this.loadData()
     },
     methods: {
       clearData: function () {
         this.news = []
       },
       loadData: function () {
-        api.getNewsForUser(this.$cookie.get('token'), this.pageSize, this.currentPage).then(({
-                                                                                               data
-                                                                                             }) => {
-          if (data.code === 401) {
-            console.log('token')
-            this.$router.push('/login')
-            this.$store.dispatch('UserLogout')
-            console.log(this.$cookie.get('token'))
-          } else {
-            this.news = data['data']
-            this.total = data['total']
+        let tmpThis = this
+        NewsSearcher.esSearchNewsWithSource((this.currentPage - 1) * this.pageSize, this.pageSize, '测试').then(function (resp) {
+          let hits = resp.hits.hits
+          console.log('请求成功')
+          tmpThis.total = resp.hits.total
+          parser.parseEs(hits).forEach(function (value) {
+            tmpThis.news.push(value)
+          })
+          console.log(tmpThis.news)
+          console.log('解析成功')
+          console.log(hits)
+        }, function (err) {
+          if (err !== undefined) {
+            console.log('请求错误')
           }
         })
+        this.randomInitialRecommendation()
       },
       flushPage: function () {
         this.clearData()
         this.loadData()
       },
+      openChatboard: function (item) {
+        this.currentChatter = item['news_publisher']
+        console.log('publisher is' + item['news_publisher'])
+        console.log('trying to open the chat board')
+        this.chatboardVisible = true
+      },
+      openNoteBoard: function (newsId) {
+        this.currentNewsId = newsId
+        this.noteboardVisible = true
+      },
+      onchatboardVisibleChange: function (val) {
+        this.chatboardVisible = val
+      },
+      onNoteBoardVisibleChange: function (val) {
+        this.noteboardVisible = val
+      },
       submitComment: function (item) {
         this.$set(item, 'submitCheck', false)
         this.$set(item, 'submitCommentSucceed', false)
-        if (item.commentArea === undefined || item.commentArea.length === 0) {
+        if (item.commentArea === undefined || item.length === 0) {
           this.$set(item, 'submitCheck', true)
           return
         }
@@ -207,29 +251,21 @@
           {
             newsId: item.id,
             userId: JSON.parse(this.$cookie.get('authorizedUser')).id,
-            userName: JSON.parse(this.$cookie.get('authorizedUser')).name,
-            commentContent: item.noteContent
+            userName: JSON.parse(this.$cookie.get('authorizedUser')).username,
+            commentContent: item.commentArea
           })
           .then(({
                    data
                  }) => {
             this.$set(item, 'submitCommentSucceed', true)
-            item.commentArea = ''
-          })
-      },
-      submitNote: function (item) {
-        api.postNote(
-          this.$cookie.get('token'),
-          {
-            newsId: item.id,
-            userId: JSON.parse(this.$cookie.get('authorizedUser')).id,
-            noteContent: item.noteContent,
-            isPublic: 0
-          })
-          .then(({
-                   data
-                 }) => {
-            this.$set(item, 'submitCommentSucceed', true)
+            item.commentList.push({
+              newsId: item.id,
+              userId: JSON.parse(this.$cookie.get('authorizedUser')).id,
+              userName: JSON.parse(this.$cookie.get('authorizedUser')).username,
+              commentContent: item.commentArea,
+              commentDate: Date.parse(new Date())
+            })
+            console.log(this.news)
             item.commentArea = ''
           })
       },
@@ -268,18 +304,9 @@
         }
         this.getCommentWithNewsId(item)
       },
-      openNoteDashBoard: function (item) {
-        if (item.isNoteHide === undefined || item.isNoteHide === false) {
-          this.$set(item, 'isNoteHide', true)
-        } else {
-          this.$set(item, 'isNoteHide', false)
-        }
-        this.getNoteWithNewsIdAndUserId(item)
-  //        this.getCommentWithNewsId(item)
-      },
       search: function () {
         var tmpThis = this
-        api.esSearchNews((this.currentPage - 1) * this.pageSize, this.pageSize, this.input).then(function (resp) {
+        NewsSearcher.esSearchNews((this.currentPage - 1) * this.pageSize, this.pageSize, this.input).then(function (resp) {
           var hits = resp.hits.hits
           console.log('请求成功')
           parser.parseEs(hits).forEach(function (value) {
@@ -294,6 +321,40 @@
           }
         })
         console.log(this.news)
+        this.searchForRecommend()
+      },
+      searchForRecommend: function () {
+        var tmpThis = this
+        // 搜索产品
+        ProductSearcher.esSearchProduct(0, 1, this.input).then(function (resp) {
+          var hits = resp.hits.hits
+          console.log('请求成功')
+          parser.parseEs(hits).forEach(function (value) {
+            tmpThis.recommend_product_data.push(value)
+          })
+          console.log(tmpThis.recommend_product_data)
+          console.log('product解析成功')
+          console.log(hits)
+        }, function (err) {
+          if (err !== undefined) {
+            console.log('请求错误')
+          }
+        })
+        // 搜索服务
+        TaskSearcher.esSearchTask(0, 1, this.input).then(function (resp) {
+          var hits = resp.hits.hits
+          console.log('请求成功')
+          parser.parseEs(hits).forEach(function (value) {
+            tmpThis.recommend_service_data.push(value)
+          })
+          console.log(tmpThis.recommend_service_data)
+          console.log('product解析成功')
+          console.log(hits)
+        }, function (err) {
+          if (err !== undefined) {
+            console.log('请求错误')
+          }
+        })
       },
       handleCurrentChange: function (currentPage) {
         this.currentPage = currentPage
@@ -304,7 +365,6 @@
         this.flushPage()
       },
       onSearchInputChange: function (val) {
-//        console.log(val)
         if (val.length === 0) {
           this.flushPage()
         }
@@ -313,8 +373,38 @@
       onSearchClick: function () {
         this.clearData()
         this.search()
+      },
+      randomInitialRecommendation () {
+        var tmpThis = this
+        TaskSearcher.randomSearch(0, 1).then(function (resp) {
+          var hits = resp.hits.hits
+          console.log('请求成功')
+          parser.parseEs(hits).forEach(function (value) {
+            tmpThis.recommend_service_data.push(value)
+          })
+        }, function (err) {
+          if (err !== undefined) {
+            console.log('请求错误')
+          }
+        })
+        ProductSearcher.randomSearch(0, 1, 'product').then(function (resp) {
+          var hits = resp.hits.hits
+          console.log('请求成功')
+          parser.parseEs(hits).forEach(function (value) {
+            tmpThis.recommend_product_data.push(value)
+          })
+        }, function (err) {
+          if (err !== undefined) {
+            console.log('请求错误')
+          }
+        })
+      }
+    },
+    filters: {
+      timeFilter: function (value) {
+        var newDate = new Date(value)
+        return newDate.toLocaleDateString()
       }
     }
-
   }
 </script>

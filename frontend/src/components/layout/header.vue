@@ -30,7 +30,7 @@
         <router-link :to="{ path: '/login'}">您当前未登录,点击登录!</router-link>
       </el-menu-item>
     </el-menu>
-    <usping-site-picker :dialogVisible="dialogVisible" @on-visible-change="onPickerVisible"></usping-site-picker>
+    <usping-site-picker :dialogVisible="dialogVisible" @on-visible-change="onPickerVisible"/>
   </div>
 </template>
 

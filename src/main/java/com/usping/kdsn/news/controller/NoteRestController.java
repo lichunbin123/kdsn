@@ -3,10 +3,15 @@ package com.usping.kdsn.news.controller;
 import com.usping.kdsn.bean.Note;
 import com.usping.kdsn.news.service.NoteServiceImpl;
 import com.usping.kdsn.util.model.ResultMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+import java.util.WeakHashMap;
 
 /**
  * @author: stan
@@ -16,7 +21,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/note")
 public class NoteRestController {
-    private final NoteServiceImpl noteService;
+
+    private Logger logger = LoggerFactory.getLogger(NoteRestController.class);
+
+    private NoteServiceImpl noteService;
 
     @Autowired
     public NoteRestController(NoteServiceImpl noteService) {
@@ -30,12 +38,14 @@ public class NoteRestController {
      */
     @CrossOrigin
     @GetMapping("/findByNewsIdAndUserId")
-    public ResponseEntity<ResultMap> findByNewsIdAndUserId(Note note) {
+    public ResponseEntity<ResultMap> findByNewsIdAndUserId( Note note) {
         try {
             ResultMap resultMap;
             resultMap = noteService.findByNewsIdAndUserId(note);
             if (resultMap.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+                return new ResponseEntity<>(resultMap, HttpStatus.OK);
+
             } else {
                 return new ResponseEntity<>(resultMap, HttpStatus.OK);
             }
@@ -55,6 +65,7 @@ public class NoteRestController {
     @CrossOrigin
     @PostMapping("/note")
     public ResponseEntity<?> add(@RequestBody Note note) {
+        logger.info(note.toString());
         note.setNoteDate((int) java.time.Instant.now().toEpochMilli());
         try {
             if (noteService.save(note)) {
@@ -64,6 +75,21 @@ public class NoteRestController {
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
+        }
+    }
+
+    @CrossOrigin
+    @PostMapping("/makePublic")
+    public ResponseEntity<Map<String,Boolean>> makePublic(@RequestBody Note note) {
+        WeakHashMap<String,Boolean> resultMap = new WeakHashMap<>();
+        note.setPublicState(1);
+        try {
+            resultMap.put("success", true);
+            noteService.updateRecord(note);
+            return new ResponseEntity<Map<String, Boolean>>(resultMap,HttpStatus.OK);
+        } catch (Exception e){
+            resultMap.put("success", false);
+            return new ResponseEntity<Map<String, Boolean>>(resultMap ,HttpStatus.NOT_ACCEPTABLE);
         }
     }
 }

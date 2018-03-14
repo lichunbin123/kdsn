@@ -3,15 +3,6 @@ import Vue from '../main.js'
 
 axios.defaults.timeout = 5000
 
-var elasticsearch = require('elasticsearch')
-var client = new elasticsearch.Client({
-  host: 'localhost:9200',
-  log: 'trace'
-})
-// const instance = axios.create({
-//   headers: {'Acce  ss-Control-Allow-Origin': '*'}
-// })
-
 let instance = axios.create({
   baseURL: `http://localhost:8080`,
   timeout: 10000,
@@ -32,6 +23,7 @@ instance.interceptors.response.use(response => {
 })
 
 export default {
+  instance,
   // 用户注册
   userRegister (data) {
     return instance.post('/api/register', data)
@@ -69,25 +61,6 @@ export default {
     Vue.vue.$cookie.delete('token')
     console.log('删除token')
     Vue.vue.$cookie.delete('authorizedUser')
-  },
-  // 新闻获取
-  getNews (token) {
-    return instance.get('/api/news/news',
-      {
-        headers: {
-          Authorization: token,
-          'Access-Control-Allow-Origin': '*'
-        }
-      })
-  },
-  getNewsForUser (token, pageSize, pageNumber) {
-    return instance.get('/api/news/findForUser?pageSize=' + (pageSize || 10) + '&pageNumber=' + (pageNumber || 0),
-      {
-        headers: {
-          Authorization: token,
-          'Access-Control-Allow-Origin': '*'
-        }
-      })
   },
   getTask (token) {
     return instance.get('/api/task/task',
@@ -172,30 +145,30 @@ export default {
         }
       })
   },
-  esCommonSearch (content) {
-    return client.search({
-      q: content
-    })
-  },
-  esSearchNews (from, size, searchText) {
-    return client.search({
-      from: from || 0,
-      size: size || 10,
-      body: {
-        query: {
-          bool: {
-            must: {
-              term: {
-                text: searchText
-              }
-            }
-          }
+  modifyNoteState (token, data) {
+    return instance.post('/api/note/makePublic',
+      data,
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
         }
-      }
-    })
+      })
   },
   testDistinct (token) {
+    // TODO should bechange for getting the menu of current user
+    // everytime should flush
     return instance.get('/api/news/testDistinct',
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+  },
+  submitMenu (token, data) {
+    return instance.post('/api/menu/saveMenu',
+      data,
       {
         headers: {
           Authorization: token,

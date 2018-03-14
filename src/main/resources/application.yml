@@ -5,9 +5,15 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
-  data:
-    mongodb:
-      database: usping
+  mail:
+    host: smtp.qq.com
+    username: go@usping.cn
+    password: ldygdifmueyobbii
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
+    port: 25
+
 server:
   tomcat:
     accesslog:
@@ -24,9 +30,13 @@ mybatis:
 logging:
   level:
     org.springframework: WARN
-    com.spring.ibatis.UserMapper: DEBUG
+#    com.spring.ibatis.UserMapper: DEBUG
+    com.usping.kdsn.mapper.UserMapper: DEBUG
     com.usping.kdsn.mapper.CommentMapper: DEBUG
     com.usping.kdsn.mapper.TaskMapper: DEBUG
     com.usping.kdsn.mapper.MenuMapper: DEBUG
-#  file: logs/spring-boot-logging.log
+    com.usping.kdsn.mapper.TransactionMapper: DEBUG
+    com.usping.kdsn.mapper.MessageMapper: DEBUG
+    mapper.MessageMapper: DEBUG
 debug: true
+#  file: logs/spring-boot-logging.log

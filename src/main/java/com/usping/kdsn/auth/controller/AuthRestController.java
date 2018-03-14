@@ -2,6 +2,10 @@ package com.usping.kdsn.auth.controller;
 
 import com.usping.kdsn.auth.service.UserService;
 import com.usping.kdsn.bean.User;
+import com.usping.kdsn.bean.UserWithBLOBs;
+import com.usping.kdsn.util.model.ResponseObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +20,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthRestController {
+
+  private final Logger logger = LoggerFactory.getLogger(AuthRestController.class);
+
   private final UserService userService;
 
   @Autowired
@@ -23,26 +30,18 @@ public class AuthRestController {
     this.userService = userService;
   }
 
-  // retrieve user list
   @CrossOrigin
   @GetMapping(value = "/user")
-  public ResponseEntity<List> findAll() {
+  public ResponseEntity<List> listAll() {
     ResponseEntity<List> responseEntity = new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
     return responseEntity;
   }
 
   @CrossOrigin
-  @RequestMapping(value = "/user/{id}",method = RequestMethod.GET)
-  public User findUser(@PathVariable("id")Integer id){
+  @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+  public User findUser(@PathVariable("id") Integer id) {
     return userService.findById(id);
   }
-
-  // create user
-//  @RequestMapping(value = "/user",method = RequestMethod.POST)
-//  public boolean
-//  createUser(User user) {
-//    return userService.saveUser(user);
-//  }
 
   //// update user
   //@RequestMapping(value ="/user/{id}",method = RequestMethod.POST)
@@ -53,9 +52,10 @@ public class AuthRestController {
 
   //@SelectProvider("")
 
-  @RequestMapping(value = "/user/{id}",method = RequestMethod.DELETE)
+  @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
   public boolean
-    deleteUser(@PathVariable("id")Integer id){
+  deleteUser(@PathVariable("id") Integer id) {
     return userService.deleteUser(id);
   }
+
 }

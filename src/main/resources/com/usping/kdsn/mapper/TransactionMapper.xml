@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.usping.kdsn.mapper.TransactionMapper">
+    <resultMap id="BaseResultMap" type="com.usping.kdsn.bean.Transaction">
+        <id column="transaction_id" jdbcType="Integer" property="transactionId"/>
+        <result column="customer_id" jdbcType="Integer" property="customerId"/>
+        <result column="vendor_id" jdbcType="Integer" property="vendorId"/>
+        <result column="product_price" jdbcType="Double" property="productPrice"/>
+        <result column="purchase_quantity" jdbcType="Long" property="purchaseQuantity"/>
+        <result column="calculated_price" jdbcType="Double" property="calculatedPrice"/>
+        <result column="product_id" jdbcType="String" property="productId"/>
+        <result column="application_status" jdbcType="Integer" property="applicationStatus"/>
+        <result column="transaction_status" jdbcType="Integer" property="applicationStatus"/>
+        <result column="application_time" jdbcType="Long" property="applicationTime"/>
+        <result column="approval_time" jdbcType="Long" property="approvalTime"/>
+        <result column="completion_time" jdbcType="Long" property="approvalTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        transaction_id, customer_id, vendor_id, product_price, purchase_quantity, calculated_price, product_id, application_status, transaction_status, application_status, application_time, approval_time, completion_time
+    </sql>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        DELETE FROM transaction
+        WHERE transaction_id = #{transactionId,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.usping.kdsn.bean.Transaction">
+        INSERT INTO transaction (transaction_id, user_id, user_name,
+                                 transaction_score, transaction_date, news_id,
+                                 transaction_content)
+        VALUES (#{transactionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{userName,jdbcType=CHAR},
+                #{transactionScore,jdbcType=TINYINT}, #{transactionDate,jdbcType=INTEGER}, #{newsId,jdbcType=VARCHAR},
+                #{transactionContent,jdbcType=LONGVARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.usping.kdsn.bean.Transaction">
+
+        insert into transaction
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="transactionId != null">
+                transaction_id
+            </if>
+            <if test="customerId != null">
+                customer_id
+            </if>
+            <if test="vendorId != null">
+                vendor_id
+            </if>
+            <if test="productPrice != null">
+                product_price
+            </if>
+            <if test="purchaseQuantity != null">
+                product_quantity
+            </if>
+            <if test="calculatedPrice != null">
+                calculated_price
+            </if>
+            <if test="productId != null">
+                product_id
+            </if>
+            <if test="applicationStatus != null">
+                application_status
+            </if>
+            <if test="transactionStatus != null">
+                transaction_status
+            </if>
+            <if test="applicationTime != null">
+                application_time
+            </if>
+            <if test="approvalTime != null">
+                approval_time
+            </if>
+            <if test="completionTime != null">
+                completion_time
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="transactionId != null">
+                #{transactionId,jdbcType=INTEGER}
+            </if>
+            <if test="customerId != null">
+                #{customerId,jdbcType=INTEGER}
+            </if>
+            <if test="vendorId != null">
+                #{vendorId,jdbcType=INTEGER}
+            </if>
+            <if test="productPrice != null">
+                #{productPrice,jdbcType=DOUBLE}
+            </if>
+            <if test="purchaseQuantity != null">
+                #{purchaseQuantity,jdbcType=LONG}
+            </if>
+            <if test="calculatedPrice != null">
+                #{calculatedPrice,jdbcType=DOUBLE}
+            </if>
+            <if test="productId != null">
+                #{productId,jdbcType=STRING}
+            </if>
+            <if test="applicationStatus != null">
+                #{applicationStatus,jdbcType=INTEGER}
+            </if>
+            <if test="transactionStatus != null">
+                #{transactionStatus,jdbcType=INTEGER}
+            </if>
+            <if test="applicationTime != null">
+                #{applicationTime,jdbcType=LONG}
+            </if>
+            <if test="approvalTime != null">
+                #{approvalTime,jdbcType=LONG}
+            </if>
+            <if test="completionTime != null">
+                #{completionTime,jdbcType=LONG}
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectByPrimaryKey" parameterType="com.usping.kdsn.bean.Transaction">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        transaction
+        WHERE transaction_id=#{transactionId,jdbcType=Integer}
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.usping.kdsn.bean.Transaction">
+        update transaction
+        <set>
+            <if test="transactionId != null">
+                transaction_id = #{transactionId,jdbcType=INTEGER}
+            </if>
+            <if test="customerId != null">
+                customer_id = #{customerId,jdbcType=INTEGER}
+            </if>
+            <if test="vendorId != null">
+                vendor_id = #{vendorId,jdbcType=INTEGER}
+            </if>
+            <if test="productPrice != null">
+                product_price = #{productPrice,jdbcType=DOUBLE}
+            </if>
+            <if test="purchaseQuantity != null">
+                purchase_quantity = #{purchaseQuantity,jdbcType=LONG}
+            </if>
+            <if test="calculatedPrice != null">
+                calculated_price#{calculatedPrice,jdbcType=DOUBLE}
+            </if>
+            <if test="productId != null">
+                product_id = #{productId,jdbcType=STRING}
+            </if>
+            <if test="applicationStatus != null">
+                application_status = #{applicationStatus,jdbcType=INTEGER}
+            </if>
+            <if test="transactionStatus != null">
+                transaction_status = #{transactionStatus,jdbcType=INTEGER}
+            </if>
+            <if test="applicationTime != null">
+                application_time = #{applicationTime,jdbcType=LONG}
+            </if>
+            <if test="approvalTime != null">
+                approval_time = #{approvalTime,jdbcType=LONG}
+            </if>
+            <if test="completionTime != null">
+                completion_time = #{completionTime,jdbcType=LONG}
+            </if>
+        </set>
+        where transaction_id = #{transactionId,jdbcType=INTEGER}
+    </update>
+
+</mapper>

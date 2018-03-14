@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import api from '../../api'
+  import api from '../../api/message'
 
   export default ({
     name: 'ping-es',
@@ -27,7 +27,8 @@
 //          console.log('请求错误')
 //        }
 //      })
-      api.testDistinct(this.$cookie.get('token'))
+//       api.testDistinct(this.$cookie.get('token'))
+      api.testConnection(this.$cookie.get('token'))
     }
   })
 </script>

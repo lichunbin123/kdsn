@@ -6,7 +6,7 @@ import router from './router'
 import axios from './api'
 import VueCookie from 'vue-cookie'
 import VueParticles from 'vue-particles'
-import vuex from 'vuex'
+import VueForm from 'vue-form'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -17,8 +17,12 @@ import UspingHeader from './components/layout/header'
 Vue.use(ElementUI)
 Vue.use(VueCookie)
 Vue.use(VueParticles)
-Vue.use(vuex)
-
+Vue.use(VueForm, {
+  inputClasses: {
+    valid: 'form-control-success',
+    invalid: 'form-control-danger'
+  }
+})
 Vue.$http = axios
 
 Vue.config.productionTip = false

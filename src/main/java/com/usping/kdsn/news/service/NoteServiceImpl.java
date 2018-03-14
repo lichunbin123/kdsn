@@ -26,18 +26,27 @@ public class NoteServiceImpl implements NoteService {
     public ResultMap findNoteByNewsId(Note note){
         ResultMap resultMap = new ResultMap();
 
-        resultMap.setData(noteMapper.selectNoteByNewsId(note)).setTotal(noteMapper.countNoteByNewsId(note));
-
+        setData(note, resultMap);
         return resultMap;
     }
 
     @Override
     public ResultMap findByNewsIdAndUserId(Note note){
-        ResultMap resultMap = new ResultMap();
+        ResultMap<Note> resultMap = new ResultMap();
 
-        resultMap.setData(noteMapper.selectByNewsIdAndUserId(note)).setTotal(noteMapper.countByNewsIdAndUserId(note));
+        setData(note, resultMap);
 
         return resultMap;
+    }
+
+    private void setData(Note note, ResultMap<Note> resultMap) {
+        try{
+            resultMap.setData(noteMapper.selectByNewsIdAndUserId(note));
+            resultMap.setCount(noteMapper.countByNewsIdAndUserId(note));
+            resultMap.setSuccess(true);
+        }catch (Exception e) {
+            resultMap.setSuccess(false);
+        }
     }
 
     @Override
@@ -45,4 +54,8 @@ public class NoteServiceImpl implements NoteService {
         return noteMapper.insert(note) == 1;
     }
 
+    @Override
+    public boolean updateRecord(Note note) {
+        return noteMapper.updateByPrimaryKeySelective(note) == 1;
+    }
 }

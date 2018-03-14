@@ -7,16 +7,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@EnableMongoRepositories
-@MapperScan({"com.usping.kdsn.mapper"})
+@MapperScan("com.usping.kdsn.mapper")
 @ServletComponentScan
 public class KdsnApplication extends SpringBootServletInitializer{
 
-
+    /**
+     *
+     * @param application
+     * @return
+     */
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(KdsnApplication.class);

@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class DefaultViewConfig extends WebMvcConfigurerAdapter {
 
-    private final static org.slf4j.Logger logger = LoggerFactory.getLogger(DefaultViewConfig.class);
+    private static org.slf4j.Logger logger = LoggerFactory.getLogger(DefaultViewConfig.class);
 
     @Override
     public void

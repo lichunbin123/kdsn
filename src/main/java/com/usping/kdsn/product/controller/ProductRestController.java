@@ -1,53 +1,39 @@
 package com.usping.kdsn.product.controller;
 
-import com.usping.kdsn.bean.Product;
-import com.usping.kdsn.product.service.ProductServiceImpl;
-import com.usping.kdsn.util.model.ResultMap;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.usping.kdsn.bean.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 /**
- * Created by stan on 17-7-2.
+ * @author ning on 18-3-5.
+ * @project kdsn
  */
-
 @RestController
-@RequestMapping("/api/product")
+@RequestMapping("/api/product/")
 public class ProductRestController {
 
-    private final ProductServiceImpl productService;
+    private static Logger logger = LoggerFactory.getLogger(ProductRestController.class);
 
-    @Autowired
-    public ProductRestController(ProductServiceImpl productService) {
-        this.productService = productService;
+    /**
+     * use for test access
+     * @return
+     */
+    @CrossOrigin
+    @GetMapping("test")
+    public ResponseEntity<String> testConnection() {
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @CrossOrigin
-    @GetMapping("/product")
-    public ResponseEntity<java.util.List<Product>> findAll() {
-        return new ResponseEntity<>(productService.findAll(), HttpStatus.OK);
-    }
+    @PostMapping("product")
+    public ResponseEntity<?> add(@RequestBody Transaction transaction) {
 
-    @CrossOrigin
-    @GetMapping("/getProductForUser")
-    public ResponseEntity<ResultMap> findProductForUser(Product product) {
-        try {
-            ResultMap resultMap;
-            resultMap = productService.findProductForUser(product.getOffset(),product.getPageSize());
-            if(resultMap.isEmpty()){
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(resultMap, HttpStatus.OK);
-        }catch (Exception e){
-            e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-    }
+        // TODO: 18-3-6 with full insert
+        logger.info(transaction.toString());
 
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

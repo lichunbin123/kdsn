@@ -16,4 +16,6 @@ public interface NoteService {
     ResultMap findByNewsIdAndUserId(Note note);
 
     boolean save(Note note);
+
+    boolean updateRecord(Note note);
 }

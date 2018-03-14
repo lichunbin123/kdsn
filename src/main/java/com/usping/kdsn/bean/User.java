@@ -398,4 +398,22 @@ public class User extends BaseEntity {
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", industry='" + industry + '\'' +
+                ", assortment='" + assortment + '\'' +
+                ", rewardPoints=" + rewardPoints +
+                ", userrole=" + userrole +
+                ", joblocation='" + joblocation + '\'' +
+                ", school='" + school + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

@@ -1,6 +1,6 @@
 package com.usping.kdsn.util.filter;
 
-import com.usping.kdsn.util.config.CONFIG;
+import com.usping.kdsn.util.config.ConstantConfig;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
+
+import io.jsonwebtoken.MalformedJwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +19,7 @@ import org.slf4j.LoggerFactory;
 public class AuthCheckFilter implements Filter {
 
     private Logger logger = LoggerFactory.getLogger(AuthCheckFilter.class);
+    private final String OPTIONS = "OPTIONS";
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -38,7 +41,8 @@ public class AuthCheckFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
 
-        if (req.getMethod().equals("OPTIONS")) {
+
+        if (OPTIONS.equals(req.getMethod())) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
@@ -46,10 +50,10 @@ public class AuthCheckFilter implements Filter {
         try{
             logger.info("获取token："+req.getHeader("Authorization"));
             Claims claims = Jwts.parser()
-                    .setSigningKey(DatatypeConverter.parseBase64Binary(CONFIG.getTokenPass()))
+                    .setSigningKey(DatatypeConverter.parseBase64Binary(ConstantConfig.getTokenPass()))
                     .parseClaimsJws(req.getHeader("Authorization")).getBody();
 
-        }catch (IllegalArgumentException e) {
+        }catch (IllegalArgumentException | MalformedJwtException e) {
             res.sendError(HttpServletResponse.SC_NOT_FOUND);
             logger.info("获取token异常, 禁止请求");
             return;
