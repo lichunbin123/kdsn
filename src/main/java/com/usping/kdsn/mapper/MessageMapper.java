@@ -3,6 +3,8 @@ package com.usping.kdsn.mapper;
 import com.usping.kdsn.bean.Message;
 import com.usping.kdsn.bean.Transaction;
 
+import java.util.List;
+
 public interface MessageMapper {
 
     /**
@@ -32,4 +34,11 @@ public interface MessageMapper {
      * @return
      */
     int updateByPrimaryKeySelective(Message record);
+
+    /**
+     * select by senderId and receiverId
+     * @param record
+     * @return MessageList
+     */
+    List<Message> selectMessageBySenderAndReceiver(Message record);
 }

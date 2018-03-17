@@ -13,7 +13,7 @@
                   <div slot="header" class="clearfix">
                     <span><a :href='item.source_url'>{{item.news_title}}</a></span>
                     <div style="float: right">{{item.source_site}}</div>
-                    <el-button @click="openChatboard(item)">联系作者</el-button>
+                    <el-button v-if="currentUser" @click="openChatboard(item)">联系作者</el-button>
                     <div class="block" style="float: right">
                       <el-rate/>
                     </div>
@@ -122,6 +122,7 @@
     <chat-board :sender="JSON.parse(this.$cookie.get('authorizedUser'))" :receiver="currentChatter" :dialog-visible="chatboardVisible"
                 @on-visible-change="onchatboardVisibleChange"/>
     <note-board :current-news-id="currentNewsId" @on-note-visible-change="onNoteBoardVisibleChange" :dialog-visible="noteboardVisible"/>
+
   </div>
 </template>
 
@@ -179,6 +180,7 @@
         total: 0,
         currentPage: 1,
         pageSize: 10,
+        currentUser: this.$cookie.get('authorizedUser') || null,
         customToolbar: [
           [' ', 'underline'],
           [{'list': 'ordered'}, {'list': 'bullet'}],
@@ -189,19 +191,20 @@
         chatboardVisible: false,
         noteboardVisible: false,
         currentChatter: '',
-        currentNewsId: ''
+        currentNewsId: '',
+        searchText: this.$route.params.searchParam
       }
     },
     created: function () {
-      this.loadData()
+      this.loadData(this.$route.params.searchParam || '测试')
     },
     methods: {
       clearData: function () {
         this.news = []
       },
-      loadData: function () {
+      loadData: function (searchText) {
         let tmpThis = this
-        NewsSearcher.esSearchNewsWithSource((this.currentPage - 1) * this.pageSize, this.pageSize, '测试').then(function (resp) {
+        NewsSearcher.esSearchNewsWithSource((this.currentPage - 1) * this.pageSize, this.pageSize, searchText || '测试').then(function (resp) {
           let hits = resp.hits.hits
           console.log('请求成功')
           tmpThis.total = resp.hits.total
@@ -229,6 +232,10 @@
         this.chatboardVisible = true
       },
       openNoteBoard: function (newsId) {
+        if (this.$cookie.get('authorizedUser') == null || this.$cookie.get('authorizedUser') === undefined) {
+          this.$message('登录后才能做笔记！')
+          return
+        }
         this.currentNewsId = newsId
         this.noteboardVisible = true
       },

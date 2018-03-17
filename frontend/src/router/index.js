@@ -54,6 +54,11 @@ let router = new Router({
       component: news
     },
     {
+      path: '/news/:searchParam',
+      name: '带参新闻',
+      component: news
+    },
+    {
       path: '/task',
       name: '任务',
       component: task

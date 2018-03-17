@@ -11,6 +11,7 @@
       <el-menu-item index="1" v-if="!isIndex">
         <el-input
           v-model="localInput"
+          @keyup.enter.native="listenEnter"
           type="text"
           placeholder="请输入搜索内容">
         </el-input>
@@ -69,6 +70,7 @@
           message: '您已成功登出',
           position: 'top-right'
         })
+        this.$router.push('')
       },
       goHome: function () {
         this.$router.push('/')
@@ -81,6 +83,9 @@
       },
       openPicker: function () {
         this.dialogVisible = true
+      },
+      listenEnter: function () {
+        console.log('cc')
       }
     }
   }

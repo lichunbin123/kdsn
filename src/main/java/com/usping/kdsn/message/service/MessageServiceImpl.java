@@ -5,6 +5,8 @@ import com.usping.kdsn.mapper.MessageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @author ning on 18-3-6.
  * @project kdsn
@@ -22,5 +24,10 @@ public class MessageServiceImpl implements MessageService{
     @Override
     public boolean saveInstance(Message instance) {
         return messageMapper.insertSelective(instance);
+    }
+
+    @Override
+    public List<Message> selectMessageBySenderAndReceiver(Message instance) {
+        return messageMapper.selectMessageBySenderAndReceiver(instance);
     }
 }

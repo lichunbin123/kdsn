@@ -12,11 +12,12 @@
             <el-col :span="20">
               <el-input
                 placeholder="请输入搜索内容"
+                v-model="searchText"
                 prefix-icon="el-icon-search">
               </el-input>
             </el-col>
             <el-col :span="2">
-              <el-button type="primary" icon="el-icon-search">搜索</el-button>
+              <el-button type="primary" @click="searchRedirect" icon="el-icon-search">搜索</el-button>
             </el-col>
           </el-row>
         </el-col>
@@ -57,6 +58,14 @@
       },
       goProduct () {
         this.$router.push('/product')
+      },
+      searchRedirect () {
+        this.$router.push('/news/' + this.searchText)
+      }
+    },
+    data () {
+      return {
+        searchText: ''
       }
     }
   }
