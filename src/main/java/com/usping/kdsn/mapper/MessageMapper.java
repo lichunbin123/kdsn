@@ -2,6 +2,7 @@ package com.usping.kdsn.mapper;
 
 import com.usping.kdsn.bean.Message;
 import com.usping.kdsn.bean.Transaction;
+import org.springframework.dao.DataAccessException;
 
 import java.util.List;
 
@@ -12,33 +13,33 @@ public interface MessageMapper {
      * @param messageId
      * @return
      */
-    int deleteByPrimaryKey(Integer messageId);
+    int deleteByPrimaryKey(Integer messageId) throws DataAccessException;
 
     /**
      * insert selective
      * @param record
      * @return
      */
-    boolean insertSelective(Message record);
+    boolean insertSelective(Message record) throws DataAccessException;
 
     /**
      * select by message id
      * @param messageId
      * @return
      */
-    Message selectByPrimaryKey(Integer messageId);
+    Message selectByPrimaryKey(Integer messageId) throws DataAccessException;
 
     /**
      * update by primary key selective
      * @param record
      * @return
      */
-    int updateByPrimaryKeySelective(Message record);
+    int updateByPrimaryKeySelective(Message record) throws DataAccessException;
 
     /**
      * select by senderId and receiverId
      * @param record
      * @return MessageList
      */
-    List<Message> selectMessageBySenderAndReceiver(Message record);
+    List<Message> selectMessageBySenderAndReceiver(Message record) throws DataAccessException;
 }

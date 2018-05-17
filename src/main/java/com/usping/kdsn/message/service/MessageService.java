@@ -12,21 +12,19 @@ import java.util.List;
  * @project kdsn
  */
 @Component
-public class MessageServiceImpl implements MessageService{
+public class MessageService{
     private final MessageMapper messageMapper;
 
     @Autowired
-    public MessageServiceImpl(MessageMapper messageMapper) {
+    public MessageService(MessageMapper messageMapper) {
         this.messageMapper = messageMapper;
     }
 
 
-    @Override
     public boolean saveInstance(Message instance) {
         return messageMapper.insertSelective(instance);
     }
 
-    @Override
     public List<Message> selectMessageBySenderAndReceiver(Message instance) {
         return messageMapper.selectMessageBySenderAndReceiver(instance);
     }

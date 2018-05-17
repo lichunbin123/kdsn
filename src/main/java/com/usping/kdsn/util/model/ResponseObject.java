@@ -1,63 +1,40 @@
 package com.usping.kdsn.util.model;
 
+import lombok.*;
+
+import java.util.List;
+
 /**
  * @author ning on 18-3-8.
  * @project kdsn
  */
-public class ResponseObject {
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@ToString
+public class ResponseObject<T> {
 
     /**
-     * most time to return status of operation should handle by http code
-     * but sometimes with status
+     * 告知查询成功与否
      */
-    private boolean status;
+    private boolean success;
 
     /**
-     * whether failed or succeed, should return soe
+     * 如失败，则应告知失败原因
      */
     private String message;
 
     /**
-     * return data
+     * T泛型返回数据
      */
-    private boolean data;
+    private List<T> data;
 
     /**
-     * return length of data
+     * 数据数量
      */
-    private int length;
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public boolean isData() {
-        return data;
-    }
-
-    public void setData(boolean data) {
-        this.data = data;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
+    private Integer count;
 
 }

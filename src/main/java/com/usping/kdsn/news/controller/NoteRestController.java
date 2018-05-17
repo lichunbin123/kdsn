@@ -3,6 +3,7 @@ package com.usping.kdsn.news.controller;
 import com.usping.kdsn.bean.Note;
 import com.usping.kdsn.news.service.NoteServiceImpl;
 import com.usping.kdsn.util.model.ResultMap;
+import org.apache.ibatis.jdbc.SQL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,20 +40,16 @@ public class NoteRestController {
     @CrossOrigin
     @GetMapping("/findByNewsIdAndUserId")
     public ResponseEntity<ResultMap> findByNewsIdAndUserId( Note note) {
-        try {
-            ResultMap resultMap;
-            resultMap = noteService.findByNewsIdAndUserId(note);
-            if (resultMap.isEmpty()) {
+//        try {
+//            ResultMap resultMap;
+//            return new ResponseEntity<>(resultMap, HttpStatus.OK);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
 
-                return new ResponseEntity<>(resultMap, HttpStatus.OK);
-
-            } else {
-                return new ResponseEntity<>(resultMap, HttpStatus.OK);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
+        // TODO: 18-4-9 将返回修改为Result
+        return null;
     }
 
     @CrossOrigin

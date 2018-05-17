@@ -23,30 +23,19 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public ResultMap findNoteByNewsId(Note note){
-        ResultMap resultMap = new ResultMap();
+    public List<Note> findNoteByNewsId(Note note){
+        return noteMapper.selectByNewsIdAndUserId(note);
+    }
 
-        setData(note, resultMap);
-        return resultMap;
+
+    @Override
+    public List<Note> findByNewsIdAndUserId(Note note){
+        return noteMapper.selectByNewsIdAndUserId(note);
     }
 
     @Override
-    public ResultMap findByNewsIdAndUserId(Note note){
-        ResultMap<Note> resultMap = new ResultMap();
-
-        setData(note, resultMap);
-
-        return resultMap;
-    }
-
-    private void setData(Note note, ResultMap<Note> resultMap) {
-        try{
-            resultMap.setData(noteMapper.selectByNewsIdAndUserId(note));
-            resultMap.setCount(noteMapper.countByNewsIdAndUserId(note));
-            resultMap.setSuccess(true);
-        }catch (Exception e) {
-            resultMap.setSuccess(false);
-        }
+    public List<Note> selectSelective(Note note) {
+        return noteMapper.selectSelective(note);
     }
 
     @Override

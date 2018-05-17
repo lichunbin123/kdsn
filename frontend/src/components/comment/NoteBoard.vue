@@ -100,7 +100,7 @@
         )
       },
       initNotePanel: function () {
-        var varThis = this
+        let varThis = this
         api.getNoteWithNewsIdAndUserId(
           this.$cookie.get('token'),
           this.currentNewsId,

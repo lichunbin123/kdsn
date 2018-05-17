@@ -1,34 +1,28 @@
 <template>
-  <div>
-    <ul v-for="n in data">
-      {{ n }}
-    </ul>
-  </div>
+
 </template>
 
 <script>
   import api from '../../api/message'
+  import AMap from '../../components/es5.min'
 
   export default ({
     name: 'ping-es',
     data () {
       return {
-        data: []
+        data: [],
+        map: ''
       }
     },
     created: function () {
-//      console.log(api.esCommonSearch('j'))
-//      var a = this
-//      api.esSearchNews().then(function (resp) {
-//        var hits = resp.hits.hits
-//        a.data = hits
-//      }, function (err) {
-//        if (err !== undefined) {
-//          console.log('请求错误')
-//        }
-//      })
-//       api.testDistinct(this.$cookie.get('token'))
+//
       api.testConnection(this.$cookie.get('token'))
+
+      this.map = new AMap.Map('container', {
+        resizeEnable: true,
+        zoom: 11,
+        center: [116.397428, 39.90923]
+      })
     }
   })
 </script>

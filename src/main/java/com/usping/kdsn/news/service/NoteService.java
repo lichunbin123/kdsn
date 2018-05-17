@@ -11,9 +11,11 @@ import java.util.List;
  * description:
  */
 public interface NoteService {
-    ResultMap findNoteByNewsId(Note note);
+    List<Note> findNoteByNewsId(Note note);
 
-    ResultMap findByNewsIdAndUserId(Note note);
+    List<Note> findByNewsIdAndUserId(Note note);
+
+    List<Note> selectSelective(Note note);
 
     boolean save(Note note);
 
