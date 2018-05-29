@@ -1,0 +1,66 @@
+[2018-05-22T20:49:08,243][INFO ][o.e.n.Node               ] [] initializing ...
+[2018-05-22T20:49:08,314][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] using [1] data paths, mounts [[/home (/dev/sda6)]], net usable_space [9.2gb], net total_space [57.1gb], spins? [no], types [xfs]
+[2018-05-22T20:49:08,314][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] heap size [1.9gb], compressed ordinary object pointers [true]
+[2018-05-22T20:49:08,333][INFO ][o.e.n.Node               ] node name [9pw6Qxm] derived from node ID [9pw6QxmEQDyXUD5SbuUaqQ]; set [node.name] to override
+[2018-05-22T20:49:08,334][INFO ][o.e.n.Node               ] version[5.5.1], pid[4454], build[19c13d0/2017-07-18T20:44:24.823Z], OS[Linux/4.15.0-20-generic/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_171/25.171-b11]
+[2018-05-22T20:49:08,334][INFO ][o.e.n.Node               ] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Des.path.home=/home/ning/git/elasticsearch-5.5.1]
+[2018-05-22T20:49:09,076][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [aggs-matrix-stats]
+[2018-05-22T20:49:09,076][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [ingest-common]
+[2018-05-22T20:49:09,076][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-expression]
+[2018-05-22T20:49:09,076][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-groovy]
+[2018-05-22T20:49:09,076][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-mustache]
+[2018-05-22T20:49:09,076][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-painless]
+[2018-05-22T20:49:09,076][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [parent-join]
+[2018-05-22T20:49:09,077][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [percolator]
+[2018-05-22T20:49:09,077][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [reindex]
+[2018-05-22T20:49:09,077][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty3]
+[2018-05-22T20:49:09,077][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty4]
+[2018-05-22T20:49:09,078][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded plugin [sql]
+[2018-05-22T20:49:10,456][INFO ][o.e.d.DiscoveryModule    ] [9pw6Qxm] using discovery type [zen]
+[2018-05-22T20:49:10,900][INFO ][o.e.n.Node               ] initialized
+[2018-05-22T20:49:10,900][INFO ][o.e.n.Node               ] [9pw6Qxm] starting ...
+[2018-05-22T20:49:11,006][INFO ][o.e.t.TransportService   ] [9pw6Qxm] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-05-22T20:49:11,015][WARN ][o.e.b.BootstrapChecks    ] [9pw6Qxm] max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+[2018-05-22T20:49:14,060][INFO ][o.e.c.s.ClusterService   ] [9pw6Qxm] new_master {9pw6Qxm}{9pw6QxmEQDyXUD5SbuUaqQ}{KIduuKCVT_2NG--sUVmU4w}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2018-05-22T20:49:14,081][INFO ][o.e.h.n.Netty4HttpServerTransport] [9pw6Qxm] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-05-22T20:49:14,081][INFO ][o.e.n.Node               ] [9pw6Qxm] started
+[2018-05-22T20:49:14,288][INFO ][o.e.g.GatewayService     ] [9pw6Qxm] recovered [3] indices into cluster_state
+[2018-05-22T20:49:14,710][INFO ][o.e.c.r.a.AllocationService] [9pw6Qxm] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[.kibana][0], [usping][3]] ...]).
+[2018-05-22T20:52:40,046][INFO ][o.e.n.Node               ] [9pw6Qxm] stopping ...
+[2018-05-22T20:52:40,115][INFO ][o.e.n.Node               ] [9pw6Qxm] stopped
+[2018-05-22T20:52:40,116][INFO ][o.e.n.Node               ] [9pw6Qxm] closing ...
+[2018-05-22T20:52:40,127][INFO ][o.e.n.Node               ] [9pw6Qxm] closed
+[2018-05-22T20:55:16,675][INFO ][o.e.n.Node               ] [] initializing ...
+[2018-05-22T20:55:16,727][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] using [1] data paths, mounts [[/home (/dev/sda6)]], net usable_space [9.2gb], net total_space [57.1gb], spins? [no], types [xfs]
+[2018-05-22T20:55:16,728][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] heap size [1.9gb], compressed ordinary object pointers [true]
+[2018-05-22T20:55:16,741][INFO ][o.e.n.Node               ] node name [9pw6Qxm] derived from node ID [9pw6QxmEQDyXUD5SbuUaqQ]; set [node.name] to override
+[2018-05-22T20:55:16,742][INFO ][o.e.n.Node               ] version[5.5.1], pid[5251], build[19c13d0/2017-07-18T20:44:24.823Z], OS[Linux/4.15.0-20-generic/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_171/25.171-b11]
+[2018-05-22T20:55:16,742][INFO ][o.e.n.Node               ] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Des.path.home=/home/ning/git/elasticsearch-5.5.1]
+[2018-05-22T20:55:17,326][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [aggs-matrix-stats]
+[2018-05-22T20:55:17,326][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [ingest-common]
+[2018-05-22T20:55:17,326][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-expression]
+[2018-05-22T20:55:17,326][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-groovy]
+[2018-05-22T20:55:17,326][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-mustache]
+[2018-05-22T20:55:17,326][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-painless]
+[2018-05-22T20:55:17,326][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [parent-join]
+[2018-05-22T20:55:17,327][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [percolator]
+[2018-05-22T20:55:17,327][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [reindex]
+[2018-05-22T20:55:17,327][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty3]
+[2018-05-22T20:55:17,327][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty4]
+[2018-05-22T20:55:17,327][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded plugin [sql]
+[2018-05-22T20:55:18,441][INFO ][o.e.d.DiscoveryModule    ] [9pw6Qxm] using discovery type [zen]
+[2018-05-22T20:55:18,825][INFO ][o.e.n.Node               ] initialized
+[2018-05-22T20:55:18,825][INFO ][o.e.n.Node               ] [9pw6Qxm] starting ...
+[2018-05-22T20:55:18,926][INFO ][o.e.t.TransportService   ] [9pw6Qxm] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-05-22T20:55:18,933][WARN ][o.e.b.BootstrapChecks    ] [9pw6Qxm] max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+[2018-05-22T20:55:21,970][INFO ][o.e.c.s.ClusterService   ] [9pw6Qxm] new_master {9pw6Qxm}{9pw6QxmEQDyXUD5SbuUaqQ}{5-ezHPLcQyiSIdyvs0Y9bg}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2018-05-22T20:55:21,985][INFO ][o.e.h.n.Netty4HttpServerTransport] [9pw6Qxm] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-05-22T20:55:21,985][INFO ][o.e.n.Node               ] [9pw6Qxm] started
+[2018-05-22T20:55:22,176][INFO ][o.e.g.GatewayService     ] [9pw6Qxm] recovered [3] indices into cluster_state
+[2018-05-22T20:55:22,462][INFO ][o.e.c.r.a.AllocationService] [9pw6Qxm] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[usping][2], [usping][0]] ...]).
+[2018-05-22T21:12:34,876][INFO ][o.e.c.m.MetaDataCreateIndexService] [9pw6Qxm] [website] creating index, cause [auto(bulk api)], templates [], shards [5]/[1], mappings []
+[2018-05-22T21:12:34,977][INFO ][o.e.c.m.MetaDataMappingService] [9pw6Qxm] [website/X2J_JYLIRIKFCBycC6iVyg] create_mapping [blog]
+[2018-05-22T22:30:33,402][INFO ][o.e.n.Node               ] [9pw6Qxm] stopping ...
+[2018-05-22T22:30:33,588][INFO ][o.e.n.Node               ] [9pw6Qxm] stopped
+[2018-05-22T22:30:33,588][INFO ][o.e.n.Node               ] [9pw6Qxm] closing ...
+[2018-05-22T22:30:33,597][INFO ][o.e.n.Node               ] [9pw6Qxm] closed

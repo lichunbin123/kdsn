@@ -1,0 +1,166 @@
+[2018-01-14T17:28:10,634][INFO ][o.e.n.Node               ] [] initializing ...
+[2018-01-14T17:28:10,706][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] using [1] data paths, mounts [[/ (/dev/sdb2)]], net usable_space [51.7gb], net total_space [220.1gb], spins? [no], types [ext4]
+[2018-01-14T17:28:10,707][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] heap size [1.9gb], compressed ordinary object pointers [true]
+[2018-01-14T17:28:10,745][INFO ][o.e.n.Node               ] node name [9pw6Qxm] derived from node ID [9pw6QxmEQDyXUD5SbuUaqQ]; set [node.name] to override
+[2018-01-14T17:28:10,745][INFO ][o.e.n.Node               ] version[5.5.1], pid[24265], build[19c13d0/2017-07-18T20:44:24.823Z], OS[Linux/4.10.0-42-generic/amd64], JVM[Oracle Corporation/OpenJDK 64-Bit Server VM/1.8.0_151/25.151-b12]
+[2018-01-14T17:28:10,745][INFO ][o.e.n.Node               ] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Des.path.home=/opt/elasticsearch-5.5.1]
+[2018-01-14T17:28:11,392][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [aggs-matrix-stats]
+[2018-01-14T17:28:11,393][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [ingest-common]
+[2018-01-14T17:28:11,393][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-expression]
+[2018-01-14T17:28:11,393][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-groovy]
+[2018-01-14T17:28:11,393][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-mustache]
+[2018-01-14T17:28:11,393][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-painless]
+[2018-01-14T17:28:11,393][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [parent-join]
+[2018-01-14T17:28:11,393][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [percolator]
+[2018-01-14T17:28:11,393][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [reindex]
+[2018-01-14T17:28:11,394][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty3]
+[2018-01-14T17:28:11,394][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty4]
+[2018-01-14T17:28:11,394][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] no plugins loaded
+[2018-01-14T17:28:12,541][INFO ][o.e.d.DiscoveryModule    ] [9pw6Qxm] using discovery type [zen]
+[2018-01-14T17:28:12,918][INFO ][o.e.n.Node               ] initialized
+[2018-01-14T17:28:12,918][INFO ][o.e.n.Node               ] [9pw6Qxm] starting ...
+[2018-01-14T17:28:13,025][INFO ][o.e.t.TransportService   ] [9pw6Qxm] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}
+[2018-01-14T17:28:16,062][INFO ][o.e.c.s.ClusterService   ] [9pw6Qxm] new_master {9pw6Qxm}{9pw6QxmEQDyXUD5SbuUaqQ}{6ad1O0bqTL-HfWtImXHQdQ}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2018-01-14T17:28:16,075][INFO ][o.e.h.n.Netty4HttpServerTransport] [9pw6Qxm] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}
+[2018-01-14T17:28:16,075][INFO ][o.e.n.Node               ] [9pw6Qxm] started
+[2018-01-14T17:28:16,279][INFO ][o.e.g.GatewayService     ] [9pw6Qxm] recovered [3] indices into cluster_state
+[2018-01-14T17:28:17,021][INFO ][o.e.c.r.a.AllocationService] [9pw6Qxm] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[kk][2]] ...]).
+[2018-01-14T17:28:30,715][INFO ][o.e.c.m.MetaDataMappingService] [9pw6Qxm] [usping/oQpBJvsEQ7SOPoPXdjqgSA] update_mapping [service]
+[2018-01-14T17:28:30,976][INFO ][o.e.c.m.MetaDataMappingService] [9pw6Qxm] [usping/oQpBJvsEQ7SOPoPXdjqgSA] update_mapping [service]
+[2018-01-14T17:28:47,335][INFO ][o.e.c.m.MetaDataMappingService] [9pw6Qxm] [usping/oQpBJvsEQ7SOPoPXdjqgSA] create_mapping [product]
+[2018-01-14T17:28:47,405][INFO ][o.e.c.m.MetaDataMappingService] [9pw6Qxm] [usping/oQpBJvsEQ7SOPoPXdjqgSA] update_mapping [product]
+[2018-01-14T17:55:23,629][INFO ][o.e.n.Node               ] [9pw6Qxm] stopping ...
+[2018-01-14T17:55:23,669][INFO ][o.e.n.Node               ] [9pw6Qxm] stopped
+[2018-01-14T17:55:23,669][INFO ][o.e.n.Node               ] [9pw6Qxm] closing ...
+[2018-01-14T17:55:23,676][INFO ][o.e.n.Node               ] [9pw6Qxm] closed
+[2018-01-14T17:56:05,392][INFO ][o.e.n.Node               ] [] initializing ...
+[2018-01-14T17:56:05,452][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] using [1] data paths, mounts [[/ (/dev/sdb2)]], net usable_space [51.6gb], net total_space [220.1gb], spins? [no], types [ext4]
+[2018-01-14T17:56:05,453][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] heap size [1.9gb], compressed ordinary object pointers [true]
+[2018-01-14T17:56:05,466][INFO ][o.e.n.Node               ] node name [9pw6Qxm] derived from node ID [9pw6QxmEQDyXUD5SbuUaqQ]; set [node.name] to override
+[2018-01-14T17:56:05,466][INFO ][o.e.n.Node               ] version[5.5.1], pid[30543], build[19c13d0/2017-07-18T20:44:24.823Z], OS[Linux/4.10.0-42-generic/amd64], JVM[Oracle Corporation/OpenJDK 64-Bit Server VM/1.8.0_151/25.151-b12]
+[2018-01-14T17:56:05,466][INFO ][o.e.n.Node               ] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Des.path.home=/opt/elasticsearch-5.5.1]
+[2018-01-14T17:56:06,039][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [aggs-matrix-stats]
+[2018-01-14T17:56:06,039][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [ingest-common]
+[2018-01-14T17:56:06,039][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-expression]
+[2018-01-14T17:56:06,039][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-groovy]
+[2018-01-14T17:56:06,039][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-mustache]
+[2018-01-14T17:56:06,039][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-painless]
+[2018-01-14T17:56:06,040][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [parent-join]
+[2018-01-14T17:56:06,040][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [percolator]
+[2018-01-14T17:56:06,040][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [reindex]
+[2018-01-14T17:56:06,040][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty3]
+[2018-01-14T17:56:06,040][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty4]
+[2018-01-14T17:56:06,040][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] no plugins loaded
+[2018-01-14T17:56:07,192][INFO ][o.e.d.DiscoveryModule    ] [9pw6Qxm] using discovery type [zen]
+[2018-01-14T17:56:07,633][INFO ][o.e.n.Node               ] initialized
+[2018-01-14T17:56:07,633][INFO ][o.e.n.Node               ] [9pw6Qxm] starting ...
+[2018-01-14T17:56:07,738][INFO ][o.e.t.TransportService   ] [9pw6Qxm] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}
+[2018-01-14T17:56:10,785][INFO ][o.e.c.s.ClusterService   ] [9pw6Qxm] new_master {9pw6Qxm}{9pw6QxmEQDyXUD5SbuUaqQ}{oSFs01rPR9aVhTIk8PBohA}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2018-01-14T17:56:10,803][INFO ][o.e.h.n.Netty4HttpServerTransport] [9pw6Qxm] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}
+[2018-01-14T17:56:10,803][INFO ][o.e.n.Node               ] [9pw6Qxm] started
+[2018-01-14T17:56:11,140][INFO ][o.e.g.GatewayService     ] [9pw6Qxm] recovered [3] indices into cluster_state
+[2018-01-14T17:56:11,899][INFO ][o.e.c.r.a.AllocationService] [9pw6Qxm] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[kk][4], [kk][1], [kk][3]] ...]).
+[2018-01-14T18:09:55,603][WARN ][r.suppressed             ] path: /usping/news/_search, params: {size=10, index=usping, from=0, type=news}
+com.fasterxml.jackson.core.JsonParseException: Unexpected character ('}' (code 125)): was expecting double-quote to start field name
+ at [Source: org.elasticsearch.transport.netty4.ByteBufStreamInput@297b27c; line: 9, column: 8]
+	at com.fasterxml.jackson.core.JsonParser._constructError(JsonParser.java:1702) ~[jackson-core-2.8.6.jar:2.8.6]
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportError(ParserMinimalBase.java:558) ~[jackson-core-2.8.6.jar:2.8.6]
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportUnexpectedChar(ParserMinimalBase.java:456) ~[jackson-core-2.8.6.jar:2.8.6]
+	at com.fasterxml.jackson.core.json.UTF8StreamJsonParser._handleOddName(UTF8StreamJsonParser.java:2054) ~[jackson-core-2.8.6.jar:2.8.6]
+	at com.fasterxml.jackson.core.json.UTF8StreamJsonParser._parseName(UTF8StreamJsonParser.java:1701) ~[jackson-core-2.8.6.jar:2.8.6]
+	at com.fasterxml.jackson.core.json.UTF8StreamJsonParser.nextToken(UTF8StreamJsonParser.java:776) ~[jackson-core-2.8.6.jar:2.8.6]
+	at org.elasticsearch.common.xcontent.json.JsonXContentParser.nextToken(JsonXContentParser.java:55) ~[elasticsearch-5.5.1.jar:5.5.1]
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQueryBuilder(QueryParseContext.java:127) ~[elasticsearch-5.5.1.jar:5.5.1]
+	at org.elasticsearch.index.query.BoolQueryBuilder.fromXContent(BoolQueryBuilder.java:338) ~[elasticsearch-5.5.1.jar:5.5.1]
+	at org.elasticsearch.search.SearchModule.lambda$registerQuery$10(SearchModule.java:765) ~[elasticsearch-5.5.1.jar:5.5.1]
+	at org.elasticsearch.common.xcontent.NamedXContentRegistry.parseNamedObject(NamedXContentRegistry.java:143) ~[elasticsearch-5.5.1.jar:5.5.1]
+	at org.elasticsearch.common.xcontent.support.AbstractXContentParser.namedObject(AbstractXContentParser.java:386) ~[elasticsearch-5.5.1.jar:5.5.1]
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQueryBuilder(QueryParseContext.java:113) ~[elasticsearch-5.5.1.jar:5.5.1]
+	at org.elasticsearch.search.builder.SearchSourceBuilder.parseXContent(SearchSourceBuilder.java:986) ~[elasticsearch-5.5.1.jar:5.5.1]
+	at org.elasticsearch.rest.action.search.RestSearchAction.parseSearchRequest(RestSearchAction.java:96) ~[elasticsearch-5.5.1.jar:5.5.1]
+	at org.elasticsearch.rest.action.search.RestSearchAction.lambda$prepareRequest$0(RestSearchAction.java:76) ~[elasticsearch-5.5.1.jar:5.5.1]
+	at org.elasticsearch.rest.RestRequest.withContentOrSourceParamParserOrNull(RestRequest.java:395) ~[elasticsearch-5.5.1.jar:5.5.1]
+	at org.elasticsearch.rest.action.search.RestSearchAction.prepareRequest(RestSearchAction.java:75) ~[elasticsearch-5.5.1.jar:5.5.1]
+	at org.elasticsearch.rest.BaseRestHandler.handleRequest(BaseRestHandler.java:64) ~[elasticsearch-5.5.1.jar:5.5.1]
+	at org.elasticsearch.rest.RestController.dispatchRequest(RestController.java:262) ~[elasticsearch-5.5.1.jar:5.5.1]
+	at org.elasticsearch.rest.RestController.dispatchRequest(RestController.java:200) [elasticsearch-5.5.1.jar:5.5.1]
+	at org.elasticsearch.http.netty4.Netty4HttpServerTransport.dispatchRequest(Netty4HttpServerTransport.java:505) [transport-netty4-5.5.1.jar:5.5.1]
+	at org.elasticsearch.http.netty4.Netty4HttpRequestHandler.channelRead0(Netty4HttpRequestHandler.java:72) [transport-netty4-5.5.1.jar:5.5.1]
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at org.elasticsearch.http.netty4.pipelining.HttpPipeliningHandler.channelRead(HttpPipeliningHandler.java:63) [transport-netty4-5.5.1.jar:5.5.1]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at org.elasticsearch.http.netty4.cors.Netty4CorsHandler.channelRead(Netty4CorsHandler.java:76) [transport-netty4-5.5.1.jar:5.5.1]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102) [netty-codec-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.handler.codec.MessageToMessageCodec.channelRead(MessageToMessageCodec.java:111) [netty-codec-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102) [netty-codec-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102) [netty-codec-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [netty-codec-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [netty-codec-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelRead(ChannelInboundHandlerAdapter.java:86) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1334) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:926) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:644) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysPlain(NioEventLoop.java:544) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:498) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:458) [netty-transport-4.1.11.Final.jar:4.1.11.Final]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [netty-common-4.1.11.Final.jar:4.1.11.Final]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_151]
+[2018-01-14T19:00:01,295][INFO ][o.e.n.Node               ] [9pw6Qxm] stopping ...
+[2018-01-14T19:00:01,459][INFO ][o.e.n.Node               ] [9pw6Qxm] stopped
+[2018-01-14T19:00:01,459][INFO ][o.e.n.Node               ] [9pw6Qxm] closing ...
+[2018-01-14T19:00:01,467][INFO ][o.e.n.Node               ] [9pw6Qxm] closed
+[2018-01-14T22:14:35,854][INFO ][o.e.n.Node               ] [] initializing ...
+[2018-01-14T22:14:35,927][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] using [1] data paths, mounts [[/ (/dev/sdb2)]], net usable_space [51.6gb], net total_space [220.1gb], spins? [no], types [ext4]
+[2018-01-14T22:14:35,928][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] heap size [1.9gb], compressed ordinary object pointers [true]
+[2018-01-14T22:14:35,978][INFO ][o.e.n.Node               ] node name [9pw6Qxm] derived from node ID [9pw6QxmEQDyXUD5SbuUaqQ]; set [node.name] to override
+[2018-01-14T22:14:35,978][INFO ][o.e.n.Node               ] version[5.5.1], pid[4537], build[19c13d0/2017-07-18T20:44:24.823Z], OS[Linux/4.13.0-26-generic/amd64], JVM[Oracle Corporation/OpenJDK 64-Bit Server VM/1.8.0_151/25.151-b12]
+[2018-01-14T22:14:35,978][INFO ][o.e.n.Node               ] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Des.path.home=/opt/elasticsearch-5.5.1]
+[2018-01-14T22:14:36,611][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [aggs-matrix-stats]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [ingest-common]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-expression]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-groovy]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-mustache]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-painless]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [parent-join]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [percolator]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [reindex]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty3]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty4]
+[2018-01-14T22:14:36,613][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] no plugins loaded
+[2018-01-14T22:14:37,747][INFO ][o.e.d.DiscoveryModule    ] [9pw6Qxm] using discovery type [zen]
+[2018-01-14T22:14:38,127][INFO ][o.e.n.Node               ] initialized
+[2018-01-14T22:14:38,127][INFO ][o.e.n.Node               ] [9pw6Qxm] starting ...
+[2018-01-14T22:14:38,190][WARN ][i.n.u.i.MacAddressUtil   ] Failed to find a usable hardware address from the network interfaces; using random bytes: 13:1e:42:32:27:d8:98:a7
+[2018-01-14T22:14:38,229][INFO ][o.e.t.TransportService   ] [9pw6Qxm] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}
+[2018-01-14T22:14:38,236][WARN ][o.e.b.BootstrapChecks    ] [9pw6Qxm] max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+[2018-01-14T22:14:41,273][INFO ][o.e.c.s.ClusterService   ] [9pw6Qxm] new_master {9pw6Qxm}{9pw6QxmEQDyXUD5SbuUaqQ}{Dqz6hjBJRiysfBEa0kv4mg}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2018-01-14T22:14:41,292][INFO ][o.e.h.n.Netty4HttpServerTransport] [9pw6Qxm] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}
+[2018-01-14T22:14:41,292][INFO ][o.e.n.Node               ] [9pw6Qxm] started
+[2018-01-14T22:14:41,464][INFO ][o.e.g.GatewayService     ] [9pw6Qxm] recovered [3] indices into cluster_state
+[2018-01-14T22:14:42,227][INFO ][o.e.c.r.a.AllocationService] [9pw6Qxm] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[kk][0]] ...]).

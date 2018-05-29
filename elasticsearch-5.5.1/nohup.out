@@ -1,0 +1,143 @@
+[2018-01-14T22:14:35,854][INFO ][o.e.n.Node               ] [] initializing ...
+[2018-01-14T22:14:35,927][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] using [1] data paths, mounts [[/ (/dev/sdb2)]], net usable_space [51.6gb], net total_space [220.1gb], spins? [no], types [ext4]
+[2018-01-14T22:14:35,928][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] heap size [1.9gb], compressed ordinary object pointers [true]
+[2018-01-14T22:14:35,978][INFO ][o.e.n.Node               ] node name [9pw6Qxm] derived from node ID [9pw6QxmEQDyXUD5SbuUaqQ]; set [node.name] to override
+[2018-01-14T22:14:35,978][INFO ][o.e.n.Node               ] version[5.5.1], pid[4537], build[19c13d0/2017-07-18T20:44:24.823Z], OS[Linux/4.13.0-26-generic/amd64], JVM[Oracle Corporation/OpenJDK 64-Bit Server VM/1.8.0_151/25.151-b12]
+[2018-01-14T22:14:35,978][INFO ][o.e.n.Node               ] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Des.path.home=/opt/elasticsearch-5.5.1]
+[2018-01-14T22:14:36,611][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [aggs-matrix-stats]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [ingest-common]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-expression]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-groovy]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-mustache]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-painless]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [parent-join]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [percolator]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [reindex]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty3]
+[2018-01-14T22:14:36,612][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty4]
+[2018-01-14T22:14:36,613][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] no plugins loaded
+[2018-01-14T22:14:37,747][INFO ][o.e.d.DiscoveryModule    ] [9pw6Qxm] using discovery type [zen]
+[2018-01-14T22:14:38,127][INFO ][o.e.n.Node               ] initialized
+[2018-01-14T22:14:38,127][INFO ][o.e.n.Node               ] [9pw6Qxm] starting ...
+[2018-01-14T22:14:38,190][WARN ][i.n.u.i.MacAddressUtil   ] Failed to find a usable hardware address from the network interfaces; using random bytes: 13:1e:42:32:27:d8:98:a7
+[2018-01-14T22:14:38,229][INFO ][o.e.t.TransportService   ] [9pw6Qxm] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}
+[2018-01-14T22:14:38,236][WARN ][o.e.b.BootstrapChecks    ] [9pw6Qxm] max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+[2018-01-14T22:14:41,273][INFO ][o.e.c.s.ClusterService   ] [9pw6Qxm] new_master {9pw6Qxm}{9pw6QxmEQDyXUD5SbuUaqQ}{Dqz6hjBJRiysfBEa0kv4mg}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2018-01-14T22:14:41,292][INFO ][o.e.h.n.Netty4HttpServerTransport] [9pw6Qxm] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}
+[2018-01-14T22:14:41,292][INFO ][o.e.n.Node               ] [9pw6Qxm] started
+[2018-01-14T22:14:41,464][INFO ][o.e.g.GatewayService     ] [9pw6Qxm] recovered [3] indices into cluster_state
+[2018-01-14T22:14:42,227][INFO ][o.e.c.r.a.AllocationService] [9pw6Qxm] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[kk][0]] ...]).
+2018-01-16 13:25:49,487 main ERROR RollingFileManager (/opt/elasticsearch-5.5.1/logs/elasticsearch.log) java.io.FileNotFoundException: /opt/elasticsearch-5.5.1/logs/elasticsearch.log (Permission denied) java.io.FileNotFoundException: /opt/elasticsearch-5.5.1/logs/elasticsearch.log (Permission denied)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:133)
+	at org.apache.logging.log4j.core.appender.rolling.RollingFileManager$RollingFileManagerFactory.createManager(RollingFileManager.java:587)
+	at org.apache.logging.log4j.core.appender.rolling.RollingFileManager$RollingFileManagerFactory.createManager(RollingFileManager.java:554)
+	at org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:112)
+	at org.apache.logging.log4j.core.appender.OutputStreamManager.getManager(OutputStreamManager.java:114)
+	at org.apache.logging.log4j.core.appender.rolling.RollingFileManager.getFileManager(RollingFileManager.java:155)
+	at org.apache.logging.log4j.core.appender.RollingFileAppender$Builder.build(RollingFileAppender.java:131)
+	at org.apache.logging.log4j.core.appender.RollingFileAppender$Builder.build(RollingFileAppender.java:60)
+	at org.apache.logging.log4j.core.config.plugins.util.PluginBuilder.build(PluginBuilder.java:122)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.createPluginObject(AbstractConfiguration.java:952)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.createConfiguration(AbstractConfiguration.java:892)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.createConfiguration(AbstractConfiguration.java:884)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.doConfigure(AbstractConfiguration.java:508)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.initialize(AbstractConfiguration.java:232)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.start(AbstractConfiguration.java:244)
+	at org.apache.logging.log4j.core.LoggerContext.setConfiguration(LoggerContext.java:545)
+	at org.apache.logging.log4j.core.LoggerContext.start(LoggerContext.java:261)
+	at org.elasticsearch.common.logging.LogConfigurator.configure(LogConfigurator.java:166)
+	at org.elasticsearch.common.logging.LogConfigurator.configure(LogConfigurator.java:122)
+	at org.elasticsearch.bootstrap.Bootstrap.init(Bootstrap.java:316)
+	at org.elasticsearch.bootstrap.Elasticsearch.init(Elasticsearch.java:123)
+	at org.elasticsearch.bootstrap.Elasticsearch.execute(Elasticsearch.java:114)
+	at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:67)
+	at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:122)
+	at org.elasticsearch.cli.Command.main(Command.java:88)
+	at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:91)
+	at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:84)
+
+2018-01-16 13:25:49,490 main ERROR Unable to inject fields into builder class for plugin type class org.apache.logging.log4j.core.appender.RollingFileAppender, element RollingFile. java.lang.IllegalStateException: ManagerFactory [org.apache.logging.log4j.core.appender.rolling.RollingFileManager$RollingFileManagerFactory@4f83df68] unable to create manager for [/opt/elasticsearch-5.5.1/logs/elasticsearch.log] with data [org.apache.logging.log4j.core.appender.rolling.RollingFileManager$FactoryData@6cf0e0ba[pattern=/opt/elasticsearch-5.5.1/logs/elasticsearch-%d{yyyy-MM-dd}.log, append=true, bufferedIO=true, bufferSize=8192, policy=CompositeTriggeringPolicy(policies=[TimeBasedTriggeringPolicy(nextRolloverMillis=0, interval=1, modulate=true)]), strategy=DefaultRolloverStrategy(min=1, max=7, useMax=true), advertiseURI=null, layout=[%d{ISO8601}][%-5p][%-25c{1.}] %marker%.-10000m%n]]
+	at org.apache.logging.log4j.core.appender.AbstractManager.getManager(AbstractManager.java:114)
+	at org.apache.logging.log4j.core.appender.OutputStreamManager.getManager(OutputStreamManager.java:114)
+	at org.apache.logging.log4j.core.appender.rolling.RollingFileManager.getFileManager(RollingFileManager.java:155)
+	at org.apache.logging.log4j.core.appender.RollingFileAppender$Builder.build(RollingFileAppender.java:131)
+	at org.apache.logging.log4j.core.appender.RollingFileAppender$Builder.build(RollingFileAppender.java:60)
+	at org.apache.logging.log4j.core.config.plugins.util.PluginBuilder.build(PluginBuilder.java:122)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.createPluginObject(AbstractConfiguration.java:952)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.createConfiguration(AbstractConfiguration.java:892)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.createConfiguration(AbstractConfiguration.java:884)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.doConfigure(AbstractConfiguration.java:508)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.initialize(AbstractConfiguration.java:232)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.start(AbstractConfiguration.java:244)
+	at org.apache.logging.log4j.core.LoggerContext.setConfiguration(LoggerContext.java:545)
+	at org.apache.logging.log4j.core.LoggerContext.start(LoggerContext.java:261)
+	at org.elasticsearch.common.logging.LogConfigurator.configure(LogConfigurator.java:166)
+	at org.elasticsearch.common.logging.LogConfigurator.configure(LogConfigurator.java:122)
+	at org.elasticsearch.bootstrap.Bootstrap.init(Bootstrap.java:316)
+	at org.elasticsearch.bootstrap.Elasticsearch.init(Elasticsearch.java:123)
+	at org.elasticsearch.bootstrap.Elasticsearch.execute(Elasticsearch.java:114)
+	at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:67)
+	at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:122)
+	at org.elasticsearch.cli.Command.main(Command.java:88)
+	at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:91)
+	at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:84)
+
+2018-01-16 13:25:49,491 main ERROR Unable to invoke factory method in class class org.apache.logging.log4j.core.appender.RollingFileAppender for element RollingFile. java.lang.IllegalStateException: No factory method found for class org.apache.logging.log4j.core.appender.RollingFileAppender
+	at org.apache.logging.log4j.core.config.plugins.util.PluginBuilder.findFactoryMethod(PluginBuilder.java:224)
+	at org.apache.logging.log4j.core.config.plugins.util.PluginBuilder.build(PluginBuilder.java:130)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.createPluginObject(AbstractConfiguration.java:952)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.createConfiguration(AbstractConfiguration.java:892)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.createConfiguration(AbstractConfiguration.java:884)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.doConfigure(AbstractConfiguration.java:508)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.initialize(AbstractConfiguration.java:232)
+	at org.apache.logging.log4j.core.config.AbstractConfiguration.start(AbstractConfiguration.java:244)
+	at org.apache.logging.log4j.core.LoggerContext.setConfiguration(LoggerContext.java:545)
+	at org.apache.logging.log4j.core.LoggerContext.start(LoggerContext.java:261)
+	at org.elasticsearch.common.logging.LogConfigurator.configure(LogConfigurator.java:166)
+	at org.elasticsearch.common.logging.LogConfigurator.configure(LogConfigurator.java:122)
+	at org.elasticsearch.bootstrap.Bootstrap.init(Bootstrap.java:316)
+	at org.elasticsearch.bootstrap.Elasticsearch.init(Elasticsearch.java:123)
+	at org.elasticsearch.bootstrap.Elasticsearch.execute(Elasticsearch.java:114)
+	at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:67)
+	at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:122)
+	at org.elasticsearch.cli.Command.main(Command.java:88)
+	at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:91)
+	at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:84)
+
+2018-01-16 13:25:49,503 main ERROR Null object returned for RollingFile in Appenders.
+2018-01-16 13:25:49,503 main ERROR Unable to locate appender "rolling" for logger config "root"
+[2018-01-16T13:25:49,630][INFO ][o.e.n.Node               ] [] initializing ...
+[2018-01-16T13:25:49,697][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] using [1] data paths, mounts [[/ (/dev/sdb2)]], net usable_space [52.4gb], net total_space [220.1gb], spins? [no], types [ext4]
+[2018-01-16T13:25:49,697][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] heap size [1.9gb], compressed ordinary object pointers [true]
+[2018-01-16T13:25:49,772][INFO ][o.e.n.Node               ] node name [9pw6Qxm] derived from node ID [9pw6QxmEQDyXUD5SbuUaqQ]; set [node.name] to override
+[2018-01-16T13:25:49,773][INFO ][o.e.n.Node               ] version[5.5.1], pid[5773], build[19c13d0/2017-07-18T20:44:24.823Z], OS[Linux/4.13.0-26-generic/amd64], JVM[Oracle Corporation/OpenJDK 64-Bit Server VM/1.8.0_151/25.151-b12]
+[2018-01-16T13:25:49,773][INFO ][o.e.n.Node               ] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Des.path.home=/opt/elasticsearch-5.5.1]
+[2018-01-16T13:25:50,386][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [aggs-matrix-stats]
+[2018-01-16T13:25:50,386][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [ingest-common]
+[2018-01-16T13:25:50,386][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-expression]
+[2018-01-16T13:25:50,387][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-groovy]
+[2018-01-16T13:25:50,387][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-mustache]
+[2018-01-16T13:25:50,387][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-painless]
+[2018-01-16T13:25:50,387][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [parent-join]
+[2018-01-16T13:25:50,387][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [percolator]
+[2018-01-16T13:25:50,387][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [reindex]
+[2018-01-16T13:25:50,387][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty3]
+[2018-01-16T13:25:50,387][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty4]
+[2018-01-16T13:25:50,387][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] no plugins loaded
+[2018-01-16T13:25:51,517][INFO ][o.e.d.DiscoveryModule    ] [9pw6Qxm] using discovery type [zen]
+[2018-01-16T13:25:51,898][INFO ][o.e.n.Node               ] initialized
+[2018-01-16T13:25:51,898][INFO ][o.e.n.Node               ] [9pw6Qxm] starting ...
+[2018-01-16T13:25:52,002][INFO ][o.e.t.TransportService   ] [9pw6Qxm] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}
+[2018-01-16T13:25:52,009][WARN ][o.e.b.BootstrapChecks    ] [9pw6Qxm] max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+[2018-01-16T13:25:55,042][INFO ][o.e.c.s.ClusterService   ] [9pw6Qxm] new_master {9pw6Qxm}{9pw6QxmEQDyXUD5SbuUaqQ}{zTFVyi7uQjSe1xqeq_-b3g}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2018-01-16T13:25:55,059][INFO ][o.e.h.n.Netty4HttpServerTransport] [9pw6Qxm] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}
+[2018-01-16T13:25:55,059][INFO ][o.e.n.Node               ] [9pw6Qxm] started
+[2018-01-16T13:25:55,287][INFO ][o.e.g.GatewayService     ] [9pw6Qxm] recovered [4] indices into cluster_state
+[2018-01-16T13:25:56,135][INFO ][o.e.c.r.a.AllocationService] [9pw6Qxm] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[kk][2]] ...]).
+[2018-01-16T14:42:17,040][INFO ][o.e.n.Node               ] [9pw6Qxm] stopping ...
+[2018-01-16T14:42:17,237][INFO ][o.e.n.Node               ] [9pw6Qxm] stopped
+[2018-01-16T14:42:17,237][INFO ][o.e.n.Node               ] [9pw6Qxm] closing ...
+[2018-01-16T14:42:17,249][INFO ][o.e.n.Node               ] [9pw6Qxm] closed
