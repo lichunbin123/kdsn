@@ -18,12 +18,14 @@
     "element-ui": "^2.0.11",
     "install": "^0.10.1",
     "qs": "^6.5.1",
+    "sockjs-client": "^1.1.5",
     "vue": "^2.5.2",
     "vue-cookie": "^1.1.4",
     "vue-form": "^4.8.1",
     "vue-router": "^3.0.1",
     "vue2-editor": "^2.3.11",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "webstomp-client": "^1.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
