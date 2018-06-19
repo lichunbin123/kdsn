@@ -1,27 +1,19 @@
 package com.usping.kdsn.util.model;
 
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 
 
 /**
  * Created by stan on 17-7-2.
  */
 public class BaseEntity {
-    @Transient
     private Integer pageNumber = 1;
 
-    @Transient
     private Integer pageSize = 10;
 
-    @Transient
     private String sortBy = "";
 
-    @Transient
     private boolean isAsc = true;
 
-    @Transient
     private Integer offset = 0;
 
     public Integer getPageNumber() {

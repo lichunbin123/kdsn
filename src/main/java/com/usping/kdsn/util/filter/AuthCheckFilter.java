@@ -55,7 +55,7 @@ public class AuthCheckFilter implements Filter {
 
         }catch (IllegalArgumentException | MalformedJwtException e) {
             res.sendError(HttpServletResponse.SC_NOT_FOUND);
-            logger.info("获取token异常, 禁止请求");
+            logger.warn("获取token异常, 禁止请求");
             return;
         }
 

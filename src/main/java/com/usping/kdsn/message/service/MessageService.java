@@ -2,6 +2,8 @@ package com.usping.kdsn.message.service;
 
 import com.usping.kdsn.bean.Message;
 import com.usping.kdsn.mapper.MessageMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +16,7 @@ import java.util.List;
 @Component
 public class MessageService{
     private final MessageMapper messageMapper;
+    private Logger logger = LoggerFactory.getLogger(MessageService.class);
 
     @Autowired
     public MessageService(MessageMapper messageMapper) {

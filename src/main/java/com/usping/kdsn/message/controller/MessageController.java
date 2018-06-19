@@ -67,7 +67,7 @@ public class MessageController {
     }
 
     /**
-     * 使用
+     * 使
      */
     @CrossOrigin
     @PostMapping("fetchMessage")

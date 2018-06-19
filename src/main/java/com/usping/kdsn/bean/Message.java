@@ -1,7 +1,6 @@
 package com.usping.kdsn.bean;
 
 import com.usping.kdsn.util.model.BaseEntity;
-import org.springframework.data.annotation.Transient;
 
 /**
  * @author ning on 18-3-6.
@@ -9,16 +8,12 @@ import org.springframework.data.annotation.Transient;
  */
 public class Message extends BaseEntity {
 
-    @Transient
     public static final Integer STATUS_SEND_FAILED = -1;
 
-    @Transient
     public static final Integer STATUS_SENT = 0;
 
-    @Transient
     public static final Integer STATUS_UNREAD = 2;
 
-    @Transient
     public static final Integer STATUS_READ = 3;
 
 
