@@ -84,4 +84,6 @@
             (#{noteId}, #{newsId}, #{noteTitle}, #{noteType}, #{noteScore}, #{noteDate}, #{userId}, #{refUrl},
              #{noteContent}, #{publicState})
     </insert>
+
+
 </mapper>

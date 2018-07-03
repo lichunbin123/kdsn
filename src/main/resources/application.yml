@@ -2,8 +2,8 @@ spring:
   datasource:
     name: Develop
     url: jdbc:mysql://127.0.0.1:3306/usping
-    username: ning
-    password: Bankokin6.9
+    username: root
+    password: 12345678
     driver-class-name: com.mysql.jdbc.Driver
   mail:
     host: smtp.qq.com

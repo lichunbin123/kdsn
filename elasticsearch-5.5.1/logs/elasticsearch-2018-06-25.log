@@ -1,0 +1,32 @@
+[2018-06-25T16:30:15,719][INFO ][o.e.n.Node               ] [] initializing ...
+[2018-06-25T16:30:16,094][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] using [1] data paths, mounts [[DATA (D:)]], net usable_space [168.5gb], net total_space [189.1gb], spins? [unknown], types [NTFS]
+[2018-06-25T16:30:16,095][INFO ][o.e.e.NodeEnvironment    ] [9pw6Qxm] heap size [1.9gb], compressed ordinary object pointers [true]
+[2018-06-25T16:30:16,621][INFO ][o.e.n.Node               ] node name [9pw6Qxm] derived from node ID [9pw6QxmEQDyXUD5SbuUaqQ]; set [node.name] to override
+[2018-06-25T16:30:16,622][INFO ][o.e.n.Node               ] version[5.5.1], pid[17528], build[19c13d0/2017-07-18T20:44:24.823Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_171/25.171-b11]
+[2018-06-25T16:30:16,894][INFO ][o.e.n.Node               ] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Delasticsearch, -Des.path.home=D:\kdsn\elasticsearch-5.5.1]
+[2018-06-25T16:30:22,963][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [aggs-matrix-stats]
+[2018-06-25T16:30:22,963][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [ingest-common]
+[2018-06-25T16:30:22,963][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-expression]
+[2018-06-25T16:30:22,963][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-groovy]
+[2018-06-25T16:30:22,963][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-mustache]
+[2018-06-25T16:30:22,973][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [lang-painless]
+[2018-06-25T16:30:22,973][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [parent-join]
+[2018-06-25T16:30:22,973][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [percolator]
+[2018-06-25T16:30:22,973][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [reindex]
+[2018-06-25T16:30:22,973][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty3]
+[2018-06-25T16:30:22,973][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded module [transport-netty4]
+[2018-06-25T16:30:22,973][INFO ][o.e.p.PluginsService     ] [9pw6Qxm] loaded plugin [sql]
+[2018-06-25T16:30:27,163][INFO ][o.e.d.DiscoveryModule    ] [9pw6Qxm] using discovery type [zen]
+[2018-06-25T16:30:28,334][INFO ][o.e.n.Node               ] initialized
+[2018-06-25T16:30:28,334][INFO ][o.e.n.Node               ] [9pw6Qxm] starting ...
+[2018-06-25T16:30:30,505][INFO ][o.e.t.TransportService   ] [9pw6Qxm] publish_address {127.0.0.1:9300}, bound_addresses {127.0.0.1:9300}, {[::1]:9300}
+[2018-06-25T16:30:33,695][INFO ][o.e.c.s.ClusterService   ] [9pw6Qxm] new_master {9pw6Qxm}{9pw6QxmEQDyXUD5SbuUaqQ}{0iD6KbG2QSmebcrkdGFpRg}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2018-06-25T16:30:34,665][INFO ][o.e.g.GatewayService     ] [9pw6Qxm] recovered [4] indices into cluster_state
+[2018-06-25T16:30:35,372][INFO ][o.e.h.n.Netty4HttpServerTransport] [9pw6Qxm] publish_address {127.0.0.1:9200}, bound_addresses {127.0.0.1:9200}, {[::1]:9200}
+[2018-06-25T16:30:35,372][INFO ][o.e.n.Node               ] [9pw6Qxm] started
+[2018-06-25T16:30:40,172][INFO ][o.e.c.r.a.AllocationService] [9pw6Qxm] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[.kibana][0], [usping][0]] ...]).
+[2018-06-25T17:05:12,859][INFO ][o.e.b.Bootstrap          ] running graceful exit on windows
+[2018-06-25T17:05:12,930][INFO ][o.e.n.Node               ] [9pw6Qxm] stopping ...
+[2018-06-25T17:05:14,261][INFO ][o.e.n.Node               ] [9pw6Qxm] stopped
+[2018-06-25T17:05:14,264][INFO ][o.e.n.Node               ] [9pw6Qxm] closing ...
+[2018-06-25T17:05:14,343][INFO ][o.e.n.Node               ] [9pw6Qxm] closed
