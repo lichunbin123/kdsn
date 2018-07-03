@@ -81,6 +81,7 @@
                         <div>
                           <span style="color: dimgrey;font-weight: bolder;font-size: 18px" >{{ comment.userName }}</span>: {{ comment.commentContent }}
                           <span style="float: right;color: #d3d3d3">{{ comment.commentDate | timeFilter }}</span>
+                          <span></span>
                         </div>
                         <hr style="border: whitesmoke">
                       </ul>
