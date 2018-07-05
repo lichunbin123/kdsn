@@ -79,7 +79,7 @@
                     <div v-if="item.loading">
                       <ul v-for="comment in item.commentList" style="background: whitesmoke;">
                         <div>
-                          <span style="color: dimgrey;font-weight: bolder;font-size: 18px" >{{ comment.userName }}</span>: {{ comment.commentContent }}
+                          <span style="color: dimgrey;font-weight: bolder;font-size: 18px" >{{ comment.userName }}</span>:  {{ comment.commentContent }}
                           <span style="float: right;color: #d3d3d3">{{ comment.commentDate | timeFilter }}</span>
                         </div>
                         <span></span>
