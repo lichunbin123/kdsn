@@ -1,10 +1,10 @@
 package com.usping.kdsn.auth.controller;
 
-import com.usping.kdsn.auth.service.UserService;
 import com.usping.kdsn.bean.User;
 import com.usping.kdsn.bean.UserWithBLOBs;
+import com.usping.kdsn.service.AuthService;
 import com.usping.kdsn.util.config.ConstantConfig;
-import com.usping.kdsn.util.model.ResultMap;
+import com.usping.kdsn.util.model.ResponseMessage;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.slf4j.Logger;
@@ -31,57 +31,28 @@ import java.util.WeakHashMap;
 public class AuthController {
     private final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
-    private final UserService userService;
+    private final AuthService authService;
 
     @Autowired
-    public AuthController(UserService userService) {
-        this.userService = userService;
+    public AuthController(AuthService authService) {
+        this.authService = authService;
     }
 
-    private String generateToken(String username) {
-        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
-
-        byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(ConstantConfig.getTokenPass());
-        Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
-
-        String jwtToken;
-
-        jwtToken = Jwts.builder()
-                .setSubject(username)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .signWith(signatureAlgorithm, signingKey)
-                .compact();
-        return jwtToken;
-    }
-
+    /**
+     * 登录
+     * @param loginUser 传入信息
+     * @return resultMap， 包括成功状态，如果成功，还应该提供token给用户
+     */
     @CrossOrigin
     @RequestMapping("/login")
     @ResponseBody
-    public ResponseEntity<HashMap<String,Object>> login(@RequestBody User loginUser) {
+    public ResponseEntity<ResponseMessage> login(@RequestBody User loginUser) {
+        ResponseMessage responseMessage = authService.verifyPassword(loginUser);
 
 
-        if (null == loginUser.getUsername() || null == loginUser.getPassword()) {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        } else {
-            try {
-                User user = userService.findByUsername(loginUser.getUsername());
-                if (!loginUser.getPassword().equals(user.getPassword())) {
-                    return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-                } else {
-
-                    HashMap<String,Object> resultMap = new HashMap<>(2);
-
-                    resultMap.put("token",generateToken(loginUser.getUsername()));
-                    resultMap.put("authorizedUser",user);
-
-                    return new ResponseEntity<>(resultMap, HttpStatus.OK);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-            }
-        }
+       return new ResponseEntity<>(responseMessage, responseMessage.getCode());
     }
+
 
     /**
      * 无论成功与否， 都应该返回一个map， 来告知操作成功状态
@@ -91,25 +62,31 @@ public class AuthController {
     @CrossOrigin
     @PostMapping("/register")
     @ResponseBody
-    public ResponseEntity<Map<String, Object>> register(@RequestBody UserWithBLOBs user) {
-        logger.info("load the information of user is" + user.toString());
-        WeakHashMap<String, Object> resultMap = new WeakHashMap<>(3);
-    /*
-      1. make sure that no repeat userName
-      2. Then insert
-     */
-        try {
-            if (null != userService.findByUsername(user.getUsername())){
-                return new ResponseEntity<>(HttpStatus.CONFLICT);
-            }
-            userService.saveInstance(user);
-            resultMap.put("token", this.generateToken(user.getUsername()));
-            resultMap.put("authorizedUser",user);
-            return new ResponseEntity<>(resultMap,HttpStatus.ACCEPTED);
+    public ResponseEntity<ResponseMessage> signup(@RequestBody User registerUser) {
+        ResponseMessage responseMessage = authService.register(registerUser);
 
-        }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        }
+        return new ResponseEntity<>(responseMessage, responseMessage.getCode());
     }
+//    public ResponseEntity<Map<String, Object>> register(@RequestBody UserWithBLOBs user) {
+//        logger.info("load the information of user is" + user.toString());
+//        WeakHashMap<String, Object> resultMap = new WeakHashMap<>(3);
+//    /*
+//      1. make sure that no repeat userName
+//      2. Then insert
+//     */
+//        try {
+//            if (null != userService.findByUsername(user.getUserAccount())){
+//                return new ResponseEntity<>(HttpStatus.CONFLICT);
+//            }
+//            userService.saveInstance(user);
+//            resultMap.put("token", this.generateToken(user.getUserAccount()));
+//            resultMap.put("authorizedUser",user);
+//            return new ResponseEntity<>(resultMap,HttpStatus.ACCEPTED);
+//
+//        }catch (Exception e){
+//            logger.info(e.toString());
+//            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+//        }
+//    }
 
 }

@@ -1,6 +1,7 @@
 package com.usping.kdsn.util.filter;
 
 import com.usping.kdsn.util.config.ConstantConfig;
+import com.usping.kdsn.util.tools.TokenTool;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
@@ -12,6 +13,7 @@ import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
 
 import io.jsonwebtoken.MalformedJwtException;
+import jdk.nashorn.internal.parser.Token;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,10 +51,7 @@ public class AuthCheckFilter implements Filter {
 
         try{
             logger.info("获取token："+req.getHeader("Authorization"));
-            Claims claims = Jwts.parser()
-                    .setSigningKey(DatatypeConverter.parseBase64Binary(ConstantConfig.getTokenPass()))
-                    .parseClaimsJws(req.getHeader("Authorization")).getBody();
-
+            TokenTool.parseToken(req.getHeader("Authorization"));
         }catch (IllegalArgumentException | MalformedJwtException e) {
             res.sendError(HttpServletResponse.SC_NOT_FOUND);
             logger.warn("获取token异常, 禁止请求");

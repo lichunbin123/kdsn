@@ -1,6 +1,7 @@
 package com.usping.kdsn.util.model;
 
 import lombok.*;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -15,26 +16,25 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @ToString
-public class ResponseObject<T> {
+public class ResponseMessage {
 
     /**
      * 告知查询成功与否
      */
-    private boolean success;
+    private Boolean success;
 
     /**
-     * 如失败，则应告知失败原因
+     * 如失败，则告知失败原因
      */
     private String message;
 
-    /**
-     * T泛型返回数据
+    /*
+     * 同时返回http状态码
      */
-    private List<T> data;
+    private HttpStatus code;
 
-    /**
-     * 数据数量
+    /*
+     * 如有数据，返回数据
      */
-    private Integer count;
-
+    private List data;
 }

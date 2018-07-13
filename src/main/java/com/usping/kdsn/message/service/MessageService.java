@@ -24,8 +24,8 @@ public class MessageService{
     }
 
 
-    public boolean saveInstance(Message instance) {
-        return messageMapper.insertSelective(instance);
+    public void saveInstance(Message instance) {
+        messageMapper.insertSelective(instance);
     }
 
     public List<Message> selectMessageBySenderAndReceiver(Message instance) {

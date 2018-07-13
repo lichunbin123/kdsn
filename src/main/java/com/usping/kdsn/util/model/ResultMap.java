@@ -1,5 +1,7 @@
 package com.usping.kdsn.util.model;
 
+import lombok.*;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -8,7 +10,13 @@ import java.util.List;
  * @date: 1/12/17
  * description:
  */
-public class ResultMap<K> {
+
+@Builder
+@NoArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
+public class ResultMap {
 
 //    public ResultMap() {
 //    }
@@ -62,34 +70,10 @@ public class ResultMap<K> {
 //        }
 //    }
     private boolean success;
-    private List<K> data;
+    private List data;
     private Integer count;
+    private boolean empty;
 
-    public boolean isSuccess() {
-        return success;
-    }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
 
-    public List<K> getData() {
-        return data;
-    }
-
-    public void setData(List<K> data) {
-        this.data = data;
-    }
-
-    public Integer getCount() {
-        return count;
-    }
-
-    public void setCount(Integer count) {
-        this.count = count;
-    }
-
-    public boolean isEmpty() {
-        return this.count == 0 && this.data.size() == 0;
-    }
 }

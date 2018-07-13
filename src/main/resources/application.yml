@@ -1,18 +1,10 @@
 spring:
   datasource:
     name: Develop
-    url: jdbc:mysql://127.0.0.1:3306/usping
+    url: jdbc:mysql://127.0.0.1:3306/usping?useSSL=true
     username: ning
     password: Bankokin6.9
     driver-class-name: com.mysql.jdbc.Driver
-  mail:
-    host: smtp.qq.com
-    username: 598850098@qq.com
-    password: ldygdifmueyobbii
-    properties.mail.smtp.auth: true
-    properties.mail.smtp.starttls.enable: true
-    properties.mail.smtp.starttls.required: true
-    port: 25
   mvc:
     throw-exception-if-no-handler-found: true
   resources:
@@ -33,15 +25,19 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
 logging:
   level:
-    org.springframework: WARN
-#    com.spring.ibatis.UserMapper: DEBUG
-    com.usping.kdsn.mapper.UserMapper: DEBUG
-    com.usping.kdsn.mapper.CommentMapper: DEBUG
-    com.usping.kdsn.mapper.TaskMapper: DEBUG
-    com.usping.kdsn.mapper.MenuMapper: DEBUG
-    com.usping.kdsn.mapper.TransactionMapper: DEBUG
-    com.usping.kdsn.mapper.MessageMapper: DEBUG
-    com.usping.kdsn.mapper.NoteMapper: DEBUG
-    mapper.MessageMapper: DEBUG
-debug: true
+    org.springframework: INFO
+    com.usping.kdsn.mapper.UserMapper: Info
+    com.usping.kdsn.mapper.MessageMapper: Info
+#    com.usping.kdsn.mapper.CommentMapper: DEBUG
+#    com.usping.kdsn.mapper.TaskMapper: DEBUG
+#    com.usping.kdsn.mapper.MenuMapper: DEBUG
+#    com.usping.kdsn.mapper.TransactionMapper: DEBUG
+#    com.usping.kdsn.mapper.MessageMapper: DEBUG
+#    com.usping.kdsn.mapper.NoteMapper: DEBUG
+#    mapper.MessageMapper: DEBUG
+    com.usping.kdsn: INFO
+    root: INFO
+  file: log/logfile.log
+debug: false
+
 #  file: logs/spring-boot-logging.log

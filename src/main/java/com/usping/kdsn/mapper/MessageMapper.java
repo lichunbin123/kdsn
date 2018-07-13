@@ -3,9 +3,11 @@ package com.usping.kdsn.mapper;
 import com.usping.kdsn.bean.Message;
 import com.usping.kdsn.bean.Transaction;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public interface MessageMapper {
 
     /**
@@ -20,7 +22,7 @@ public interface MessageMapper {
      * @param record
      * @return
      */
-    boolean insertSelective(Message record) throws DataAccessException;
+    void insertSelective(Message record) throws DataAccessException;
 
     /**
      * select by message id

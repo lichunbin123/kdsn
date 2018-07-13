@@ -22,17 +22,11 @@ public class AuthCheckInterceptor extends HandlerInterceptorAdapter {
         request.setAttribute("Accept","application/json");
         request.setAttribute("Content","application/json");
         Map<String,String[]> map = request.getParameterMap();
-        for(String k:map.keySet()){
-            System.out.println(k);
-            System.out.println("lanjie");
-        }
-        System.out.println(map.toString());
         return super.preHandle(request, response, handler);
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        System.out.println("拦截成功！");
         super.postHandle(request, response, handler, modelAndView);
     }
 

@@ -47,7 +47,7 @@ public class MessageController {
 
     /**
      * 消息接受，并存储
-     * @param instance
+     * @param instance 收到的消息
      * @return 返回成功状态码
      */
     @CrossOrigin
@@ -55,7 +55,6 @@ public class MessageController {
     @ResponseBody
     public ResponseEntity<?> sendMessage(@RequestBody Message instance) {
         // para debug, should delete soon
-        System.out.println(instance.toString());
         try {
             messageService.saveInstance(instance);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);

@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -47,9 +48,16 @@ public class NoteRestController {
 //            e.printStackTrace();
 //            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 //        }
+//        List<Note> noteList = noteService.findByNewsIdAndUserId(note);
+
+        ResultMap resultMap = new ResultMap();
+        resultMap = resultMap.builder().success(new Boolean(true)).empty(false).build();
+
+        return new ResponseEntity<>(resultMap, HttpStatus.OK);
+
 
         // TODO: 18-4-9 将返回修改为Result
-        return null;
+//        return null;
     }
 
     @CrossOrigin
