@@ -10,8 +10,11 @@
       <el-form ref="registerForm" :model="registerForm" :rules="rules" label-position="left" label-width="80px"
                class="demo-ruleForm login-container">
         <h3 class="title" style="text-align: center">系统注册</h3>
-        <el-form-item label="用户名" prop="username">
+        <el-form-item label="账户" prop="username">
           <el-input v-model="registerForm.username" placeholder="请输入用户名称，由英文和数字组成"></el-input>
+        </el-form-item>
+        <el-form-item label="用户昵称" prop="name">
+          <el-input v-model="registerForm.name" placeholder="请输入用户名称，由英文和数字组成"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
           <el-input type="password" v-model="registerForm.password" placeholder="请输入密码，由8位到12位英文和数字组成"></el-input>
@@ -124,7 +127,6 @@
               this.registerForm
             )
               .then(function (response) {
-                console.log('返回的httpcode是----')
                 console.log(response.status)
                 varThis.$cookie.set('token', response.data.token, { expires: '100day' })
                 varThis.$cookie.set('authorizedUser', JSON.stringify(response.data.authorizedUser), { expires: '10min' })

@@ -257,8 +257,8 @@
           this.$cookie.get('token'),
           {
             newsId: item.id,
-            userId: JSON.parse(this.$cookie.get('authorizedUser')).id,
-            userName: JSON.parse(this.$cookie.get('authorizedUser')).username,
+            userId: JSON.parse(this.$cookie.get('authorizedUser')).userId,
+            userName: JSON.parse(this.$cookie.get('authorizedUser')).userNickname,
             commentContent: item.commentArea
           })
           .then(({
@@ -267,8 +267,8 @@
             this.$set(item, 'submitCommentSucceed', true)
             item.commentList.push({
               newsId: item.id,
-              userId: JSON.parse(this.$cookie.get('authorizedUser')).id,
-              userName: JSON.parse(this.$cookie.get('authorizedUser')).username,
+              userId: JSON.parse(this.$cookie.get('authorizedUser')).userId,
+              userName: JSON.parse(this.$cookie.get('authorizedUser')).userNickname,
               commentContent: item.commentArea,
               commentDate: Date.parse(new Date())
             })
@@ -293,7 +293,7 @@
         api.getNoteWithNewsIdAndUserId(
           this.$cookie.get('token'),
           item.id,
-          JSON.parse(this.$cookie.get('authorizedUser')).id
+          JSON.parse(this.$cookie.get('authorizedUser')).userId
         )
           .then(({
                    data

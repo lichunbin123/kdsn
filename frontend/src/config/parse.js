@@ -4,7 +4,6 @@ export default {
     data.forEach(function (value) {
       // console.log(typeof value._source)
       value._source['id'] = value._id
-      console.log('-----------------------------------------------------------------------' + value._source['id'])
       returnData.push(value._source)
     })
     return returnData

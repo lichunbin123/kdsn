@@ -24,7 +24,7 @@
       </el-submenu>
       <el-menu-item v-if="user" index="3" style="float: right" @click="openPicker">
         <el-badge :value="200" :max="99" class="item">
-          欢迎您,{{ user.name }}!
+          欢迎您,{{ user.userNickname }}!
         </el-badge>
       </el-menu-item>
       <el-menu-item v-else="user" index="3" style="float: right">

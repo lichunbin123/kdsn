@@ -6,7 +6,7 @@
 
 
       <div v-for="item in messageList">
-        <div v-if="item.senderUsername == sender">
+        <div v-if="item.senderUsername && item.senderUsername === sender">
           <el-row>
             <el-card style="float: right;background-color: #56ff36">
               <p style="margin: 0px; width: 200px">{{ item.messageContent }}</p>
@@ -45,6 +45,7 @@
 
 <script>
   import messageApi from '../../api/message'
+  import {mapMutations, mapGetters, mapActions} from 'vuex'
 
   export default {
     name: 'chat-board',
@@ -52,72 +53,87 @@
       'receiver': String,
       'dialogVisible': Boolean
     },
-    watch: {
-      dialogVisible (val) {
-        this.localVisible = val
-        console.log('change listened')
-      },
-      localVisible (val) {
-        if (val === true) {
-          this.fetchMessage()
-          return
-        }
-        this.$emit('on-visible-change', val)
-      }
-    },
-    data () {
-      return {
-        localVisible: this.dialogVisible,
-        chatContent: '',
-        messageList: []
-      }
-    },
     computed: {
       board_title: function () {
         return '您当前正在与' + this.receiver + '交流'
       },
       sender: function () {
-        return JSON.parse(this.$cookie.get('authorizedUser')).username
+        return JSON.parse(this.$cookie.get('authorizedUser')).userAccount
+      },
+      currentSendMessage: function () {
+        return {
+          senderAccount: this.sender,
+          receiverAccount: this.receiver,
+          messageContent: this.chatContent
+        }
+      },
+      ...mapGetters('chat', {
+        messageList: 'currentMessageList'
+      }),
+      ...mapActions('chat', [
+        'pushIntoMessage',
+        'setChatWith'
+      ]),
+    },
+    watch: {
+      dialogVisible(val) {
+        this.localVisible = val
+        console.log('change listened')
+      },
+      localVisible(val) {
+        if (val === true) {
+          console.log('正在获取')
+          this.fetchMessage()
+          this.clearInput()
+          this.$store.dispatch('chat/setChatWith', {
+            'chatWithNow': this.receiver
+          })
+          console.log('获取成功')
+          console.log('得到的数据是' + this.messageList)
+          return
+        }
+        this.$emit('on-visible-change', val)
       }
     },
-    methods: {
-      sendMessage: function () {
-        var varThis = this
-        messageApi.sendMessage(
-          this.$cookie.get('token'),
-          {
-            senderUsername: this.sender,
-            receiverUsername: this.receiver,
-            messageContent: this.chatContent
-          }
-        ).then(function (response) {
-          varThis.messageList.push({
-            senderUsername: varThis.sender,
-            receiverUsername: varThis.receiver,
-            messageContent: varThis.chatContent
-          })
-          varThis.chatContent = ''
-        }).catch(function (error) {
-          console.log(error)
-          varThis.chatContent = ''
-          varThis.$message('当前网络错误，消息发送失败')
-        })
+      data() {
+        return {
+          localVisible: this.dialogVisible,
+          chatContent: ''
+        }
       },
-      fetchMessage: function () {
-        var varThis = this
-        messageApi.fetchMessage(
-          this.$cookie.get('token'),
-          {
-            senderUsername: this.sender,
-            receiverUsername: this.receiver
-          }
-        ).then(function (response) {
-          varThis.messageList = response.data.data
-          console.log(response)
-        }).catch(function (error) {
-          console.log(error)
-        })
+      created: function () {
+        if (messageApi.getConnectStatus() === false) {
+          messageApi.connect()
+        }
+        console.log('The data is ' + this.messageList)
+      },
+      methods: {
+        pushIntoList: function () {
+          this.$store.dispatch('chat/pushIntoMessage', this.currentSendMessage)
+        },
+        clearInput: function () {
+          this.chatContent = ''
+        },
+        sendMessage: function () {
+          messageApi.sendMessage(
+            this.currentSendMessage
+          )
+          console.log('current message send is' + this.currentSendMessage)
+          this.pushIntoList()
+          // .catch(function (error) {
+          //   console.log(error)
+          //   varThis.chatContent = ''
+          //   varThis.$message('当前网络错误，消息发送失败')
+          // })
+        },
+        fetchMessage: function () {
+          messageApi.fetchMessage(
+            this.currentSendMessage
+          )
+        },
+        ...mapActions('chat', [
+          'chat/pushIntoMessage'
+        ])
       }
     }
-  }
 </script>

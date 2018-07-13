@@ -5,11 +5,11 @@
       <el-form ref="dynamicValidateForm" :model="dynamicValidateForm" :rules="rules" label-position="left" label-width="0px"
                class="demo-ruleForm login-container">
         <h3 class="title" style="text-align: center">系统登录</h3>
-        <el-form-item prop="username">
-          <el-input type="text" v-model="dynamicValidateForm.username" :rules="rules.username" auto-complete="off" placeholder="账号"></el-input>
+        <el-form-item prop="userAccount">
+          <el-input type="text" v-model="dynamicValidateForm.userAccount" :rules="rules.userAccount" auto-complete="off" placeholder="账号"></el-input>
         </el-form-item>
-        <el-form-item prop="password">
-          <el-input type="password" v-model="dynamicValidateForm.password" :rules="rules.password" auto-complete="off" placeholder="密码"></el-input>
+        <el-form-item prop="userPassword">
+          <el-input type="userPassword" v-model="dynamicValidateForm.userPassword" :rules="rules.userPassword" auto-complete="off" placeholder="密码"></el-input>
         </el-form-item>
         <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox>
         <el-form-item style="width:100%;">
@@ -49,14 +49,14 @@
     data () {
       return {
         dynamicValidateForm: {
-          username: '',
-          password: ''
+          userAccount: '',
+          userPassword: ''
         },
         rules: {
-          username: [
+          userAccount: [
             {required: true, message: '请输入账号', trigger: 'blur'}
           ],
-          password: [
+          userPassword: [
             {required: true, message: '请输入密码', trigger: 'blur'}
           ]
         },
@@ -75,8 +75,9 @@
                 console.log('401')
                 console.log(this.$cookie.get('token'))
               } else {
-                this.$cookie.set('token', data.token, { expires: '100day' })
-                this.$cookie.set('authorizedUser', JSON.stringify(data.authorizedUser), { expires: '10min' })
+                console.log('当前得到的数据是' + data)
+                this.$cookie.set('token', data.data[0].authorizationToken, { expires: '100day' })
+                this.$cookie.set('authorizedUser', JSON.stringify(data.data[0]), { expires: '10min' })
 //                let redirect = decodeURIComponent('/index')
 //                this.$router.push({
 //                  path: redirect

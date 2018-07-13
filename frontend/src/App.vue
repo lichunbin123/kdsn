@@ -5,8 +5,6 @@
         <router-view/>
       </transition>
     </p>
-    <!--<router-link to="/home">家</router-link>-->
-    <!--<router-link to="/hello">欢迎页</router-link>-->
   </div>
 </template>
 

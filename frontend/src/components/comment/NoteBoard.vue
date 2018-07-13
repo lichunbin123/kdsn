@@ -76,7 +76,7 @@
         noteBefore: false,
         noteData: {
           noteContent: '',
-          userId: JSON.parse(this.$cookie.get('authorizedUser')).id,
+          userId: JSON.parse(this.$cookie.get('authorizedUser')).userId,
           newsId: this.currentNewsId,
           publicState: 0
         },
@@ -104,7 +104,7 @@
         api.getNoteWithNewsIdAndUserId(
           this.$cookie.get('token'),
           this.currentNewsId,
-          JSON.parse(this.$cookie.get('authorizedUser')).id
+          JSON.parse(this.$cookie.get('authorizedUser')).userId
         )
           .then(({
                    data

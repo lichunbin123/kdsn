@@ -8,6 +8,8 @@ import VueCookie from 'vue-cookie'
 import VueParticles from 'vue-particles'
 import VueForm from 'vue-form'
 
+import store from './store'
+
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -28,9 +30,10 @@ Vue.$http = axios
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-var vue = new Vue({
+let vue = new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App,
     UspingFooter,
