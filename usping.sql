@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: usping
 -- ------------------------------------------------------
--- Server version	5.7.22-0ubuntu18.04.1
+-- Server version	5.7.22-0ubuntu18.04.1-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -32,7 +32,7 @@ CREATE TABLE `comment` (
   `news_id` char(255) DEFAULT NULL,
   PRIMARY KEY (`comment_id`),
   KEY `fk_uid_comment` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (20,6,'rh5555',NULL,'1527492600919','??','AWEO35nWHB4m_dAeBhwp');
+INSERT INTO `comment` VALUES (20,6,'rh5555',NULL,'1527492600919','??','AWEO35nWHB4m_dAeBhwp'),(21,NULL,NULL,NULL,'1531381702051','??','AWEO35nWHB4m_dAeBhwp');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,16 +137,16 @@ DROP TABLE IF EXISTS `message`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `message` (
-  `message_id` int(22) NOT NULL,
+  `message_id` int(22) NOT NULL AUTO_INCREMENT,
   `sender_id` int(22) DEFAULT NULL,
   `receiver_id` int(22) DEFAULT NULL,
   `message_content` mediumtext,
   `delivery_status` int(4) DEFAULT NULL,
   `send_time` int(22) DEFAULT NULL,
-  `sender_username` varchar(255) DEFAULT NULL,
-  `receiver_username` varchar(255) DEFAULT NULL,
+  `sender_account` varchar(255) DEFAULT NULL,
+  `receiver_account` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`message_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,6 +155,7 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
+INSERT INTO `message` VALUES (45,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(46,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(47,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(48,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(49,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(50,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(51,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(52,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(53,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(54,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(55,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(56,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(57,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(58,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(59,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(60,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(61,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(62,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(63,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(64,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(65,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(66,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(67,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(68,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(69,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(70,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(71,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(72,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(73,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(74,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(75,NULL,NULL,'弟弟',NULL,NULL,'rh5555','admin'),(76,NULL,NULL,'??',NULL,NULL,'rh5555','admin'),(77,NULL,NULL,'??',NULL,NULL,'rh5555','admin'),(78,NULL,NULL,'??',NULL,NULL,'rh5555','admin'),(79,NULL,NULL,'??',NULL,NULL,'rh5555','admin'),(80,NULL,NULL,'??',NULL,NULL,'rh5555','admin'),(81,NULL,NULL,'??',NULL,NULL,'rh5555','admin');
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -397,23 +398,21 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(10) NOT NULL,
-  `name` varchar(10) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `phone` varchar(20) NOT NULL,
-  `industry` varchar(50) DEFAULT NULL,
-  `assortment` varchar(255) DEFAULT NULL,
-  `reward_points` float(11,0) DEFAULT NULL,
-  `userrole` int(1) DEFAULT NULL,
-  `joblocation` varchar(50) DEFAULT NULL,
-  `school` varchar(50) DEFAULT NULL,
-  `workexperience` text,
-  `projectexperience` text,
-  `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_account` varchar(255) NOT NULL,
+  `user_nickname` varchar(2000) NOT NULL,
+  `user_email` varchar(255) NOT NULL,
+  `user_phone` varchar(255) DEFAULT NULL,
+  `user_industry` varchar(255) DEFAULT NULL,
+  `user_genre` varchar(255) DEFAULT NULL,
+  `user_role` int(1) DEFAULT NULL,
+  `user_location` varchar(50) DEFAULT NULL,
+  `user_school` varchar(50) DEFAULT NULL,
+  `work_experience` text,
+  `project_experience` text,
+  `user_password` varchar(255) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -422,7 +421,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'zwc1234444','张维程','19348243@qq.com','15797655753','激光','仪器',0,0,NULL,NULL,NULL,NULL,'12'),(2,'rh1234','饶泓院长','19348243@qq.com','15797655753','教育/科研','激光',0,0,NULL,NULL,NULL,NULL,'12'),(3,'zwc234','张三','19348243@qq.com','15797655753','电信/保险','仪器',0,0,NULL,NULL,NULL,NULL,'12'),(5,'rh2222','张四','19348243@qq.com','15797655753','医药/生物','材料',0,0,NULL,NULL,NULL,NULL,'12'),(6,'rh5555','饶女士','19348243@qq.com','15797655753','激光','激光',51,0,'南昌大学信息中心','南昌大学','一名优秀的教师1','一名优秀的教师，接手很多项目','12'),(7,'rh6666','张先生','19348243@qq.com','15797655753','计算机','计算机',0,0,NULL,NULL,NULL,NULL,'12'),(8,'rh8888','张十','19348243@qq.com','15797655753','计算机',NULL,0,0,NULL,NULL,NULL,NULL,'12'),(10,'admin','超级管理员','19348243@qq.com','15797655753','22222222','2',0,1,'1','江西南昌大学','','','12'),(15,'wq1234','王琦1','19348243@qq.com','15797655753','激光',NULL,0,0,NULL,NULL,NULL,NULL,'12'),(16,'wq2222','王琦2','19348243@qq.com','15797655753','计算机',NULL,0,0,NULL,NULL,NULL,NULL,'12'),(17,'wq1111','111111','19348243@qq.com','15797655753','计算机',NULL,0,0,NULL,NULL,NULL,NULL,'12'),(18,'wq4444','王琦22','19348243@qq.com','15797655753','计算机',NULL,0,0,NULL,NULL,NULL,NULL,'12'),(19,'wq5555','王琦122','19348243@qq.com','15797655753','激光',NULL,0,0,NULL,NULL,NULL,NULL,'12'),(20,'wq8888','王琦4','19348243@qq.com','15797655753','激光',NULL,0,0,NULL,NULL,NULL,NULL,'12'),(21,'wangning','wangning','598850098@qq.com','18679132292','激光',NULL,0,0,NULL,NULL,NULL,NULL,'12'),(22,'ceshi1','test1','test1@qq.com','13312345677','计算机',NULL,1,0,NULL,NULL,NULL,NULL,'12');
+INSERT INTO `user` VALUES (1,'zwc1234444','张维程','19348243@qq.com','15797655753','激光','仪器',0,NULL,NULL,NULL,NULL,'12'),(2,'rh1234','饶泓院长','19348243@qq.com','15797655753','教育/科研','激光',0,NULL,NULL,NULL,NULL,'12'),(3,'zwc234','张三','19348243@qq.com','15797655753','电信/保险','仪器',0,NULL,NULL,NULL,NULL,'12'),(5,'rh2222','张四','19348243@qq.com','15797655753','医药/生物','材料',0,NULL,NULL,NULL,NULL,'12'),(6,'rh5555','饶女士','19348243@qq.com','15797655753','激光','激光',0,'南昌大学信息中心','南昌大学','一名优秀的教师1','一名优秀的教师，接手很多项目','12'),(7,'rh6666','张先生','19348243@qq.com','15797655753','计算机','计算机',0,NULL,NULL,NULL,NULL,'12'),(8,'rh8888','张十','19348243@qq.com','15797655753','计算机',NULL,0,NULL,NULL,NULL,NULL,'12'),(10,'admin','超级管理员','19348243@qq.com','15797655753','22222222','2',1,'1','江西南昌大学','','','12'),(15,'wq1234','王琦1','19348243@qq.com','15797655753','激光',NULL,0,NULL,NULL,NULL,NULL,'12'),(16,'wq2222','王琦2','19348243@qq.com','15797655753','计算机',NULL,0,NULL,NULL,NULL,NULL,'12'),(17,'wq1111','111111','19348243@qq.com','15797655753','计算机',NULL,0,NULL,NULL,NULL,NULL,'12'),(18,'wq4444','王琦22','19348243@qq.com','15797655753','计算机',NULL,0,NULL,NULL,NULL,NULL,'12'),(19,'wq5555','王琦122','19348243@qq.com','15797655753','激光',NULL,0,NULL,NULL,NULL,NULL,'12'),(20,'wq8888','王琦4','19348243@qq.com','15797655753','激光',NULL,0,NULL,NULL,NULL,NULL,'12'),(21,'wangning','wangning','598850098@qq.com','18679132292','激光',NULL,0,NULL,NULL,NULL,NULL,'12'),(22,'ceshi1','test1','test1@qq.com','13312345677','计算机',NULL,0,NULL,NULL,NULL,NULL,'12');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -435,4 +434,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-02 14:24:26
+-- Dump completed on 2018-07-13 14:03:31
