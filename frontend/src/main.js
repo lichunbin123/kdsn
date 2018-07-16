@@ -16,6 +16,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 import UspingFooter from './components/layout/footer.vue'
 import UspingHeader from './components/layout/header'
 
+import messageApi from './api/message'
+
+messageApi.connect()
+
 Vue.use(ElementUI)
 Vue.use(VueCookie)
 Vue.use(VueParticles)

@@ -95,45 +95,45 @@
         this.$emit('on-visible-change', val)
       }
     },
-      data() {
-        return {
-          localVisible: this.dialogVisible,
-          chatContent: ''
-        }
-      },
-      created: function () {
-        if (messageApi.getConnectStatus() === false) {
-          messageApi.connect()
-        }
-        console.log('The data is ' + this.messageList)
-      },
-      methods: {
-        pushIntoList: function () {
-          this.$store.dispatch('chat/pushIntoMessage', this.currentSendMessage)
-        },
-        clearInput: function () {
-          this.chatContent = ''
-        },
-        sendMessage: function () {
-          messageApi.sendMessage(
-            this.currentSendMessage
-          )
-          console.log('current message send is' + this.currentSendMessage)
-          this.pushIntoList()
-          // .catch(function (error) {
-          //   console.log(error)
-          //   varThis.chatContent = ''
-          //   varThis.$message('当前网络错误，消息发送失败')
-          // })
-        },
-        fetchMessage: function () {
-          messageApi.fetchMessage(
-            this.currentSendMessage
-          )
-        },
-        ...mapActions('chat', [
-          'chat/pushIntoMessage'
-        ])
+    data() {
+      return {
+        localVisible: this.dialogVisible,
+        chatContent: ''
       }
+    },
+    created: function () {
+      if (messageApi.getConnectStatus() === false) {
+        messageApi.connect()
+      }
+      console.log('The data is ' + this.messageList)
+    },
+    methods: {
+      pushIntoList: function () {
+        this.$store.dispatch('chat/pushIntoMessage', this.currentSendMessage)
+      },
+      clearInput: function () {
+        this.chatContent = ''
+      },
+      sendMessage: function () {
+        messageApi.sendMessage(
+          this.currentSendMessage
+        )
+        console.log('current message send is' + this.currentSendMessage)
+        this.pushIntoList()
+        // .catch(function (error) {
+        //   console.log(error)
+        //   varThis.chatContent = ''
+        //   varThis.$message('当前网络错误，消息发送失败')
+        // })
+      },
+      fetchMessage: function () {
+        messageApi.fetchMessage(
+          this.currentSendMessage
+        )
+      },
+      ...mapActions('chat', [
+        'chat/pushIntoMessage'
+      ])
     }
+  }
 </script>

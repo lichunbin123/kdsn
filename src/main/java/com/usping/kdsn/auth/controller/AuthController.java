@@ -1,27 +1,14 @@
 package com.usping.kdsn.auth.controller;
 
 import com.usping.kdsn.bean.User;
-import com.usping.kdsn.bean.UserWithBLOBs;
 import com.usping.kdsn.service.AuthService;
-import com.usping.kdsn.util.config.ConstantConfig;
 import com.usping.kdsn.util.model.ResponseMessage;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import javax.crypto.spec.SecretKeySpec;
-import javax.xml.bind.DatatypeConverter;
-import java.security.Key;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.WeakHashMap;
 
 /**
  * Created by @author stan on 17-7-2.
@@ -55,14 +42,14 @@ public class AuthController {
 
 
     /**
-     * 无论成功与否， 都应该返回一个map， 来告知操作成功状态
-     * @param user 获取用户注册信息
+     * 账户注册，无论成功与否， 都应该返回一个map， 来告知操作成功状态
+     * @param registerUser 获取用户注册信息
      * @return resultMap， 包括成功状态，如果成功，还应该提供token给用户
      */
     @CrossOrigin
     @PostMapping("/register")
     @ResponseBody
-    public ResponseEntity<ResponseMessage> signup(@RequestBody User registerUser) {
+    public ResponseEntity<ResponseMessage> signUp(@RequestBody User registerUser) {
         ResponseMessage responseMessage = authService.register(registerUser);
 
         return new ResponseEntity<>(responseMessage, responseMessage.getCode());

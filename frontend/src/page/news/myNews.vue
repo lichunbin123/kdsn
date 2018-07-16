@@ -12,10 +12,9 @@
                 <el-card class="box-card">
                   <div slot="header" class="clearfix">
                     <span><a :href='item.source_url'>{{item.news_title}}</a></span>
-                    <div style="float: right">{{item.source_site}}</div>
+                    <div style="float: right">信息来源:{{item.source_site}}</div>
                     <el-button v-if="currentUser" @click="openChatboard(item)">联系作者</el-button>
                     <div class="block" style="float: right">
-                      <el-rate/>
                     </div>
                   </div>
                   <div>

@@ -6,7 +6,7 @@ Front framework: Vue, mvvm
 
 UI framework: Element-UI
 
-Back end framework: Springboot y mybatis
+Back end framework: Springboot & mybatis
 
 Database: Maradb
 
@@ -27,7 +27,7 @@ in Root dir, install jar dependencies by maven
 
 ``` $ mvn install ```
 
-**Please modify your maven repository to aliyun maven repo, which helps you to build successful and speed up processing.**
+**Please modify your maven repository to aliyun maven repo, which could helps you to build successful and speed up processing.**
 
 Entonces, cd to the frontend dir and install js dependencies by npm.
 
@@ -48,12 +48,12 @@ and execute
 ```sql
 $ create database usping;
 $ use usping;
-$ source rh.sql;
+$ source usping.sql;
 ```
 
 rh.sql is in this repository's root directory.
 
-Make sure the path of rh.sql, check with $(pwd) or you should execute with
+Make sure the path of usping.sql, check with $(pwd) or you should execute with
 
 ```
 $ source <ABSOLUTE_PATH_OF_SQLFILE>/rh.sql;

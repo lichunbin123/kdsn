@@ -13,6 +13,7 @@
               <el-input
                 placeholder="请输入搜索内容"
                 v-model="searchText"
+                @keyup.enter.native="searchRedirect"
                 prefix-icon="el-icon-search">
               </el-input>
             </el-col>

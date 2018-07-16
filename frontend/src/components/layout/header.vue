@@ -11,7 +11,7 @@
       <el-menu-item index="1" v-if="!isIndex">
         <el-input
           v-model="localInput"
-          @keyup.enter.native="listenEnter"
+          @keyup.enter.native="emitSearch"
           type="text"
           placeholder="请输入搜索内容">
         </el-input>
