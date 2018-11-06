@@ -1,8 +1,8 @@
 spring:
   datasource:
     name: Develop
-    url: jdbc:mysql://127.0.0.1:3306/usping?useSSL=true
-    username: ning
+    url: jdbc:mysql://127.0.0.1:3306/usping?useSSL=true&useUnicode=true&characterEncoding=utf8
+    username: root
     password: Bankokin6.9
     driver-class-name: com.mysql.jdbc.Driver
   mvc:
@@ -26,8 +26,8 @@ mybatis:
 logging:
   level:
     org.springframework: INFO
-    com.usping.kdsn.mapper.UserMapper: Info
-    com.usping.kdsn.mapper.MessageMapper: Info
+    com.usping.kdsn.mapper.UserMapper: INFO
+    com.usping.kdsn.mapper.MessageMapper: INFO
 #    com.usping.kdsn.mapper.CommentMapper: DEBUG
 #    com.usping.kdsn.mapper.TaskMapper: DEBUG
 #    com.usping.kdsn.mapper.MenuMapper: DEBUG

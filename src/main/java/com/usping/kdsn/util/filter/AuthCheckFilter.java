@@ -17,6 +17,10 @@ import jdk.nashorn.internal.parser.Token;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author ning
+ * @date 2018年11月02日
+ */
 @WebFilter(filterName = "authCheck", urlPatterns = "/api/*")
 public class AuthCheckFilter implements Filter {
 

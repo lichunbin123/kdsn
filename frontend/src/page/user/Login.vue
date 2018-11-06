@@ -2,14 +2,17 @@
   <div class="login-app">
     <usping-header></usping-header>
     <div style="z-index: 999">
-      <el-form ref="dynamicValidateForm" :model="dynamicValidateForm" :rules="rules" label-position="left" label-width="0px"
+      <el-form ref="dynamicValidateForm" :model="dynamicValidateForm" :rules="rules" label-position="left"
+               label-width="0px"
                class="demo-ruleForm login-container">
         <h3 class="title" style="text-align: center">系统登录</h3>
         <el-form-item prop="userAccount">
-          <el-input type="text" v-model="dynamicValidateForm.userAccount" :rules="rules.userAccount" auto-complete="off" placeholder="账号"></el-input>
+          <el-input type="text" v-model="dynamicValidateForm.userAccount" :rules="rules.userAccount" auto-complete="off"
+                    placeholder="账号"></el-input>
         </el-form-item>
-        <el-form-item prop="userPassword">
-          <el-input type="userPassword" v-model="dynamicValidateForm.userPassword" :rules="rules.userPassword" auto-complete="off" placeholder="密码"></el-input>
+        <el-form-item prop="vanillaPassword">
+          <el-input type="password" v-model="dynamicValidateForm.vanillaPassword" :rules="rules.vanillaPassword"
+                    auto-complete="off" placeholder="密码"></el-input>
         </el-form-item>
         <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox>
         <el-form-item style="width:100%;">
@@ -42,6 +45,7 @@
 <script>
   import api from '../../api/index'
   import UspingHeader from '../../components/layout/header'
+  import md5 from 'md5'
 
   export default {
     components: {UspingHeader},
@@ -50,13 +54,13 @@
       return {
         dynamicValidateForm: {
           userAccount: '',
-          userPassword: ''
+          vanillaPassword: '',
         },
         rules: {
           userAccount: [
             {required: true, message: '请输入账号', trigger: 'blur'}
           ],
-          userPassword: [
+          vanillaPassword: [
             {required: true, message: '请输入密码', trigger: 'blur'}
           ]
         },
@@ -64,28 +68,30 @@
       }
     },
     methods: {
+
       login: function (formName) {
+        this.dynamicValidateForm['userPassword'] = md5(this.dynamicValidateForm['vanillaPassword'])
         this.$refs[formName].validate((valid) => {
           if (valid) {
             let opt = this.dynamicValidateForm
             api.login(opt).then(({
                                    data
                                  }) => {
-              if (data.code === 401) {
-                console.log('401')
-                console.log(this.$cookie.get('token'))
-              } else {
-                console.log('当前得到的数据是' + data)
-                this.$cookie.set('token', data.data[0].authorizationToken, { expires: '100day' })
-                this.$cookie.set('authorizedUser', JSON.stringify(data.data[0]), { expires: '10min' })
+                if (data.code === 401) {
+                  console.log('401')
+                  console.log(this.$cookie.get('token'))
+                } else {
+                  console.log('当前得到的数据是' + data)
+                  this.$cookie.set('token', data.responseData[0].authorizationToken, {expires: '100day'})
+                  this.$cookie.set('authorizedUser', JSON.stringify(data.responseData[0]), {expires: '10min'})
 //                let redirect = decodeURIComponent('/index')
 //                this.$router.push({
 //                  path: redirect
 //                })
-                this.$router.go(-1)
+                  this.$router.go(-1)
+                }
               }
-            }
-            ).catch(function error (e) {
+            ).catch(function error(e) {
               console.log(e + '' + e.message)
               this.$alert('登录失败', '请检查您的输入!', {
                 confirmButtonText: '确定',
@@ -99,7 +105,8 @@
             })
           }
         })
-      },
+      }
+      ,
       redirectToRegister: function () {
         this.$router.push('/register')
       }

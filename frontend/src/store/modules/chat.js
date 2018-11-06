@@ -1,7 +1,7 @@
 import messageApi from '../../api/message'
 
 const state = {
-  messageList: {},
+  messageList: [],
   current: {},
   chatWithNow: null
 }
@@ -38,8 +38,16 @@ const actions = {
   setChatWith ({commit, state}, payload) {
     state.chatWithNow = payload.chatWithNow
   },
+  pushIntoCurrentMessage ({commit, state}, payload) {
+    state.messageList.push(payload)
+  },
   pushIntoMessage ({commit, state}, payload) {
-    state.messageList = payload.messageList
+    // state.messageList = payload.messageList
+    // state.messageList = payload.messageList
+
+    payload.messageList.forEach(function (element) {
+      state.messageList.push(element)
+    })
   }
 }
 

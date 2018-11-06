@@ -1,9 +1,7 @@
 package com.usping.kdsn.bean;
 
 import com.usping.kdsn.util.model.BaseEntity;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * @author ning on 18-3-6.
@@ -12,6 +10,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Message {
 
     public static final Integer STATUS_SEND_FAILED = -1;
@@ -30,17 +30,17 @@ public class Message {
     private Integer messageId;
 
     /**
-     * user id de sender
+     * user id of sender
      */
     private Integer senderId;
 
     /**
-     * user id de receiver
+     * user id of receiver
      */
     private Integer receiverId;
 
     /**
-     * content de the message
+     * content of the message
      */
     private String messageContent;
 

@@ -3,7 +3,7 @@ package com.usping.kdsn.util.model;
 
 
 /**
- * Created by stan on 17-7-2.
+ * Created by ning on 17-7-2.
  */
 public class BaseEntity {
     private Integer pageNumber = 1;

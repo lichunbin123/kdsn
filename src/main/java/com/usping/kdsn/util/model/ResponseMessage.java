@@ -16,25 +16,24 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @ToString
-public class ResponseMessage {
+public class ResponseMessage<T> {
 
     /**
      * 告知查询成功与否
      */
-    private Boolean success;
+    private Boolean successStatus;
 
     /**
      * 如失败，则告知失败原因
      */
-    private String message;
+    private String messageContent;
 
-    /*
-     * 同时返回http状态码
-     */
-    private HttpStatus code;
 
-    /*
-     * 如有数据，返回数据
+    private HttpStatus httpStatus;
+
+
+    /**
+     * 返回数据
      */
-    private List data;
+    private List<T> responseData;
 }

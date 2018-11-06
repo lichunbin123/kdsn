@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
- * Created by stan on 17-7-2.
+ * Created by ning on 17-7-2.
  */
 @Configuration
 public class DefaultViewConfig extends WebMvcConfigurerAdapter {

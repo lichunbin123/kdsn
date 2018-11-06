@@ -6,17 +6,17 @@
 
 
       <div v-for="item in messageList">
-        <div v-if="item.senderUsername && item.senderUsername === sender">
+        <div v-if="item.senderAccount && item.senderAccount === sender">
           <el-row>
             <el-card style="float: right;background-color: #56ff36">
-              <p style="margin: 0px; width: 200px">{{ item.messageContent }}</p>
+              <p style="margin: 0; width: 200px">{{ item.messageContent }}</p>
             </el-card>
           </el-row>
         </div>
         <div v-else>
           <el-row>
             <el-card style="float: left">
-              <p style="margin: 0px; width: 200px">{{ item.messageContent }}</p>
+              <p style="margin: 0; width: 200px">{{ item.messageContent }}</p>
             </el-card>
           </el-row>
         </div>
@@ -45,7 +45,7 @@
 
 <script>
   import messageApi from '../../api/message'
-  import {mapMutations, mapGetters, mapActions} from 'vuex'
+  import { mapGetters, mapActions} from 'vuex'
 
   export default {
     name: 'chat-board',
@@ -71,7 +71,7 @@
         messageList: 'currentMessageList'
       }),
       ...mapActions('chat', [
-        'pushIntoMessage',
+        'pushIntoCurrentMessage',
         'setChatWith'
       ]),
     },
@@ -109,7 +109,7 @@
     },
     methods: {
       pushIntoList: function () {
-        this.$store.dispatch('chat/pushIntoMessage', this.currentSendMessage)
+        this.$store.dispatch('chat/pushIntoCurrentMessage', this.currentSendMessage)
       },
       clearInput: function () {
         this.chatContent = ''
@@ -118,7 +118,6 @@
         messageApi.sendMessage(
           this.currentSendMessage
         )
-        console.log('current message send is' + this.currentSendMessage)
         this.pushIntoList()
         // .catch(function (error) {
         //   console.log(error)
@@ -130,10 +129,7 @@
         messageApi.fetchMessage(
           this.currentSendMessage
         )
-      },
-      ...mapActions('chat', [
-        'chat/pushIntoMessage'
-      ])
+      }
     }
   }
 </script>

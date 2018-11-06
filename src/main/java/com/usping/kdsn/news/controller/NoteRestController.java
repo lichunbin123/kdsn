@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 /**
- * @author: stan
+ * @author: ning
  * @date: 3/12/17
  * description:
  */
@@ -50,8 +50,7 @@ public class NoteRestController {
 //        }
 //        List<Note> noteList = noteService.findByNewsIdAndUserId(note);
 
-        ResultMap resultMap = new ResultMap();
-        resultMap = resultMap.builder().success(new Boolean(true)).empty(false).build();
+        ResultMap resultMap = ResultMap.builder().success(new Boolean(true)).empty(false).build();
 
         return new ResponseEntity<>(resultMap, HttpStatus.OK);
 

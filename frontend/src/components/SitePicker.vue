@@ -23,6 +23,7 @@
             </el-footer>
           </el-container>
         </el-tab-pane>
+        <el-tab-pane label="增加来源"><add-site-tool></add-site-tool></el-tab-pane>
         <el-tab-pane label="我的评论">我的评论</el-tab-pane>
         <el-tab-pane label="我的笔记">我的笔记</el-tab-pane>
         <el-tab-pane label="我的经验">我的经验</el-tab-pane>
@@ -45,9 +46,11 @@
   import ElMain from '../../node_modules/element-ui/packages/main/src/main.vue'
   import parser from '../config/parse'
   import MenuSearcher from '../api/menu/menu'
+  import AddSiteTool from './comment/pickerTools/AddSite'
 
   export default {
     components: {
+      AddSiteTool,
       ElMain,
       ElHeader,
       ElContainer,

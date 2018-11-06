@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Created by @author stan on 17-7-2.
+ * Created by @author ning on 17-7-2.
  */
 @Controller
 @RequestMapping("/auth/")
@@ -37,7 +37,7 @@ public class AuthController {
         ResponseMessage responseMessage = authService.verifyPassword(loginUser);
 
 
-       return new ResponseEntity<>(responseMessage, responseMessage.getCode());
+       return new ResponseEntity<>(responseMessage, responseMessage.getHttpStatus());
     }
 
 
@@ -52,7 +52,7 @@ public class AuthController {
     public ResponseEntity<ResponseMessage> signUp(@RequestBody User registerUser) {
         ResponseMessage responseMessage = authService.register(registerUser);
 
-        return new ResponseEntity<>(responseMessage, responseMessage.getCode());
+        return new ResponseEntity<>(responseMessage, responseMessage.getHttpStatus());
     }
 //    public ResponseEntity<Map<String, Object>> register(@RequestBody UserWithBLOBs user) {
 //        logger.info("load the information of user is" + user.toString());
