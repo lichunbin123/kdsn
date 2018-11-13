@@ -49,6 +49,7 @@
   import AddSiteTool from './comment/pickerTools/AddSite'
 
   export default {
+    name: 'usping-site-picker',
     components: {
       AddSiteTool,
       ElMain,
@@ -57,7 +58,6 @@
       ElFooter,
       ElButton
     },
-    name: 'usping-site-picker',
     props: {
       dialogVisible: Boolean
     },

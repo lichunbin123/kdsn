@@ -16,8 +16,8 @@
         <el-form-item label="用户昵称" prop="name">
           <el-input v-model="registerForm.name" placeholder="请输入用户名称，由英文和数字组成"></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="password">
-          <el-input type="password" v-model="registerForm.password" placeholder="请输入密码，由8位到12位英文和数字组成"></el-input>
+        <el-form-item label="密码" prop="vanillaPassword">
+          <el-input type="password" v-model="registerForm.vanillaPassword" placeholder="请输入密码，由8位到12位英文和数字组成"></el-input>
         </el-form-item>
         <el-form-item label="行业选择">
           <el-select v-model="registerForm.industry">
@@ -67,6 +67,7 @@
 <script>
   import userApi from '../../api/user'
   import UspingHeader from '../../components/layout/header'
+  import md5 from 'md5'
 
   export default {
     components: {UspingHeader},
@@ -84,6 +85,7 @@
           comments: '',
           notValidated: '',
           agree: false,
+          vanillaPassword: '',
           introduction: ''
         },
         rules: {
@@ -120,6 +122,7 @@
     methods: {
       submitRegisterForm: function () {
         var varThis = this
+        this.registerForm['password'] = md5(this.registerForm['vanillaPassword'])
         this.$refs['registerForm'].validate((valid) => {
           if (valid) {
             userApi.submitRegisterForm(

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.22, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.62, for osx10.13 (x86_64)
 --
 -- Host: localhost    Database: usping
 -- ------------------------------------------------------
--- Server version	5.7.22-0ubuntu18.04.1-log
+-- Server version	5.5.62
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -412,7 +412,7 @@ CREATE TABLE `user` (
   `project_experience` text,
   `user_password` varchar(255) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -421,7 +421,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'zwc1234444','张维程','19348243@qq.com','15797655753','激光','仪器',0,NULL,NULL,NULL,NULL,'12'),(2,'rh1234','饶泓院长','19348243@qq.com','15797655753','教育/科研','激光',0,NULL,NULL,NULL,NULL,'12'),(3,'zwc234','张三','19348243@qq.com','15797655753','电信/保险','仪器',0,NULL,NULL,NULL,NULL,'12'),(5,'rh2222','张四','19348243@qq.com','15797655753','医药/生物','材料',0,NULL,NULL,NULL,NULL,'12'),(6,'rh5555','饶女士','19348243@qq.com','15797655753','激光','激光',0,'南昌大学信息中心','南昌大学','一名优秀的教师1','一名优秀的教师，接手很多项目','12'),(7,'rh6666','张先生','19348243@qq.com','15797655753','计算机','计算机',0,NULL,NULL,NULL,NULL,'12'),(8,'rh8888','张十','19348243@qq.com','15797655753','计算机',NULL,0,NULL,NULL,NULL,NULL,'12'),(10,'admin','超级管理员','19348243@qq.com','15797655753','22222222','2',1,'1','江西南昌大学','','','12'),(15,'wq1234','王琦1','19348243@qq.com','15797655753','激光',NULL,0,NULL,NULL,NULL,NULL,'12'),(16,'wq2222','王琦2','19348243@qq.com','15797655753','计算机',NULL,0,NULL,NULL,NULL,NULL,'12'),(17,'wq1111','111111','19348243@qq.com','15797655753','计算机',NULL,0,NULL,NULL,NULL,NULL,'12'),(18,'wq4444','王琦22','19348243@qq.com','15797655753','计算机',NULL,0,NULL,NULL,NULL,NULL,'12'),(19,'wq5555','王琦122','19348243@qq.com','15797655753','激光',NULL,0,NULL,NULL,NULL,NULL,'12'),(20,'wq8888','王琦4','19348243@qq.com','15797655753','激光',NULL,0,NULL,NULL,NULL,NULL,'12'),(21,'wangning','wangning','598850098@qq.com','18679132292','激光',NULL,0,NULL,NULL,NULL,NULL,'12'),(22,'ceshi1','test1','test1@qq.com','13312345677','计算机',NULL,0,NULL,NULL,NULL,NULL,'12');
+INSERT INTO `user` VALUES (1,'zwc1234444','张维程','19348243@qq.com','15797655753','激光','仪器',0,NULL,NULL,NULL,NULL,'c20ad4d76fe97759aa27a0c99bff6710'),(2,'rh1234','饶泓院长','19348243@qq.com','15797655753','教育/科研','激光',0,NULL,NULL,NULL,NULL,'c20ad4d76fe97759aa27a0c99bff6710'),(3,'zwc234','张三','19348243@qq.com','15797655753','电信/保险','仪器',0,NULL,NULL,NULL,NULL,'c20ad4d76fe97759aa27a0c99bff6710'),(5,'rh2222','张四','19348243@qq.com','15797655753','医药/生物','材料',0,NULL,NULL,NULL,NULL,'c20ad4d76fe97759aa27a0c99bff6710'),(6,'rh5555','饶女士','19348243@qq.com','15797655753','激光','激光',0,'南昌大学信息中心','南昌大学','一名优秀的教师1','一名优秀的教师，接手很多项目','c20ad4d76fe97759aa27a0c99bff6710'),(7,'rh6666','张先生','19348243@qq.com','15797655753','计算机','计算机',0,NULL,NULL,NULL,NULL,'c20ad4d76fe97759aa27a0c99bff6710'),(8,'rh8888','张十','19348243@qq.com','15797655753','计算机',NULL,0,NULL,NULL,NULL,NULL,'c20ad4d76fe97759aa27a0c99bff6710'),(10,'admin','超级管理员','19348243@qq.com','15797655753','22222222','2',1,'1','江西南昌大学','','','c20ad4d76fe97759aa27a0c99bff6710'),(15,'wq1234','王琦1','19348243@qq.com','15797655753','激光',NULL,0,NULL,NULL,NULL,NULL,'c20ad4d76fe97759aa27a0c99bff6710'),(16,'wq2222','王琦2','19348243@qq.com','15797655753','计算机',NULL,0,NULL,NULL,NULL,NULL,'c20ad4d76fe97759aa27a0c99bff6710'),(17,'wq1111','111111','19348243@qq.com','15797655753','计算机',NULL,0,NULL,NULL,NULL,NULL,'c20ad4d76fe97759aa27a0c99bff6710'),(18,'wq4444','王琦22','19348243@qq.com','15797655753','计算机',NULL,0,NULL,NULL,NULL,NULL,'c20ad4d76fe97759aa27a0c99bff6710'),(19,'wq5555','王琦122','19348243@qq.com','15797655753','激光',NULL,0,NULL,NULL,NULL,NULL,'c20ad4d76fe97759aa27a0c99bff6710'),(20,'wq8888','王琦4','19348243@qq.com','15797655753','激光',NULL,0,NULL,NULL,NULL,NULL,'c20ad4d76fe97759aa27a0c99bff6710'),(21,'wangning','wangning','598850098@qq.com','18679132292','激光',NULL,0,NULL,NULL,NULL,NULL,'c20ad4d76fe97759aa27a0c99bff6710'),(22,'ceshi1','test1','test1@qq.com','13312345677','计算机',NULL,0,NULL,NULL,NULL,NULL,'c20ad4d76fe97759aa27a0c99bff6710');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -434,4 +434,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-13 14:03:31
+-- Dump completed on 2018-11-06 19:59:25

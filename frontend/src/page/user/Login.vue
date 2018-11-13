@@ -68,7 +68,11 @@
       }
     },
     methods: {
-
+      clearData: function () {
+        this.dynamicValidateForm.userAccount = ''
+        this.dynamicValidateForm.vanillaPassword = ''
+        this.dynamicValidateForm.userPassword = ''
+      },
       login: function (formName) {
         this.dynamicValidateForm['userPassword'] = md5(this.dynamicValidateForm['vanillaPassword'])
         this.$refs[formName].validate((valid) => {
@@ -77,11 +81,12 @@
             api.login(opt).then(({
                                    data
                                  }) => {
-                if (data.code === 401) {
-                  console.log('401')
+                this.clearData()
+                if (data.successStatus !== true) {
                   console.log(this.$cookie.get('token'))
+                  this.$message('输入有误,请重新输入!')
                 } else {
-                  console.log('当前得到的数据是' + data)
+                  console.log('当前得到的数据是' + JSON.stringify(data.responseData[0]))
                   this.$cookie.set('token', data.responseData[0].authorizationToken, {expires: '100day'})
                   this.$cookie.set('authorizedUser', JSON.stringify(data.responseData[0]), {expires: '10min'})
 //                let redirect = decodeURIComponent('/index')
@@ -91,17 +96,10 @@
                   this.$router.go(-1)
                 }
               }
-            ).catch(function error(e) {
-              console.log(e + '' + e.message)
-              this.$alert('登录失败', '请检查您的输入!', {
-                confirmButtonText: '确定',
-                callback: action => {
-                  this.$message({
-                    type: 'info',
-                    message: `action: ${action}`
-                  })
-                }
-              })
+            ).catch(error => {
+              this.clearData()
+              console.log(error.response.data.messageContent)
+              this.$message(error.response.data.messageContent)
             })
           }
         })
