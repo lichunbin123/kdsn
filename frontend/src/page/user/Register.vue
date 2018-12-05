@@ -10,28 +10,28 @@
       <el-form ref="registerForm" :model="registerForm" :rules="rules" label-position="left" label-width="80px"
                class="demo-ruleForm login-container">
         <h3 class="title" style="text-align: center">系统注册</h3>
-        <el-form-item label="账户" prop="username">
-          <el-input v-model="registerForm.username" placeholder="请输入用户名称，由英文和数字组成"></el-input>
+        <el-form-item label="账户" prop="userAccount">
+          <el-input v-model="registerForm.userAccount" placeholder="请输入用户名称，由英文和数字组成"></el-input>
         </el-form-item>
-        <el-form-item label="用户昵称" prop="name">
-          <el-input v-model="registerForm.name" placeholder="请输入用户名称，由英文和数字组成"></el-input>
+        <el-form-item label="用户昵称" prop="userNickname">
+          <el-input v-model="registerForm.userNickname" placeholder="请输入用户名称，由英文和数字组成"></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="password">
-          <el-input type="password" v-model="registerForm.password" placeholder="请输入密码，由8位到12位英文和数字组成"></el-input>
+        <el-form-item label="密码" prop="userPassword">
+          <el-input type="password" v-model="registerForm.userPassword" placeholder="请输入密码，由8位到12位英文和数字组成"></el-input>
         </el-form-item>
         <el-form-item label="行业选择">
-          <el-select v-model="registerForm.industry">
+          <el-select v-model="registerForm.userIndustry">
             <el-option value="激光">激光</el-option>
             <el-option value="机械">机械</el-option>
             <el-option value="医疗">医疗</el-option>
             <el-option value="IT">IT</el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="手机号码" prop="phone">
-          <el-input v-model="registerForm.phone" placeholder="请输入手机号码"></el-input>
+        <el-form-item label="手机号码" prop="userPhone">
+          <el-input v-model="registerForm.userPhone" placeholder="请输入手机号码"></el-input>
         </el-form-item>
         <el-form-item label="电子邮箱">
-          <el-input v-model="registerForm.email" placeholder="请输入电子邮箱"></el-input>
+          <el-input v-model="registerForm.userEmail" placeholder="请输入电子邮箱"></el-input>
         </el-form-item>
         <el-form-item label="简介">
           <el-input v-model="registerForm.introduction" placeholder="请输入个人简介"></el-input>
@@ -76,10 +76,10 @@
         submitSucceed: false,
         redirectCount: 3,
         registerForm: {
-          username: '',
-          email: '',
-          phone: '',
-          industry: '',
+          userAccount: '',
+          userEmail: '',
+          userPhone: '',
+          userIndustry: '',
           department: null,
           comments: '',
           notValidated: '',
@@ -87,19 +87,19 @@
           introduction: ''
         },
         rules: {
-          username: [
+          userAccount: [
               {required: true, message: '请输入用户名称，由英文和数字组成', trigger: 'blur'},
               {min: 5, max: 10, message: '长度在 3 到 5 个字符', trigger: 'blur'}
           ],
-          password: [
+          userPassword: [
             {required: true, message: '请输入用户名称，由英文和数字组成', trigger: 'blur'},
             {min: 5, max: 10, message: '长度在 5 到 10 个字符', trigger: 'blur'}
           ],
-          phone: [
+          userPhone: [
             // {type: 'number', required: true, message: '请输入正确的手机号', trigger: 'change'},
             {min: 11, max: 11, message: '请输入正确的手机号', trigger: 'blur'}
           ],
-          industry: [
+          userIndustry: [
             {required: true}
           ],
           type: [

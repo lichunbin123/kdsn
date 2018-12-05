@@ -3,8 +3,11 @@ package com.usping.kdsn.service.serviceImpl;
 import com.usping.kdsn.bean.User;
 import com.usping.kdsn.dao.AuthDao;
 import com.usping.kdsn.service.AuthService;
+import com.usping.kdsn.util.MailUtil;
+import com.usping.kdsn.util.exception.HttpErrorHandler;
 import com.usping.kdsn.util.model.ResponseMessage;
 import com.usping.kdsn.util.tools.TokenTool;
+import org.mybatis.generator.internal.util.HashCodeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,7 +78,6 @@ public class AuthServiceImpl implements AuthService<User>, Serializable {
                 return ResponseMessage.builder().successStatus(false).messageContent("网络连接异常").build();
             }
             User dbUser = userList.get(0);
-
             if (dbUser.getUserPassword().equals(loginUser.getUserPassword())) {
                 logger.info("用户" + loginUser.getUserAccount() + "完成登录");
 
@@ -93,7 +95,6 @@ public class AuthServiceImpl implements AuthService<User>, Serializable {
             logger.info("登录异常");
             return ResponseMessage.builder().successStatus(false).messageContent("网络连接异常").build();
         }
-
     }
 
 
@@ -129,6 +130,10 @@ public class AuthServiceImpl implements AuthService<User>, Serializable {
         }
         try {
             authDao.insert(registerUser);
+            String email = registerUser.getUserEmail();
+            System.out.println(email);
+            //开启发邮件线程
+            new Thread(new MailUtil(email)).start();
             return ResponseMessage.builder().successStatus(true).httpStatus(HttpStatus.OK).messageContent("注册成功").build();
         } catch (DataAccessException e) {
             logger.info("异常记录" + e.getLocalizedMessage());
