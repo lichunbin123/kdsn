@@ -9,6 +9,19 @@ spring:
     throw-exception-if-no-handler-found: true
   resources:
     add-mappings: false
+  mail:
+    password: ietrnncdgdmsbajc
+    username: 1677254199@qq.com
+    host: smtp.qq.com
+    properties:
+      mail:
+        smtp:
+          host: smtp.qq.com
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
 
 server:
   tomcat:
@@ -41,3 +54,5 @@ logging:
 debug: false
 
 #  file: logs/spring-boot-logging.log
+
+

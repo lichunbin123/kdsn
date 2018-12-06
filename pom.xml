@@ -132,6 +132,11 @@
             <groupId>javax.mail</groupId>
             <artifactId>activation</artifactId>
         </dependency>
+        <!--邮件freemarker模板-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
     </dependencies>
 
 

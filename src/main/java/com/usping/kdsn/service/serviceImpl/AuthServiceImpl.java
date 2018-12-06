@@ -1,5 +1,6 @@
 package com.usping.kdsn.service.serviceImpl;
 
+import com.usping.kdsn.bean.Email;
 import com.usping.kdsn.bean.User;
 import com.usping.kdsn.dao.AuthDao;
 import com.usping.kdsn.service.AuthService;
@@ -7,18 +8,24 @@ import com.usping.kdsn.util.MailUtil;
 import com.usping.kdsn.util.exception.HttpErrorHandler;
 import com.usping.kdsn.util.model.ResponseMessage;
 import com.usping.kdsn.util.tools.TokenTool;
+import freemarker.template.Template;
 import org.mybatis.generator.internal.util.HashCodeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import javax.xml.transform.Templates;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class AuthServiceImpl implements AuthService<User>, Serializable {
@@ -27,7 +34,12 @@ public class AuthServiceImpl implements AuthService<User>, Serializable {
 
     private static final long serialVersionUID = 8265805899632485285L;
     private final AuthDao authDao;
+    private Email email;
 
+    @Autowired
+    private JavaMailSender mailSender;
+    @Autowired
+    private FreeMarkerConfigurer freeMarkerConfigurer;//发送邮件的模板引擎
     @Autowired
     public AuthServiceImpl(AuthDao authDao) {
         this.authDao = authDao;
@@ -131,13 +143,38 @@ public class AuthServiceImpl implements AuthService<User>, Serializable {
         try {
             authDao.insert(registerUser);
             String email = registerUser.getUserEmail();
-            System.out.println(email);
-            //开启发邮件线程
-            new Thread(new MailUtil(email)).start();
+            sendMail(email,"email.ftl");
+//            System.out.println(email);
+//            //开启发邮件线程
+//            new Thread(new MailUtil(email)).start();
             return ResponseMessage.builder().successStatus(true).httpStatus(HttpStatus.OK).messageContent("注册成功").build();
         } catch (DataAccessException e) {
             logger.info("异常记录" + e.getLocalizedMessage());
             return ResponseMessage.builder().successStatus(false).httpStatus(HttpStatus.EXPECTATION_FAILED).messageContent("网络连接异常，请联系管理员").build();
         }
     }
-}
+
+    public void sendMail(String receive, String templateName){
+        String username = email.getUsername();
+        System.out.println(username);
+        MimeMessage mimeMessage = null;
+        try {
+            mimeMessage = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,true);
+            helper.setFrom(username);
+            helper.setTo(receive);
+            helper.setSubject("激活邮件");
+
+            Map<String,Object> model = new HashMap<>();
+            model.put("username","didi");
+            Template template =   freeMarkerConfigurer.getConfiguration().getTemplate(templateName);
+            String text = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
+            helper.setText(text,true);
+
+            mailSender.send(mimeMessage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    }
+
