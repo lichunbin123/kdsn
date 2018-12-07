@@ -10,8 +10,9 @@ spring:
   resources:
     add-mappings: false
   mail:
-    password: ietrnncdgdmsbajc
+    default-encoding: UTF-8
     username: 1677254199@qq.com
+    password: ietrnncdgdmsbajc
     host: smtp.qq.com
     properties:
       mail:
@@ -20,8 +21,11 @@ spring:
           auth: true
           starttls:
             enable: true
-            required: true
-
+      protocol: smtp
+  freemarker:
+    template-loader-path:
+      - classpath:/template
+    suffix: ftl
 
 server:
   tomcat:

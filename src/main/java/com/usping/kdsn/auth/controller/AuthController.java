@@ -36,7 +36,6 @@ public class AuthController {
     public ResponseEntity<ResponseMessage> login(@RequestBody User loginUser) {
         ResponseMessage responseMessage = authService.verifyPassword(loginUser);
 
-
        return new ResponseEntity<>(responseMessage, responseMessage.getHttpStatus());
     }
 

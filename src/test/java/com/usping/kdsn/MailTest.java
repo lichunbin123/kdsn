@@ -1,12 +1,12 @@
 package com.usping.kdsn;
 
+import com.usping.kdsn.service.serviceImpl.EmailServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -27,18 +27,12 @@ public class MailTest {
     @Value("${spring.mail.password)")
     private String password;
 
+    @Autowired
+    private EmailServiceImpl emailService;
+
     @Test
-    public void testSendMail() {
-
-        javaMailSender.setUsername("598850098@qq.com");
-        javaMailSender.setPassword("ldygdifmueyobbii");
-        javaMailSender.setPort(25);
-
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("go@usping.cn");
-        message.setTo("1994wangning@gmail.com");
-        message.setSubject("Para test");
-        message.setText("Hola, mundo!");
-        javaMailSender.send(message);
+    public void testSendMailRunner() {
+        String emailAddress = "1677254199@qq.com";
+        emailService.sendEmail(emailAddress);
     }
 }

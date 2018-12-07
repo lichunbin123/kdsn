@@ -1,7 +1,7 @@
 <template>
   <div class="inform-app">
     <div class="inform-message">
-       <span>
+      <span>The email has been sent. Please check it</span>
     </div>
   </div>
 </template>
