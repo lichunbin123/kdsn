@@ -26,8 +26,9 @@ public class AuthServiceImpl implements AuthService<User>, Serializable {
     private final AuthDao authDao;
 
     private EmailService emailService;
+
     @Autowired
-    public AuthServiceImpl(AuthDao authDao,EmailService emailService) {
+    public AuthServiceImpl(AuthDao authDao, EmailService emailService) {
 
         this.authDao = authDao;
         this.emailService = emailService;
@@ -105,6 +106,7 @@ public class AuthServiceImpl implements AuthService<User>, Serializable {
      * @param registerUser 传入注册用户信息
      * @return 注册成功信息
      */
+
     @Override
     public ResponseMessage register(User registerUser) {
         List<User> tmpUserList;
@@ -123,30 +125,21 @@ public class AuthServiceImpl implements AuthService<User>, Serializable {
 
             tmpUserList = authDao.selectByNickname(registerUser.getUserNickname());
 
-<<<<<<< HEAD
-        if (tmpUserList != null && tmpUserList.size() > 0) {
-            return ResponseMessage.builder().successStatus(false).httpStatus(HttpStatus.CONFLICT).messageContent("昵称已经被使用").build();
-        }
-        try {
-            authDao.insert(registerUser);
-            emailService.sendEmail(registerUser.getUserEmail());
-            return ResponseMessage.builder().successStatus(true).httpStatus(HttpStatus.OK).messageContent("注册成功").build();
-=======
             if (tmpUserList != null && tmpUserList.size() > 0) {
                 return ResponseMessage.builder().successStatus(false).httpStatus(HttpStatus.CONFLICT).messageContent("昵称已经被使用").build();
             }
             try {
                 authDao.insert(registerUser);
+                emailService.sendEmail(registerUser.getUserEmail());
                 return ResponseMessage.builder().successStatus(true).httpStatus(HttpStatus.OK).messageContent("注册成功").build();
             } catch (DataAccessException e) {
                 logger.info("异常记录" + e.getLocalizedMessage());
                 return ResponseMessage.builder().successStatus(false).httpStatus(HttpStatus.EXPECTATION_FAILED).messageContent("网络连接异常，请联系管理员").build();
             }
->>>>>>> a211aabe5d5e9506a94e0f3689f59b9fd9d4384d
         } catch (DataAccessException e) {
             return ResponseMessage.builder().successStatus(false).httpStatus(HttpStatus.EXPECTATION_FAILED).messageContent("网络连接异常，请联系管理员").build();
         }
 
     }
-    }
+}
 
