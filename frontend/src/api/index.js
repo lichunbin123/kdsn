@@ -25,16 +25,16 @@ instance.interceptors.response.use(response => {
 export default {
   instance,
   // 用户注册
-  userRegister (data) {
+  userRegister(data) {
     return instance.post('/api/register', data)
   },
   // 用户登录
-  UserLogin (data) {
+  UserLogin(data) {
     return instance.post('/api/login', data
     )
   },
   // 获取用户
-  getUser (token) {
+  getUser(token) {
     console.log('request token is: ' + token)
     return instance.get('/api/auth/user',
       {
@@ -45,10 +45,10 @@ export default {
       })
   },
   // 删除用户
-  delUser (data) {
+  delUser(data) {
     return instance.post('/api/delUser', data)
   },
-  login (data) {
+  login(data) {
     return instance.post('/auth/login', data,
       {
         headers: {
@@ -56,13 +56,13 @@ export default {
         }
       })
   },
-  logout () {
+  logout() {
     console.log('尝试登出')
     Vue.vue.$cookie.delete('token')
     console.log('删除token')
     Vue.vue.$cookie.delete('authorizedUser')
   },
-  getTask (token) {
+  getTask(token) {
     return instance.get('/api/task/task',
       {
         headers: {
@@ -71,7 +71,7 @@ export default {
         }
       })
   },
-  getTaskForUser (token, pageSize, pageNumber) {
+  getTaskForUser(token, pageSize, pageNumber) {
     return instance.get('/api/task/getTaskForUser?pageSize=' + pageSize + '&pageNumber=' + pageNumber,
       {
         headers: {
@@ -80,7 +80,7 @@ export default {
         }
       })
   },
-  getProduct (token) {
+  getProduct(token) {
     return instance.get('/api/product/product',
       {
         headers: {
@@ -89,7 +89,7 @@ export default {
         }
       })
   },
-  getProductForUser (token, pageSize, pageNumber) {
+  getProductForUser(token, pageSize, pageNumber) {
     return instance.get('/api/product/getProductForUser?pageSize=' + pageSize + '&pageNumber=' + pageNumber,
       {
         headers: {
@@ -98,7 +98,7 @@ export default {
         }
       })
   },
-  postComment (token, data) {
+  postComment(token, data) {
     return instance.post('/api/comment/comment',
       data,
       {
@@ -108,7 +108,7 @@ export default {
         }
       })
   },
-  getCommentWithUserIdAndNewsId (token, userId, newsId) {
+  getCommentWithUserIdAndNewsId(token, userId, newsId) {
     return instance.get('/api/comment/findByUserIdAndNewsId?userId=' + userId + '&newsId=' + newsId,
       {
         headers: {
@@ -117,7 +117,7 @@ export default {
         }
       })
   },
-  getCommentWithNewsId (token, newsId) {
+  getCommentWithNewsId(token, newsId) {
     return instance.get('/api/comment/findByNewsId?newsId=' + newsId,
       {
         headers: {
@@ -126,7 +126,7 @@ export default {
         }
       })
   },
-  getNoteWithNewsIdAndUserId (token, newsId, userId) {
+  getNoteWithNewsIdAndUserId(token, newsId, userId) {
     return instance.get('/api/note/findByNewsIdAndUserId?newsId=' + newsId + '&userId=' + userId,
       {
         headers: {
@@ -135,7 +135,7 @@ export default {
         }
       })
   },
-  postNote (token, data) {
+  postNote(token, data) {
     return instance.post('/api/note/note',
       data,
       {
@@ -145,7 +145,7 @@ export default {
         }
       })
   },
-  modifyNoteState (token, data) {
+  modifyNoteState(token, data) {
     return instance.post('/api/note/makePublic',
       data,
       {
@@ -155,7 +155,7 @@ export default {
         }
       })
   },
-  testDistinct (token) {
+  testDistinct(token) {
     // TODO should bechange for getting the menu of current user
     // everytime should flush
     return instance.get('/api/news/testDistinct',
@@ -166,7 +166,7 @@ export default {
         }
       })
   },
-  submitMenu (token, data) {
+  submitMenu(token, data) {
     return instance.post('/api/menu/saveMenu',
       data,
       {
@@ -175,6 +175,17 @@ export default {
           'Access-Control-Allow-Origin': '*'
         }
       })
+  },
+  submitSource(token, data) {
+    return instance.post('/api/source/submitSource',
+      data,
+      {
+        headers: {
+          Authorization: token,
+          'Access-Control-Allow-Origin': '*'
+        }
+      }
+    )
   }
 
 }

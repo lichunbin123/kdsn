@@ -37,9 +37,9 @@ login into mysql or mariaDb shell
 and execute
 
 ```sql
-$ create database usping;
-$ use usping;
-$ source usping.sql;
+  $ create database usping;
+  $ use usping;
+  $ source usping.sql;
 ```
 
 Make sure the path of usping.sql, check with $(pwd) or you should execute with

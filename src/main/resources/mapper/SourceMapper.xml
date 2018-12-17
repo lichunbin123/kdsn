@@ -4,12 +4,13 @@
     <resultMap id="BaseResultMap" type="com.usping.kdsn.bean.Source">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="apply_user" jdbcType="INTEGER" property="applyUser"/>
-        <result column="site_name" jdbcType="INTEGER" property="siteName"/>
-        <result column="apply_status" jdbcType="VARCHAR" property="applyStatus"/>
-        <result column="apply_handler" jdbcType="INTEGER" property="apply_handler"/>
+        <result column="site_name" jdbcType="VARCHAR" property="siteName"/>
+        <result column="site_url" jdbcType="VARCHAR" property="siteUrl"/>
+        <result column="apply_status" jdbcType="INTEGER" property="applyStatus"/>
+        <result column="apply_handler" jdbcType="INTEGER" property="applyHandler"/>
     </resultMap>
     <sql id="Base_Column_List">
-      id, apply_user, site_name, apply_status, apply_handler
+      id, apply_user, site_name, site_url, apply_status, apply_handler
     </sql>
 
 
@@ -20,15 +21,23 @@
         )
         values (
         #{id},
-        #{apply_user},
-        #{site_name},
-        #{apply_satus},
-        #{apply_handler}
+        #{applyUser},
+        #{siteName},
+        #{siteUrl},
+        #{applyStatus},
+        #{applyHandler}
         )
     </insert>
 
     <select id="selectAll">
 
+    </select>
+
+    <select id="selectByUser">
+        select
+        <include refid="Base_Column_List"/>
+        from source
+        where apply_user=#{applyUser}
     </select>
 
 </mapper>
