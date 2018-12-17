@@ -29,7 +29,6 @@ public class MailTest {
 
     @Autowired
     private EmailServiceImpl emailService;
-
     @Test
     public void testSendMailRunner() {
         String emailAddress = "1677254199@qq.com";

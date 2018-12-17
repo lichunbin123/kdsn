@@ -10,6 +10,7 @@ import task from '@/page/task/myTask'
 import product from '@/page/product/myProduct'
 import esping from '@/page/test/ping'
 import Register from '@/page/user/Register'
+import EmailInform from '@/page/user/EmailInform'
 
 // import header from '@/components/layout/header'
 // import footer from '@/components/layout/footer'
@@ -77,6 +78,11 @@ let router = new Router({
       path: '/register',
       name: 'sign-up',
       component: Register
+    },
+    {
+      path: '/emailinform',
+      name: 'emailinform',
+      component:EmailInform
     }
   ]
 })
