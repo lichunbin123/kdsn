@@ -518,7 +518,7 @@
     <!--</select>-->
 
     <select id="selectByAccount" parameterType="String" resultMap="ResultMapWithBLOBs">
-        select 
+        select
         <include refid="Base_Column_List"/>,
         <include refid="Blob_Column_List"/>
         from user
@@ -540,4 +540,12 @@
         from user
         where user_nickname = #{nickname}
     </select>
+
+    <update id="update" parameterType="String" >
+        update user
+        <set>
+          user_password = #{arg0}
+        </set>
+        where user_account = #{arg1}
+    </update>
 </mapper>

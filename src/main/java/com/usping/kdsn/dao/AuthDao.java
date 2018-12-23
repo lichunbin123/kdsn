@@ -24,8 +24,8 @@ public class AuthDao implements BaseDao<User>{
     }
 
     @Override
-    public int update(User user) throws DataAccessException {
-        return 0;
+    public int update(String password,String account) throws DataAccessException {
+        return userMapper.update(password,account);
     }
 
     @Override

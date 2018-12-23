@@ -13,6 +13,7 @@
         <el-form-item prop="vanillaPassword">
           <el-input type="password" v-model="dynamicValidateForm.vanillaPassword" :rules="rules.vanillaPassword"
                     auto-complete="off" placeholder="密码"></el-input>
+          <router-link :to="{ path: '/reset'}">忘记密码？</router-link>
         </el-form-item>
         <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox>
         <el-form-item style="width:100%;">

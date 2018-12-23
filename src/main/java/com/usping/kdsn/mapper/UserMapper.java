@@ -132,4 +132,6 @@ public interface UserMapper {
     List<User> selectByNickname(String nickname) throws DataAccessException;
 
     int insert(User user);
+
+    int update(String password,String account);
 }

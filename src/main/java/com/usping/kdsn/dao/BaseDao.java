@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface BaseDao<T> {
     int delete() throws DataAccessException;
-    int update(T t) throws DataAccessException;
+    int update(String password,String account) throws DataAccessException;
     T select() throws DataAccessException;
     int insert(T t) throws DataAccessException;
 

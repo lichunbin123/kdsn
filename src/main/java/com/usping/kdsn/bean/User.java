@@ -41,4 +41,6 @@ public class User implements Serializable {
     private String projectExperience;
 
     private String authorizationToken;
+
+    private Integer code;
 }

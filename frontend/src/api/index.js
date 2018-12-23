@@ -56,6 +56,24 @@ export default {
         }
       })
   },
+
+  sendCode(data){
+    return instance.post('/auth/sendCode',data,
+      {
+        headers:{
+          'Access-Control-Allow-Origin': '*'
+        }
+      })
+  },
+
+  resetForm(data){
+    return instance.post('/auth/reset',data,{
+      headers:{
+        'Access-Control-Allow-Origin': '*'
+      }
+    })
+  },
+
   logout() {
     console.log('尝试登出')
     Vue.vue.$cookie.delete('token')

@@ -2,6 +2,7 @@ package com.usping.kdsn.auth.controller;
 
 import com.usping.kdsn.bean.User;
 import com.usping.kdsn.service.AuthService;
+import com.usping.kdsn.service.EmailService;
 import com.usping.kdsn.util.model.ResponseMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +21,12 @@ public class AuthController {
 
     private final AuthService authService;
 
+    private final EmailService emailService;
+
     @Autowired
-    public AuthController(AuthService authService) {
+    public AuthController(AuthService authService,EmailService emailService) {
         this.authService = authService;
+        this.emailService=emailService;
     }
 
     /**
@@ -53,6 +57,25 @@ public class AuthController {
 
         return new ResponseEntity<>(responseMessage, responseMessage.getHttpStatus());
     }
+
+    @CrossOrigin
+    @RequestMapping("/sendCode")
+    @ResponseBody
+    public ResponseEntity<ResponseMessage> senCode(@RequestBody User sendCodeUser){
+        ResponseMessage responseMessage = emailService.sendCode(sendCodeUser);
+
+        return new ResponseEntity<>(responseMessage,responseMessage.getHttpStatus());
+    }
+
+    @CrossOrigin
+    @RequestMapping("/reset")
+    @ResponseBody
+    public ResponseEntity<ResponseMessage> reset(@RequestBody User resetUser){
+        ResponseMessage responseMessage = emailService.resetPassword(resetUser);
+
+        return new ResponseEntity<>(responseMessage,responseMessage.getHttpStatus());
+    }
+
 //    public ResponseEntity<Map<String, Object>> register(@RequestBody UserWithBLOBs user) {
 //        logger.info("load the information of user is" + user.toString());
 //        WeakHashMap<String, Object> resultMap = new WeakHashMap<>(3);

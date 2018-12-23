@@ -11,7 +11,7 @@ import product from '@/page/product/myProduct'
 import esping from '@/page/test/ping'
 import Register from '@/page/user/Register'
 import EmailInform from '@/page/user/EmailInform'
-
+import Reset from '@/page/user/Reset'
 // import header from '@/components/layout/header'
 // import footer from '@/components/layout/footer'
 
@@ -83,8 +83,12 @@ let router = new Router({
       path: '/emailinform',
       name: 'emailinform',
       component:EmailInform
-    }
+    },
+    {
+      path: '/reset',
+      name: 'reset',
+      component:Reset
+    },
   ]
 })
-
 export default router
